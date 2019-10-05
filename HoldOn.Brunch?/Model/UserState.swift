@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  UserState.swift
 //  HoldOn.Brunch?
 //
 //  Created by Brett Petersen on 10/5/19.
@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+enum MoodStatus: String {
+	case new
+	case confusing
+	case confused
+}
+
+struct UserState {
+	var moodStatus: MoodStatus
+}

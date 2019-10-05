@@ -8,21 +8,21 @@
 
 import Foundation
 
-protocol MainViewProtocol {
-	
+protocol MoodSelectViewProtocol {
+	func setTitleText(_ text: String?)
 }
 
 class MoodSelectPresenter {
 	
 	var userState: UserState
-	var viewProtocol: MainViewProtocol? { didSet { didSetViewProtocol() } }
+	var viewProtocol: MoodSelectViewProtocol? { didSet { didSetViewProtocol() } }
 	
 	init(userState: UserState) {
 		self.userState = userState
 	}
 	
 	private func didSetViewProtocol() {
-		
+		viewProtocol?.setTitleText("Baller feels...")
 	}
 }
 
