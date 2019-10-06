@@ -15,26 +15,41 @@ class MoodSelectPageView: UIView {
 	
 	private let paddingY:CGFloat = 10
 	private let paddingX:CGFloat = 10
+	
+	init() {
+		super.init(frame: .zero)
+		
+		setUpImageView()
+		setUpMoodLabel()
+		
+		activateConstraintsForImageView()
+		activateConstraintsForMoodLabel()
+	}
+	required init?(coder aDecoder: NSCoder) { fatalError() }
+	
 }
 
 // MARK: - View Setup
 extension MoodSelectPageView {
 	private func setUpImageView() {
+		imageView.backgroundColor = .lightGray // TODO: remove
+		imageView.contentMode = .scaleAspectFill
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		addSubview(imageView)
 	}
 	
 	private func setUpMoodLabel() {
-		moodLabel.translatesAutoresizingMaskIntoConstraints = false
+		moodLabel.textAlignment = .center
 		moodLabel.numberOfLines = 3
 		moodLabel.adjustsFontSizeToFitWidth = true
+		moodLabel.translatesAutoresizingMaskIntoConstraints = false
 		addSubview(moodLabel)
 	}
 	
 	private func activateConstraintsForImageView() {
-		imageView.topAnchor.constraint(equalTo: topAnchor, constant: paddingY).isActive = true
+		imageView.topAnchor.constraint(equalTo: topAnchor, constant: paddingY+200).isActive = true
 		imageView.widthAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
-		imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 400).isActive = true
+		imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
 		imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 	}
 	

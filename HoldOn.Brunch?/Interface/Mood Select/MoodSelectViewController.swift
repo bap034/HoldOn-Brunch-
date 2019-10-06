@@ -24,6 +24,8 @@ class MoodSelectViewController: UIViewController {
 		self.presenter = presenter
 		
 		super.init(nibName: nil, bundle: nil)
+		
+		self.presenter.viewProtocol = self
 	}
 	required init?(coder aDecoder: NSCoder) { fatalError() }
 	
@@ -31,12 +33,19 @@ class MoodSelectViewController: UIViewController {
 
 // MARK: - View Setup
 extension MoodSelectViewController {
+	private func setUpSelf() {
+		view.backgroundColor = .white
+	}
+	
 	private func setUpTitleLabel() {
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(titleLabel)
 	}
 	
 	private func setUpScrollView() {
+		scrollView.isScrollEnabled = true
+		scrollView.isPagingEnabled = true
+		scrollView.isDirectionalLockEnabled = true
 		scrollView.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(scrollView)
 	}
@@ -47,7 +56,8 @@ extension MoodSelectViewController {
 	}
 	
 	private func setUpConfusedMoodPageView() {
-		confusedMoodPageView.imageView.image = UIImage(named: "cat") // TODO: Set by presenter
+		let image = UIImage(named: "cat")
+		confusedMoodPageView.imageView.image = image // TODO: Set by presenter
 		confusedMoodPageView.moodLabel.text = "Confused".uppercased() // TODO: Set by presenter
 		
 		confusedMoodPageView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,29 +73,58 @@ extension MoodSelectViewController {
 	}
 	
 	// MARK: Constraints
+	private func activateConstraintsForTitleLabel() {
+		titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+		titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
+	}
+	
 	private func activateConstraintsForScrollView() {
 		scrollView.activateConstraintsToPerimeter(ofParentView: view)
 	}
 	private func activateConstraintsForScrollContainerView() {
 		scrollContainerView.activateConstraintsToPerimeter(ofParentView: scrollView)
+		scrollContainerView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
+		scrollContainerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 2).isActive = true // TODO: fix to be intrinsic?
 	}
-	private func activateConfusedMoodPageView() {
+	private func activateConstraintsForConfusedMoodPageView() {
 		confusedMoodPageView.centerYAnchor.constraint(equalTo: scrollContainerView.centerYAnchor).isActive = true
 		confusedMoodPageView.heightAnchor.constraint(equalTo: scrollContainerView.heightAnchor).isActive = true
 		confusedMoodPageView.leftAnchor.constraint(equalTo: scrollContainerView.leftAnchor).isActive = true
-		confusedMoodPageView.widthAnchor.constraint(equalTo: scrollContainerView.widthAnchor).isActive = true
+		confusedMoodPageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
 	}
-	private func activateConfusingMoodPageView() {
+	private func activateConstraintsForConfusingMoodPageView() {
 		confusingMoodPageView.centerYAnchor.constraint(equalTo: scrollContainerView.centerYAnchor).isActive = true
 		confusingMoodPageView.heightAnchor.constraint(equalTo: scrollContainerView.heightAnchor).isActive = true
 		confusingMoodPageView.leftAnchor.constraint(equalTo: confusedMoodPageView.rightAnchor).isActive = true
-		confusingMoodPageView.rightAnchor.constraint(equalTo: scrollContainerView.rightAnchor).isActive = true
-		confusingMoodPageView.widthAnchor.constraint(equalTo: scrollContainerView.widthAnchor).isActive = true
+//		confusingMoodPageView.rightAnchor.constraint(equalTo: scrollContainerView.rightAnchor).isActive = true
+		confusingMoodPageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
 	}
 }
 
+// MARK: - MoodSelectViewProtocol
 extension MoodSelectViewController: MoodSelectViewProtocol {
 	func setTitleText(_ text: String?) {
 		titleLabel.text = text
+	}
+}
+
+// MARK: - UIViewController
+extension MoodSelectViewController {
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		setUpSelf()
+		setUpTitleLabel()
+		setUpScrollView()
+		setUpScrollContainerView()
+		setUpConfusedMoodPageView()
+		setUpConfusingMoodPageView()
+		
+		activateConstraintsForTitleLabel()
+		activateConstraintsForScrollView()
+		activateConstraintsForScrollContainerView()
+		activateConstraintsForConfusedMoodPageView()
+		activateConstraintsForConfusingMoodPageView()
 	}
 }

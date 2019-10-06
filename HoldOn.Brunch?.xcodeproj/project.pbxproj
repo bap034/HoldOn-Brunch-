@@ -17,9 +17,10 @@
 		8BB1D5322348F2CA00626A90 /* MoodSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D5312348F2CA00626A90 /* MoodSelectViewController.swift */; };
 		8BB1D5342348F2F200626A90 /* MoodSelectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D5332348F2F200626A90 /* MoodSelectPresenter.swift */; };
 		8BB1D5392348F7D000626A90 /* MoodSelectPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D5382348F7D000626A90 /* MoodSelectPageView.swift */; };
-		8BB1D53B2348FDDE00626A90 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D53A2348FDDE00626A90 /* Images */; };
 		8BB1D53D2348FEB100626A90 /* UIView+BAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D53C2348FEB100626A90 /* UIView+BAP.swift */; };
 		8BB1D540234903E300626A90 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D53F234903E300626A90 /* Main.swift */; };
+		8BB1D5452349A73600626A90 /* cat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5432349A73600626A90 /* cat@2x.png */; };
+		8BB1D5462349A73600626A90 /* cat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5442349A73600626A90 /* cat@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,9 +57,10 @@
 		8BB1D5312348F2CA00626A90 /* MoodSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectViewController.swift; sourceTree = "<group>"; };
 		8BB1D5332348F2F200626A90 /* MoodSelectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectPresenter.swift; sourceTree = "<group>"; };
 		8BB1D5382348F7D000626A90 /* MoodSelectPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectPageView.swift; sourceTree = "<group>"; };
-		8BB1D53A2348FDDE00626A90 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		8BB1D53C2348FEB100626A90 /* UIView+BAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BAP.swift"; sourceTree = "<group>"; };
 		8BB1D53F234903E300626A90 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		8BB1D5432349A73600626A90 /* cat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cat@2x.png"; path = "HoldOn.Brunch?/Resources/Images/cat@2x.png"; sourceTree = SOURCE_ROOT; };
+		8BB1D5442349A73600626A90 /* cat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cat@3x.png"; path = "HoldOn.Brunch?/Resources/Images/cat@3x.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +159,7 @@
 		8BB1D52B2348EEAD00626A90 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8BB1D53A2348FDDE00626A90 /* Images */,
+				8BB1D5422349A70F00626A90 /* Images */,
 				8BB1D5022348EE5100626A90 /* Assets.xcassets */,
 				8BB1D5042348EE5100626A90 /* LaunchScreen.storyboard */,
 			);
@@ -205,6 +207,15 @@
 				8BB1D5072348EE5100626A90 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8BB1D5422349A70F00626A90 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8BB1D5432349A73600626A90 /* cat@2x.png */,
+				8BB1D5442349A73600626A90 /* cat@3x.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,8 +323,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BB1D5062348EE5100626A90 /* LaunchScreen.storyboard in Resources */,
-				8BB1D53B2348FDDE00626A90 /* Images in Resources */,
 				8BB1D5032348EE5100626A90 /* Assets.xcassets in Resources */,
+				8BB1D5462349A73600626A90 /* cat@3x.png in Resources */,
+				8BB1D5452349A73600626A90 /* cat@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +524,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86WXZVZ79J;
 				INFOPLIST_FILE = "$(SRCROOT)/HoldOn.Brunch?/Supporting Files/Info.plist";
@@ -520,8 +533,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "BAP.HoldOn-Brunch-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bap034.HoldOnBrunch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -531,6 +545,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86WXZVZ79J;
 				INFOPLIST_FILE = "$(SRCROOT)/HoldOn.Brunch?/Supporting Files/Info.plist";
@@ -539,8 +554,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "BAP.HoldOn-Brunch-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bap034.HoldOnBrunch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

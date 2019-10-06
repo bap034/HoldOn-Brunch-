@@ -22,7 +22,7 @@ class MoodSelectPresenter {
 	}
 	
 	private func didSetViewProtocol() {
-		viewProtocol?.setTitleText("Baller feels...")
+		viewProtocol?.setTitleText("Baller is...")
 	}
 }
 
