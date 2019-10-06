@@ -16,7 +16,7 @@ protocol MoodSelectViewProtocol {
 class MoodSelectPresenter {
 	
 	var viewProtocol: MoodSelectViewProtocol? { didSet { didSetViewProtocol() } }
-	private let person: Person
+	private var person: Person
 	
 	init(person: Person) {
 		self.person = person
@@ -33,4 +33,13 @@ class MoodSelectPresenter {
 // MARK: - Person Actions
 extension MoodSelectPresenter {
 	
+}
+
+// MARK: - Exposed View Methods
+extension MoodSelectPresenter {
+	func onScrollViewDidEndDecelerating(page: Int) {
+		let newMoodStatus = page == 0 ? MoodStatus.confused:MoodStatus.confusing
+		person.moodStatus = newMoodStatus
+		// TODO: finish persisting data
+	}
 }

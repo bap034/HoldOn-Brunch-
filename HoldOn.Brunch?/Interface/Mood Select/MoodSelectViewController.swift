@@ -50,7 +50,7 @@ extension MoodSelectViewController {
 	}
 	
 	private func setUpScrollView() {
-		scrollView.isScrollEnabled = true
+		scrollView.delegate = self
 		scrollView.isPagingEnabled = true
 		scrollView.isDirectionalLockEnabled = true
 		scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -141,6 +141,14 @@ extension MoodSelectViewController {
 		activateConstraintsForScrollContainerView()
 		activateConstraintsForConfusedMoodPageView()
 		activateConstraintsForConfusingMoodPageView()		
+	}
+}
+
+// MARK: - UIScrollViewDelegate
+extension MoodSelectViewController: UIScrollViewDelegate {
+	func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+		let page = scrollView.contentOffset.x == 0 ? 0:1
+		presenter.onScrollViewDidEndDecelerating(page: page)
 	}
 }
 
