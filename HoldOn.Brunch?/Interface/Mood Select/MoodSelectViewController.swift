@@ -13,6 +13,7 @@ class MoodSelectViewController: UIViewController {
 	private let presenter: MoodSelectPresenter
 	
 	private let titleLabel = UILabel()
+	private let imageView = UIImageView()
 	private let scrollView = UIScrollView()
 	private let scrollContainerView = UIView()
 	
@@ -42,6 +43,12 @@ extension MoodSelectViewController {
 		view.addSubview(titleLabel)
 	}
 	
+	private func setUpImageView() {
+		imageView.contentMode = .scaleAspectFit
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(imageView)
+	}
+	
 	private func setUpScrollView() {
 		scrollView.isScrollEnabled = true
 		scrollView.isPagingEnabled = true
@@ -56,8 +63,7 @@ extension MoodSelectViewController {
 	}
 	
 	private func setUpConfusedMoodPageView() {
-		let image = UIImage(named: "cat")
-		confusedMoodPageView.imageView.image = image // TODO: Set by presenter
+//		confusedMoodPageView.imageView.image =  UIImage(named: "cat") // TODO: Set by presenter
 		confusedMoodPageView.moodLabel.text = "Confused".uppercased() // TODO: Set by presenter
 		
 		confusedMoodPageView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +71,7 @@ extension MoodSelectViewController {
 	}
 	
 	private func setUpConfusingMoodPageView() {
-		confusingMoodPageView.imageView.image = UIImage(named: "cat") // TODO: Set by presenter
+//		confusingMoodPageView.imageView.image = UIImage(named: "cat") // TODO: Set by presenter
 		confusingMoodPageView.moodLabel.text = "Confusing".uppercased() // TODO: Set by presenter
 		
 		confusingMoodPageView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,6 +84,14 @@ extension MoodSelectViewController {
 		titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: padding).isActive = true
 		titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
+	}
+	
+	private func activateConstraintsForImageView() {
+//		imageView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: paddingY+200).isActive = true
+		imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+		imageView.widthAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
+		imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
+		imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 	}
 	
 	private func activateConstraintsForScrollView() {
@@ -103,13 +117,6 @@ extension MoodSelectViewController {
 	}
 }
 
-// MARK: - MoodSelectViewProtocol
-extension MoodSelectViewController: MoodSelectViewProtocol {
-	func setTitleText(_ text: String?) {
-		titleLabel.text = text
-	}
-}
-
 // MARK: - UIViewController
 extension MoodSelectViewController {
 	override func viewDidLoad() {
@@ -117,6 +124,7 @@ extension MoodSelectViewController {
 		
 		setUpSelf()
 		setUpTitleLabel()
+		setUpImageView()
 		setUpScrollView()
 		setUpScrollContainerView()
 		setUpConfusedMoodPageView()
@@ -128,10 +136,21 @@ extension MoodSelectViewController {
 		super.viewDidLayoutSubviews()
 		
 		activateConstraintsForTitleLabel()
+		activateConstraintsForImageView()
 		activateConstraintsForScrollView()
 		activateConstraintsForScrollContainerView()
 		activateConstraintsForConfusedMoodPageView()
-		activateConstraintsForConfusingMoodPageView()
-		
+		activateConstraintsForConfusingMoodPageView()		
+	}
+}
+
+// MARK: - MoodSelectViewProtocol
+extension MoodSelectViewController: MoodSelectViewProtocol {
+	func setTitleText(_ text: String?) {
+		titleLabel.text = text
+	}
+	
+	func setImageName(_ imageName: String) {
+		imageView.image = UIImage(named: imageName)
 	}
 }

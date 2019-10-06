@@ -10,6 +10,7 @@ import Foundation
 
 protocol MoodSelectViewProtocol {
 	func setTitleText(_ text: String?)
+	func setImageName(_ imageName: String)
 }
 
 class MoodSelectPresenter {
@@ -22,7 +23,10 @@ class MoodSelectPresenter {
 	}
 	
 	private func didSetViewProtocol() {
-		viewProtocol?.setTitleText("Baller is...")
+		viewProtocol?.setTitleText("\(person.name) is...")
+		if let imageName = person.imageName {
+			viewProtocol?.setImageName(imageName)
+		}
 	}
 }
 

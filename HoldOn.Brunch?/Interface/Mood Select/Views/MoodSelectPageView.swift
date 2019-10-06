@@ -10,7 +10,7 @@ import UIKit
 
 class MoodSelectPageView: UIView {
 	
-	let imageView = UIImageView()
+//	let imageView = UIImageView()
 	let moodLabel = UILabel()
 	
 	private let paddingY:CGFloat = 10
@@ -19,10 +19,10 @@ class MoodSelectPageView: UIView {
 	init() {
 		super.init(frame: .zero)
 		
-		setUpImageView()
+//		setUpImageView()
 		setUpMoodLabel()
 		
-		activateConstraintsForImageView()
+//		activateConstraintsForImageView()
 		activateConstraintsForMoodLabel()
 	}
 	required init?(coder aDecoder: NSCoder) { fatalError() }
@@ -31,12 +31,12 @@ class MoodSelectPageView: UIView {
 
 // MARK: - View Setup
 extension MoodSelectPageView {
-	private func setUpImageView() {
-		imageView.backgroundColor = .lightGray // TODO: remove
-		imageView.contentMode = .scaleAspectFill
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		addSubview(imageView)
-	}
+//	private func setUpImageView() {
+//		imageView.backgroundColor = .lightGray // TODO: remove
+//		imageView.contentMode = .scaleAspectFill
+//		imageView.translatesAutoresizingMaskIntoConstraints = false
+//		addSubview(imageView)
+//	}
 	
 	private func setUpMoodLabel() {
 		moodLabel.textAlignment = .center
@@ -46,17 +46,18 @@ extension MoodSelectPageView {
 		addSubview(moodLabel)
 	}
 	
-	private func activateConstraintsForImageView() {
-		imageView.topAnchor.constraint(equalTo: topAnchor, constant: paddingY+200).isActive = true
-		imageView.widthAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
-		imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
-		imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-	}
+//	private func activateConstraintsForImageView() {
+//		imageView.topAnchor.constraint(equalTo: topAnchor, constant: paddingY+200).isActive = true
+//		imageView.widthAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
+//		imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
+//		imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//	}
 	
 	private func activateConstraintsForMoodLabel() {
-		moodLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: paddingY*2).isActive = true
+//		moodLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: paddingY*2).isActive = true
+//		moodLabel.topAnchor.constraint(equalTo: topAnchor, constant: paddingY).isActive = true
 		moodLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: paddingX).isActive = true
 		moodLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -paddingX).isActive = true
-		moodLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -paddingY).isActive = true
+		moodLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -paddingY - 100).isActive = true
 	}
 }

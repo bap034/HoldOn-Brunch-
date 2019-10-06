@@ -33,4 +33,14 @@ extension UserDefaults {
 		let person = Person(name: "Baller", imageName: "cat", moodStatus: moodStatus)
 		return person
 	}
+	
+	static func getBallerPerson() -> Person {
+		let person = Person(name: "Baller", imageName: "baller", moodStatus: MoodStatus.confusing)
+		return person
+	}
+	
+	static func getDoryPerson() -> Person {
+		let person = Person(name: "Dory", imageName: "dory", moodStatus: MoodStatus.confused)
+		return person
+	}
 }
