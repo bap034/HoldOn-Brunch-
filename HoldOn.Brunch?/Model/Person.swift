@@ -1,5 +1,5 @@
 //
-//  UserState.swift
+//  Person.swift
 //  HoldOn.Brunch?
 //
 //  Created by Brett Petersen on 10/5/19.
@@ -8,12 +8,14 @@
 
 import Foundation
 
-enum MoodStatus: String {
+enum MoodStatus: String, Codable {
 	case new
 	case confusing
 	case confused
 }
 
-struct UserState {
+struct Person: Codable {
+	var name: String
+	var imageName: String?
 	var moodStatus: MoodStatus
 }

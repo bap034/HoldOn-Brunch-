@@ -1,5 +1,5 @@
 //
-//  UserDefaults+BAP.swift
+//  UserDefaults+HOB.swift
 //  HoldOn.Brunch?
 //
 //  Created by Brett Petersen on 10/5/19.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-private let userStateKey = "kUserState"
+private let personKey = "kperson"
 private let moodStatusKey = "kMoodStatus"
 
 extension UserDefaults {
-	// MARK: - UserState
-	static func storeUserState(_ userState: UserState) {
+	// MARK: - Person
+	static func storePerson(_ person: Person) {
 		// MoodStatus
-		UserDefaults.standard.set(userState.moodStatus, forKey: moodStatusKey)
+		UserDefaults.standard.set(person.moodStatus, forKey: moodStatusKey)
 	}
 	
-	static func getUserState() -> UserState {
+	static func getPerson() -> Person {
 		// MoodStatus
 		let moodStatusString = UserDefaults.standard.string(forKey: moodStatusKey)
 		
@@ -30,7 +30,7 @@ extension UserDefaults {
 			moodStatus = .new
 		}
 		
-		let userState = UserState(moodStatus: moodStatus)
-		return userState
+		let person = Person(name: "Baller", imageName: "cat", moodStatus: moodStatus)
+		return person
 	}
 }

@@ -14,11 +14,11 @@ protocol MoodSelectViewProtocol {
 
 class MoodSelectPresenter {
 	
-	var userState: UserState
 	var viewProtocol: MoodSelectViewProtocol? { didSet { didSetViewProtocol() } }
+	private let person: Person
 	
-	init(userState: UserState) {
-		self.userState = userState
+	init(person: Person) {
+		self.person = person
 	}
 	
 	private func didSetViewProtocol() {
@@ -26,7 +26,7 @@ class MoodSelectPresenter {
 	}
 }
 
-// MARK: - UserState Actions
+// MARK: - Person Actions
 extension MoodSelectPresenter {
 	
 }

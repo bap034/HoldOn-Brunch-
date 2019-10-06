@@ -74,7 +74,8 @@ extension MoodSelectViewController {
 	
 	// MARK: Constraints
 	private func activateConstraintsForTitleLabel() {
-		titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+		let padding = view.safeAreaInsets.top + 20
+		titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: padding).isActive = true
 		titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
 	}
@@ -121,10 +122,16 @@ extension MoodSelectViewController {
 		setUpConfusedMoodPageView()
 		setUpConfusingMoodPageView()
 		
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		
 		activateConstraintsForTitleLabel()
 		activateConstraintsForScrollView()
 		activateConstraintsForScrollContainerView()
 		activateConstraintsForConfusedMoodPageView()
 		activateConstraintsForConfusingMoodPageView()
+		
 	}
 }

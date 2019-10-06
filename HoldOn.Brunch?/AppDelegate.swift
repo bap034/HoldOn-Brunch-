@@ -15,12 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		let userState = UserDefaults.getUserState()
-		let presenter = MoodSelectPresenter(userState: userState)
-		let vc = MoodSelectViewController(presenter: presenter)
+		let person = UserDefaults.getPerson()
+		let presenter = PersonSelectPresenter(persons: [person])
+		let vc = PersonSelectViewController(presenter: presenter)
+		let nc = UINavigationController(rootViewController: vc)
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
-		window?.rootViewController = vc
+		window?.rootViewController = nc
 		window?.makeKeyAndVisible()
 		return true
 	}
