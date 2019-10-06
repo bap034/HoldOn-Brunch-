@@ -27,6 +27,10 @@
 		8BB1D5502349C89F00626A90 /* AddPersonPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D54F2349C89F00626A90 /* AddPersonPresenter.swift */; };
 		8BB1D5532349CB3100626A90 /* dory.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5512349CB3000626A90 /* dory.png */; };
 		8BB1D5542349CB3100626A90 /* baller.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5522349CB3100626A90 /* baller.png */; };
+		8BB1D5572349D08900626A90 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D5562349D08900626A90 /* IntroViewController.swift */; };
+		8BB1D5592349D0B100626A90 /* brunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5582349D0B100626A90 /* brunch.png */; };
+		8BB1D55B2349D0E800626A90 /* IntroPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D55A2349D0E800626A90 /* IntroPresenter.swift */; };
+		8BB1D55D2349D3C300626A90 /* UIButton+MH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D55C2349D3C300626A90 /* UIButton+MH.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		8BB1D54F2349C89F00626A90 /* AddPersonPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPersonPresenter.swift; sourceTree = "<group>"; };
 		8BB1D5512349CB3000626A90 /* dory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dory.png; sourceTree = "<group>"; };
 		8BB1D5522349CB3100626A90 /* baller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baller.png; sourceTree = "<group>"; };
+		8BB1D5562349D08900626A90 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		8BB1D5582349D0B100626A90 /* brunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brunch.png; sourceTree = "<group>"; };
+		8BB1D55A2349D0E800626A90 /* IntroPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPresenter.swift; sourceTree = "<group>"; };
+		8BB1D55C2349D3C300626A90 /* UIButton+MH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+MH.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +171,7 @@
 		8BB1D52A2348EE9100626A90 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				8BB1D5552349D07C00626A90 /* Intro */,
 				8BB1D54C2349C87400626A90 /* Add Person */,
 				8BB1D5472349B10700626A90 /* Person Select */,
 				8BB1D5362348F5E400626A90 /* Mood Select */,
@@ -211,6 +220,7 @@
 			children = (
 				8BB1D52F2348EFED00626A90 /* UserDefaults+HOB.swift */,
 				8BB1D53C2348FEB100626A90 /* UIView+HOB.swift */,
+				8BB1D55C2349D3C300626A90 /* UIButton+MH.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -226,6 +236,7 @@
 		8BB1D5422349A70F00626A90 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8BB1D5582349D0B100626A90 /* brunch.png */,
 				8BB1D5522349CB3100626A90 /* baller.png */,
 				8BB1D5512349CB3000626A90 /* dory.png */,
 				8BB1D5432349A73600626A90 /* cat@2x.png */,
@@ -250,6 +261,15 @@
 				8BB1D54F2349C89F00626A90 /* AddPersonPresenter.swift */,
 			);
 			path = "Add Person";
+			sourceTree = "<group>";
+		};
+		8BB1D5552349D07C00626A90 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				8BB1D5562349D08900626A90 /* IntroViewController.swift */,
+				8BB1D55A2349D0E800626A90 /* IntroPresenter.swift */,
+			);
+			path = Intro;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +378,7 @@
 			files = (
 				8BB1D5062348EE5100626A90 /* LaunchScreen.storyboard in Resources */,
 				8BB1D5532349CB3100626A90 /* dory.png in Resources */,
+				8BB1D5592349D0B100626A90 /* brunch.png in Resources */,
 				8BB1D5032348EE5100626A90 /* Assets.xcassets in Resources */,
 				8BB1D5542349CB3100626A90 /* baller.png in Resources */,
 				8BB1D5462349A73600626A90 /* cat@3x.png in Resources */,
@@ -387,6 +408,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BB1D53D2348FEB100626A90 /* UIView+HOB.swift in Sources */,
+				8BB1D55B2349D0E800626A90 /* IntroPresenter.swift in Sources */,
+				8BB1D5572349D08900626A90 /* IntroViewController.swift in Sources */,
 				8BB1D5492349B12400626A90 /* PersonSelectPresenter.swift in Sources */,
 				8BB1D54E2349C89200626A90 /* AddPersonViewController.swift in Sources */,
 				8BB1D5392348F7D000626A90 /* MoodSelectPageView.swift in Sources */,
@@ -396,6 +419,7 @@
 				8BB1D52D2348EF0800626A90 /* Person.swift in Sources */,
 				8BB1D4FC2348EE4E00626A90 /* AppDelegate.swift in Sources */,
 				8BB1D5302348EFED00626A90 /* UserDefaults+HOB.swift in Sources */,
+				8BB1D55D2349D3C300626A90 /* UIButton+MH.swift in Sources */,
 				8BB1D5322348F2CA00626A90 /* MoodSelectViewController.swift in Sources */,
 				8BB1D5502349C89F00626A90 /* AddPersonPresenter.swift in Sources */,
 			);

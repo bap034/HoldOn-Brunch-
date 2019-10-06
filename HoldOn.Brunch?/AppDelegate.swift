@@ -15,14 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//		let person = UserDefaults.getPerson()
-//		let presenter = PersonSelectPresenter(persons: [person])
-		
-		// TODO: REMOVE
-		let persons = [UserDefaults.getBallerPerson(), UserDefaults.getDoryPerson()]
-		
-		let presenter = PersonSelectPresenter(persons: persons)
-		let vc = PersonSelectViewController(presenter: presenter)
+		let presenter = IntroPresenter()
+		let vc = IntroViewController(presenter: presenter)
 		let nc = UINavigationController(rootViewController: vc)
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
