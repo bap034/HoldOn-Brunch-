@@ -19,7 +19,10 @@ class MoodSelectViewController: UIViewController {
 	
 	private let confusedMoodPageView = MoodSelectPageView()
 	private let confusingMoodPageView = MoodSelectPageView()
-
+	private var moodPageViewWidthConstraint: NSLayoutConstraint?
+	
+	/// Used to attempt to set the page after the layouts has been set
+	private var shouldSelectPage: (Int, Bool)?
 	
 	init(presenter: MoodSelectPresenter) {
 		self.presenter = presenter
@@ -106,7 +109,8 @@ extension MoodSelectViewController {
 		confusedMoodPageView.centerYAnchor.constraint(equalTo: scrollContainerView.centerYAnchor).isActive = true
 		confusedMoodPageView.heightAnchor.constraint(equalTo: scrollContainerView.heightAnchor).isActive = true
 		confusedMoodPageView.leftAnchor.constraint(equalTo: scrollContainerView.leftAnchor).isActive = true
-		confusedMoodPageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+		moodPageViewWidthConstraint = confusedMoodPageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+		moodPageViewWidthConstraint?.isActive = true
 	}
 	private func activateConstraintsForConfusingMoodPageView() {
 		confusingMoodPageView.centerYAnchor.constraint(equalTo: scrollContainerView.centerYAnchor).isActive = true
@@ -140,7 +144,13 @@ extension MoodSelectViewController {
 		activateConstraintsForScrollView()
 		activateConstraintsForScrollContainerView()
 		activateConstraintsForConfusedMoodPageView()
-		activateConstraintsForConfusingMoodPageView()		
+		activateConstraintsForConfusingMoodPageView()
+		
+		view.layoutIfNeeded()
+		if let sureShouldSelectPage = shouldSelectPage {
+			selectPageNumber(sureShouldSelectPage.0, animated: sureShouldSelectPage.1)
+			shouldSelectPage = nil
+		}
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -165,5 +175,16 @@ extension MoodSelectViewController: MoodSelectViewProtocol {
 	
 	func setImageName(_ imageName: String) {
 		imageView.image = UIImage(named: imageName)
+	}
+	
+	func selectPageNumber(_ pageNumber: Int, animated: Bool) {
+		guard moodPageViewWidthConstraint != nil else {
+			shouldSelectPage = (pageNumber, animated)
+			return
+		}
+		
+		let xOffset = scrollView.frame.width * CGFloat(pageNumber)
+		let offset = CGPoint(x: xOffset, y: 0)
+		scrollView.setContentOffset(offset, animated: animated)
 	}
 }

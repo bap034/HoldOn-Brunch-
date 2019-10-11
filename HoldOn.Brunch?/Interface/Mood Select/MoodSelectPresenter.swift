@@ -11,6 +11,7 @@ import Foundation
 protocol MoodSelectViewProtocol {
 	func setTitleText(_ text: String?)
 	func setImageName(_ imageName: String)
+	func selectPageNumber(_ pageNumber: Int, animated: Bool)
 }
 
 class MoodSelectPresenter {
@@ -28,6 +29,11 @@ class MoodSelectPresenter {
 		viewProtocol?.setTitleText("\(person.name) is...")
 		if let imageName = person.imageName {
 			viewProtocol?.setImageName(imageName)
+		}
+		if person.moodStatus == .confused {
+			viewProtocol?.selectPageNumber(0, animated: true)
+		} else {
+			viewProtocol?.selectPageNumber(1, animated: true)
 		}
 	}
 }
