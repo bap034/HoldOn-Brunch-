@@ -13,16 +13,18 @@ struct PersonSelectCellData {
 }
 
 protocol PersonSelectViewProtocol {
-	func pushMoodSelectVC(person: Person)
+	func pushMoodSelectVC(person: Person, dataBase: UserDefaults)
+	func reloadTableView()
 }
 
 class PersonSelectPresenter {
 	
 	var viewProtocol: PersonSelectViewProtocol? { didSet { didSetViewProtocol() } }
-	private var persons: [Person]
+	private var persons = [Person]()
+	private let dataBase: UserDefaults
 	
-	init(persons: [Person]) {
-		self.persons = persons
+	init(dataBase: UserDefaults = UserDefaults.standard) {
+		self.dataBase = dataBase
 	}
 	
 	private func didSetViewProtocol() {
@@ -55,6 +57,14 @@ extension PersonSelectPresenter {
 	func onDidSelectCellAtIndexPath(_ indexPath: IndexPath) {
 		guard let person = getPersonForIndexPath(indexPath) else { return }
 		
-		viewProtocol?.pushMoodSelectVC(person: person)
+		viewProtocol?.pushMoodSelectVC(person: person, dataBase: dataBase)
+	}
+	
+	func onViewWillAppear() {
+		let personsKeys = dataBase.getPersonsKeys()
+		let newPersons = dataBase.getAllPersonsForKeys(personsKeys)
+		persons = newPersons
+		
+		viewProtocol?.reloadTableView()
 	}
 }

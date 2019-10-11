@@ -8,30 +8,56 @@
 
 import Foundation
 
-private let personKey = "kperson"
-private let moodStatusKey = "kMoodStatus"
+private let personsKey = "kPersons" // Used to know what key values saved Persons are stored at
 
 extension UserDefaults {
 	// MARK: - Person
-	static func storePerson(_ person: Person) {
-		// MoodStatus
-		UserDefaults.standard.set(person.moodStatus, forKey: moodStatusKey)
-	}
-	
-	static func getPerson() -> Person {
-		// MoodStatus
-		let moodStatusString = UserDefaults.standard.string(forKey: moodStatusKey)
+	func storePerson(_ person: Person) {
+		let newPersonKey = person.name
+		var personsKeys = getPersonsKeys()
 		
-		let moodStatus: MoodStatus
-		if let sureMoodStatusString = moodStatusString {
-			let determinedMoodStatus = MoodStatus(rawValue: sureMoodStatusString)
-			moodStatus = determinedMoodStatus ?? .new
-		} else {
-			moodStatus = .new
+		// Update Persons Keys
+		if !personsKeys.contains(newPersonKey) {
+			personsKeys.append(newPersonKey)
+			setPersonsKeys(personsKeys)
 		}
 		
-		let person = Person(name: "Baller", imageName: "cat", moodStatus: moodStatus)
+		// Store Person JSON
+		if let jsonString = person.toJSONString() {
+			set(jsonString, forKey: newPersonKey)
+		}
+	}
+	
+	func getPersonForKey(_ key: String) -> Person? {
+		let jsonString = string(forKey: key)
+		let person: Person? = jsonString?.toDecodable()
 		return person
+	}
+	func getAllPersonsForKeys(_ keys: [String]) -> [Person] {
+		var persons = [Person]()
+		keys.forEach { (key) in
+			if let person = getPersonForKey(key) {
+				persons.append(person)
+			}
+		}
+		return persons
+	}
+	
+	func deletePerson(_ person: Person) {
+		var personsKeys = getPersonsKeys()
+		
+		personsKeys.removeAll(where: { $0 == person.name })
+		setPersonsKeys(personsKeys)
+	}
+	
+	func setPersonsKeys(_ personsKeys: [String]) {
+		set(personsKeys, forKey: personsKey)
+	}
+	
+	/// Returns an array of keys with stored users
+	func getPersonsKeys() -> [String] {
+		let personsKeys = array(forKey: personsKey) as? [String]
+		return personsKeys ?? []
 	}
 	
 	static func getBallerPerson() -> Person {

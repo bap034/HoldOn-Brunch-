@@ -34,6 +34,12 @@ extension PersonSelectViewController {
 		
 		activateConstraintsForTableView()
 	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		presenter.onViewWillAppear()
+	}
 }
 
 // MARK: - View Setup
@@ -88,9 +94,13 @@ extension PersonSelectViewController: UITableViewDataSource {
 
 // MARK: - PersonSelectViewProtocol
 extension PersonSelectViewController: PersonSelectViewProtocol {
-	func pushMoodSelectVC(person: Person) {
-		let presenter = MoodSelectPresenter(person: person)
+	func pushMoodSelectVC(person: Person, dataBase: UserDefaults) {
+		let presenter = MoodSelectPresenter(person: person, dataBase: dataBase)
 		let vc = MoodSelectViewController(presenter: presenter)
 		navigationController?.pushViewController(vc, animated: true)
+	}
+	
+	func reloadTableView() {
+		tableView.reloadSections([0], with: .automatic) // TODO: animate reload without hardcoded section
 	}
 }

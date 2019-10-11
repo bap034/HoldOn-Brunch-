@@ -114,7 +114,7 @@ extension IntroViewController: IntroViewProtocol {
 	}
 	
 	func pushPersonSelectVC(persons: [Person]) {
-		let presenter = PersonSelectPresenter(persons: persons)
+		let presenter = PersonSelectPresenter()
 		let vc = PersonSelectViewController(presenter: presenter)
 		navigationController?.navigationBar.isHidden = false
 		navigationController?.setViewControllers([vc], animated: true)

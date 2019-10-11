@@ -17,9 +17,11 @@ class MoodSelectPresenter {
 	
 	var viewProtocol: MoodSelectViewProtocol? { didSet { didSetViewProtocol() } }
 	private var person: Person
+	private let dataBase: UserDefaults
 	
-	init(person: Person) {
+	init(person: Person, dataBase: UserDefaults) {
 		self.person = person
+		self.dataBase = dataBase
 	}
 	
 	private func didSetViewProtocol() {
@@ -41,5 +43,9 @@ extension MoodSelectPresenter {
 		let newMoodStatus = page == 0 ? MoodStatus.confused:MoodStatus.confusing
 		person.moodStatus = newMoodStatus
 		// TODO: finish persisting data
+	}
+	
+	func onViewWillDisappear() {
+		dataBase.storePerson(person)
 	}
 }

@@ -142,6 +142,11 @@ extension MoodSelectViewController {
 		activateConstraintsForConfusedMoodPageView()
 		activateConstraintsForConfusingMoodPageView()		
 	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		presenter.onViewWillDisappear()
+	}
 }
 
 // MARK: - UIScrollViewDelegate

@@ -31,6 +31,8 @@
 		8BB1D5592349D0B100626A90 /* brunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5582349D0B100626A90 /* brunch.png */; };
 		8BB1D55B2349D0E800626A90 /* IntroPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D55A2349D0E800626A90 /* IntroPresenter.swift */; };
 		8BB1D55D2349D3C300626A90 /* UIButton+MH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D55C2349D3C300626A90 /* UIButton+MH.swift */; };
+		8BB1D55F23504D1C00626A90 /* Encodable+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D55E23504D1C00626A90 /* Encodable+HOB.swift */; };
+		8BB1D56123504E7B00626A90 /* String+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D56023504E7B00626A90 /* String+HOB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		8BB1D5582349D0B100626A90 /* brunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brunch.png; sourceTree = "<group>"; };
 		8BB1D55A2349D0E800626A90 /* IntroPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPresenter.swift; sourceTree = "<group>"; };
 		8BB1D55C2349D3C300626A90 /* UIButton+MH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+MH.swift"; sourceTree = "<group>"; };
+		8BB1D55E23504D1C00626A90 /* Encodable+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+HOB.swift"; sourceTree = "<group>"; };
+		8BB1D56023504E7B00626A90 /* String+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HOB.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,9 +222,11 @@
 		8BB1D53E2348FEB800626A90 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				8BB1D55E23504D1C00626A90 /* Encodable+HOB.swift */,
+				8BB1D56023504E7B00626A90 /* String+HOB.swift */,
 				8BB1D52F2348EFED00626A90 /* UserDefaults+HOB.swift */,
-				8BB1D53C2348FEB100626A90 /* UIView+HOB.swift */,
 				8BB1D55C2349D3C300626A90 /* UIButton+MH.swift */,
+				8BB1D53C2348FEB100626A90 /* UIView+HOB.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -415,8 +421,10 @@
 				8BB1D5392348F7D000626A90 /* MoodSelectPageView.swift in Sources */,
 				8BB1D540234903E300626A90 /* Main.swift in Sources */,
 				8BB1D54B2349B13300626A90 /* PersonSelectViewController.swift in Sources */,
+				8BB1D56123504E7B00626A90 /* String+HOB.swift in Sources */,
 				8BB1D5342348F2F200626A90 /* MoodSelectPresenter.swift in Sources */,
 				8BB1D52D2348EF0800626A90 /* Person.swift in Sources */,
+				8BB1D55F23504D1C00626A90 /* Encodable+HOB.swift in Sources */,
 				8BB1D4FC2348EE4E00626A90 /* AppDelegate.swift in Sources */,
 				8BB1D5302348EFED00626A90 /* UserDefaults+HOB.swift in Sources */,
 				8BB1D55D2349D3C300626A90 /* UIButton+MH.swift in Sources */,
