@@ -1,0 +1,6 @@
+framework module Pods_HoldOn_Brunch_UITests {
+  umbrella header "Pods-HoldOn.Brunch?UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>578932407314-6dkpmh1hhu06qur87qas954q4ev28sdq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.578932407314-6dkpmh1hhu06qur87qas954q4ev28sdq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB2QxQock0CuQuxsTPMInPY0IqU-_EPxiA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>578932407314</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bap034.HoldOnBrunch</string>
+	<key>PROJECT_ID</key>
+	<string>hold-on-brunch</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hold-on-brunch.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:578932407314:ios:402ceb66c0528a02ad2ccb</string>
+	<key>DATABASE_URL</key>
+	<string>https://hold-on-brunch.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,0 +1,6 @@
+framework module Pods_HoldOn_Brunch_ {
+  umbrella header "Pods-HoldOn.Brunch?-umbrella.h"
+
+  export *
+  module * { export * }
+}
