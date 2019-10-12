@@ -6,6 +6,7 @@
 //  Copyright © 2019 Brett Petersen. All rights reserved.
 //
 
+import Firebase
 import UIKit
 
 @UIApplicationMain
@@ -15,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		FirebaseConfiguration.shared.setLoggerLevel(.min)
+		FirebaseApp.configure()
+		
 		let presenter = IntroPresenter()
 		let vc = IntroViewController(presenter: presenter)
 		let nc = UINavigationController(rootViewController: vc)

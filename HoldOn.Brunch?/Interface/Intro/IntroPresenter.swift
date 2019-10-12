@@ -27,7 +27,8 @@ class IntroPresenter {
 // MARK: - View Exposed Methods
 extension IntroPresenter {
 	func onButtonTapped() {
-		let persons = [UserDefaults.getBallerPerson(), UserDefaults.getDoryPerson()]
-		viewProtocol?.pushPersonSelectVC(persons: persons)
+		HOBFirebase.retrieveAllOfPersons(success: { (persons) in
+			self.viewProtocol?.pushPersonSelectVC(persons: persons)
+		}, failure: nil)
 	}
 }
