@@ -36,7 +36,10 @@
 		8BB1D55F23504D1C00626A90 /* Encodable+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D55E23504D1C00626A90 /* Encodable+HOB.swift */; };
 		8BB1D56123504E7B00626A90 /* String+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D56023504E7B00626A90 /* String+HOB.swift */; };
 		8BDC25DD23514A05004C75E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC25DC23514A05004C75E0 /* GoogleService-Info.plist */; };
-		8BDC25E023514D46004C75E0 /* HOBFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25DF23514D46004C75E0 /* HOBFirebase.swift */; };
+		8BDC25E023514D46004C75E0 /* HOBFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25DF23514D46004C75E0 /* HOBFirestore.swift */; };
+		8BDC25E6235237F4004C75E0 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25E5235237F4004C75E0 /* ViewProtocol.swift */; };
+		8BDC25E923523936004C75E0 /* PersonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25E823523936004C75E0 /* PersonManager.swift */; };
+		8BDC25EB23523DE9004C75E0 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25EA23523DE9004C75E0 /* ModelProtocol.swift */; };
 		D15E257F5E29C5DBC5CB7C7C /* Pods_HoldOn_Brunch_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE9CB8CD0EABCD8B88BB4CB /* Pods_HoldOn_Brunch_UITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,7 +99,10 @@
 		8BB1D55E23504D1C00626A90 /* Encodable+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+HOB.swift"; sourceTree = "<group>"; };
 		8BB1D56023504E7B00626A90 /* String+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HOB.swift"; sourceTree = "<group>"; };
 		8BDC25DC23514A05004C75E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8BDC25DF23514D46004C75E0 /* HOBFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOBFirebase.swift; sourceTree = "<group>"; };
+		8BDC25DF23514D46004C75E0 /* HOBFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOBFirestore.swift; sourceTree = "<group>"; };
+		8BDC25E5235237F4004C75E0 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		8BDC25E823523936004C75E0 /* PersonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonManager.swift; sourceTree = "<group>"; };
+		8BDC25EA23523DE9004C75E0 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		9BA21431CD60EFB3438710EF /* Pods_HoldOn_Brunch_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldOn_Brunch_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE9CB8CD0EABCD8B88BB4CB /* Pods_HoldOn_Brunch_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldOn_Brunch_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A529329A77B748052351065A /* Pods-HoldOn.Brunch?UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoldOn.Brunch?UITests.release.xcconfig"; path = "Target Support Files/Pods-HoldOn.Brunch?UITests/Pods-HoldOn.Brunch?UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,7 +204,8 @@
 		8BB1D5292348EE8A00626A90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8BB1D52C2348EF0800626A90 /* Person.swift */,
+				8BDC25E72352390E004C75E0 /* Person */,
+				8BDC25EA23523DE9004C75E0 /* ModelProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				8BB1D53E2348FEB800626A90 /* Categories */,
+				8BDC25E4235237D7004C75E0 /* Protocols */,
 				8BDC25DE23514D18004C75E0 /* Wrappers */,
 			);
 			path = Utility;
@@ -314,9 +322,26 @@
 		8BDC25DE23514D18004C75E0 /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
-				8BDC25DF23514D46004C75E0 /* HOBFirebase.swift */,
+				8BDC25DF23514D46004C75E0 /* HOBFirestore.swift */,
 			);
 			path = Wrappers;
+			sourceTree = "<group>";
+		};
+		8BDC25E4235237D7004C75E0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8BDC25E5235237F4004C75E0 /* ViewProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8BDC25E72352390E004C75E0 /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				8BDC25E823523936004C75E0 /* PersonManager.swift */,
+				8BB1D52C2348EF0800626A90 /* Person.swift */,
+			);
+			path = Person;
 			sourceTree = "<group>";
 		};
 		8DD0AA299D55EE83855F9901 /* Pods */ = {
@@ -564,17 +589,20 @@
 				8BB1D5492349B12400626A90 /* PersonSelectPresenter.swift in Sources */,
 				8BB1D54E2349C89200626A90 /* AddPersonViewController.swift in Sources */,
 				8BB1D5392348F7D000626A90 /* MoodSelectPageView.swift in Sources */,
-				8BDC25E023514D46004C75E0 /* HOBFirebase.swift in Sources */,
+				8BDC25E023514D46004C75E0 /* HOBFirestore.swift in Sources */,
 				8BB1D540234903E300626A90 /* Main.swift in Sources */,
+				8BDC25E923523936004C75E0 /* PersonManager.swift in Sources */,
 				8BB1D54B2349B13300626A90 /* PersonSelectViewController.swift in Sources */,
 				8BB1D56123504E7B00626A90 /* String+HOB.swift in Sources */,
 				8BB1D5342348F2F200626A90 /* MoodSelectPresenter.swift in Sources */,
 				8BB1D52D2348EF0800626A90 /* Person.swift in Sources */,
 				8BB1D55F23504D1C00626A90 /* Encodable+HOB.swift in Sources */,
 				8BB1D4FC2348EE4E00626A90 /* AppDelegate.swift in Sources */,
+				8BDC25E6235237F4004C75E0 /* ViewProtocol.swift in Sources */,
 				8BB1D5302348EFED00626A90 /* UserDefaults+HOB.swift in Sources */,
 				8BB1D55D2349D3C300626A90 /* UIButton+MH.swift in Sources */,
 				8BB1D5322348F2CA00626A90 /* MoodSelectViewController.swift in Sources */,
+				8BDC25EB23523DE9004C75E0 /* ModelProtocol.swift in Sources */,
 				8BB1D5502349C89F00626A90 /* AddPersonPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

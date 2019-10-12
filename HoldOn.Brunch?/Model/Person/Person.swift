@@ -14,7 +14,10 @@ enum MoodStatus: String, Codable {
 	case confused
 }
 
-struct Person: Codable {
+struct Person: ModelProtocol {
+	// ModelProtocol
+	var id: String { return name.lowercased() }
+	
 	var name: String
 	var imageName: String?
 	var moodStatus: MoodStatus

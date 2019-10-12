@@ -94,7 +94,7 @@ extension PersonSelectViewController: UITableViewDataSource {
 
 // MARK: - PersonSelectViewProtocol
 extension PersonSelectViewController: PersonSelectViewProtocol {
-	func pushMoodSelectVC(person: Person, dataBase: UserDefaults) {
+	func pushMoodSelectVC(person: Person, dataBase: HOBModelDatabaseProtocol) {
 		let presenter = MoodSelectPresenter(person: person, dataBase: dataBase)
 		let vc = MoodSelectViewController(presenter: presenter)
 		navigationController?.pushViewController(vc, animated: true)
