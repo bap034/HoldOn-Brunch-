@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MoodSelectViewProtocol {
+protocol MoodSelectViewProtocol: ViewProtocol {
 	func setTitleText(_ text: String?)
 	func setImageName(_ imageName: String)
 	func selectPageNumber(_ pageNumber: Int, animated: Bool)
@@ -18,9 +18,9 @@ class MoodSelectPresenter {
 	
 	var viewProtocol: MoodSelectViewProtocol? { didSet { didSetViewProtocol() } }
 	private var person: Person
-	private let dataBase: UserDefaults
+	private let dataBase: HOBModelDatabaseProtocol
 	
-	init(person: Person, dataBase: UserDefaults) {
+	init(person: Person, dataBase: HOBModelDatabaseProtocol) {
 		self.person = person
 		self.dataBase = dataBase
 	}
@@ -40,7 +40,16 @@ class MoodSelectPresenter {
 
 // MARK: - Person Actions
 extension MoodSelectPresenter {
-	
+	private func savePerson(_ person: Person) {
+		viewProtocol?.showNetworkActivityIndicator(true)
+		dataBase.storePerson(person, success: {
+			print("successfully stored: \(person)")
+			self.viewProtocol?.showNetworkActivityIndicator(false)
+		}) { (error) in
+			print("error: \(String(describing: error)) storing: \(person)")
+			self.viewProtocol?.showNetworkActivityIndicator(false)
+		}
+	}
 }
 
 // MARK: - Exposed View Methods
@@ -48,10 +57,9 @@ extension MoodSelectPresenter {
 	func onScrollViewDidEndDecelerating(page: Int) {
 		let newMoodStatus = page == 0 ? MoodStatus.confused:MoodStatus.confusing
 		person.moodStatus = newMoodStatus
-		// TODO: finish persisting data
 	}
 	
 	func onViewWillDisappear() {
-		dataBase.storePerson(person)
+		savePerson(person)
 	}
 }

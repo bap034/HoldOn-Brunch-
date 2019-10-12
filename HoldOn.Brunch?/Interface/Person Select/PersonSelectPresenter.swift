@@ -8,12 +8,8 @@
 
 import Foundation
 
-struct PersonSelectCellData {
-	
-}
-
-protocol PersonSelectViewProtocol {
-	func pushMoodSelectVC(person: Person, dataBase: UserDefaults)
+protocol PersonSelectViewProtocol: ViewProtocol {
+	func pushMoodSelectVC(person: Person, dataBase: HOBModelDatabaseProtocol)
 	func reloadTableView()
 }
 
@@ -21,9 +17,9 @@ class PersonSelectPresenter {
 	
 	var viewProtocol: PersonSelectViewProtocol? { didSet { didSetViewProtocol() } }
 	private var persons = [Person]()
-	private let dataBase: UserDefaults
+	private let dataBase: HOBModelDatabaseProtocol
 	
-	init(dataBase: UserDefaults = UserDefaults.standard) {
+	init(dataBase: HOBModelDatabaseProtocol = HOBModelDatabase.shared) {
 		self.dataBase = dataBase
 	}
 	
@@ -61,10 +57,13 @@ extension PersonSelectPresenter {
 	}
 	
 	func onViewWillAppear() {
-		let personsKeys = dataBase.getPersonsKeys()
-		let newPersons = dataBase.getAllPersonsForKeys(personsKeys)
-		persons = newPersons
-		
-		viewProtocol?.reloadTableView()
+		viewProtocol?.showNetworkActivityIndicator(true)
+		PersonManager.getAllPersons(success: { (persons) in
+			self.persons = persons
+			self.viewProtocol?.reloadTableView()
+			self.viewProtocol?.showNetworkActivityIndicator(false)
+		}) { (error) in
+			self.viewProtocol?.showNetworkActivityIndicator(false)
+		}
 	}
 }

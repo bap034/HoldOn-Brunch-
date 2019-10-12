@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol IntroViewProtocol {
+protocol IntroViewProtocol: ViewProtocol {
 	func setTitleText(_ text: String)
 	func setImageName(_ imageName: String)
 	func pushPersonSelectVC(persons: [Person])
@@ -27,8 +27,12 @@ class IntroPresenter {
 // MARK: - View Exposed Methods
 extension IntroPresenter {
 	func onButtonTapped() {
-		HOBFirebase.retrieveAllOfPersons(success: { (persons) in
+		viewProtocol?.showNetworkActivityIndicator(true)
+		PersonManager.getAllPersons(success: { (persons) in
+			self.viewProtocol?.showNetworkActivityIndicator(false)
 			self.viewProtocol?.pushPersonSelectVC(persons: persons)
-		}, failure: nil)
+		}) { (error) in
+			self.viewProtocol?.showNetworkActivityIndicator(false)
+		}	
 	}
 }
