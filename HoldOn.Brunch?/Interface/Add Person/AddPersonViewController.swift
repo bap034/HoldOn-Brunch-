@@ -53,7 +53,7 @@ extension AddPersonViewController {
 		view.addSubview(containerView)
 	}
 	private func setUpNameLabel() {
-//		nameLabel.font = UIFont(descriptor: .preferredFontDescriptor(withTextStyle: .largeTitle))
+		nameLabel.font = UIFont.preferredFont(forTextStyle: .title1)
 		nameLabel.text = "Name"
 		
 		nameLabel.translatesAutoresizingMaskIntoConstraints = false
