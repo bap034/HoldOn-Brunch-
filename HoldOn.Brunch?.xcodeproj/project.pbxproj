@@ -20,7 +20,6 @@
 		8BB1D5342348F2F200626A90 /* MoodSelectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D5332348F2F200626A90 /* MoodSelectPresenter.swift */; };
 		8BB1D5392348F7D000626A90 /* MoodSelectPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D5382348F7D000626A90 /* MoodSelectPageView.swift */; };
 		8BB1D53D2348FEB100626A90 /* UIView+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D53C2348FEB100626A90 /* UIView+HOB.swift */; };
-		8BB1D540234903E300626A90 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D53F234903E300626A90 /* Main.swift */; };
 		8BB1D5452349A73600626A90 /* cat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5432349A73600626A90 /* cat@2x.png */; };
 		8BB1D5462349A73600626A90 /* cat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5442349A73600626A90 /* cat@3x.png */; };
 		8BB1D5492349B12400626A90 /* PersonSelectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D5482349B12400626A90 /* PersonSelectPresenter.swift */; };
@@ -83,7 +82,6 @@
 		8BB1D5332348F2F200626A90 /* MoodSelectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectPresenter.swift; sourceTree = "<group>"; };
 		8BB1D5382348F7D000626A90 /* MoodSelectPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectPageView.swift; sourceTree = "<group>"; };
 		8BB1D53C2348FEB100626A90 /* UIView+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+HOB.swift"; sourceTree = "<group>"; };
-		8BB1D53F234903E300626A90 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		8BB1D5432349A73600626A90 /* cat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cat@2x.png"; path = "HoldOn.Brunch?/Resources/Images/cat@2x.png"; sourceTree = SOURCE_ROOT; };
 		8BB1D5442349A73600626A90 /* cat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cat@3x.png"; path = "HoldOn.Brunch?/Resources/Images/cat@3x.png"; sourceTree = SOURCE_ROOT; };
 		8BB1D5482349B12400626A90 /* PersonSelectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSelectPresenter.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				8BB1D52B2348EEAD00626A90 /* Resources */,
 				8BB1D5412349070C00626A90 /* Supporting Files */,
 				8BB1D4FB2348EE4E00626A90 /* AppDelegate.swift */,
-				8BB1D53F234903E300626A90 /* Main.swift */,
 			);
 			path = "HoldOn.Brunch?";
 			sourceTree = "<group>";
@@ -590,7 +587,6 @@
 				8BB1D54E2349C89200626A90 /* AddPersonViewController.swift in Sources */,
 				8BB1D5392348F7D000626A90 /* MoodSelectPageView.swift in Sources */,
 				8BDC25E023514D46004C75E0 /* HOBFirestore.swift in Sources */,
-				8BB1D540234903E300626A90 /* Main.swift in Sources */,
 				8BDC25E923523936004C75E0 /* PersonManager.swift in Sources */,
 				8BB1D54B2349B13300626A90 /* PersonSelectViewController.swift in Sources */,
 				8BB1D56123504E7B00626A90 /* String+HOB.swift in Sources */,
@@ -784,7 +780,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -806,7 +802,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
