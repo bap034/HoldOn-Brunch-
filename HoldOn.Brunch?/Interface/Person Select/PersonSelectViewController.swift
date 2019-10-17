@@ -85,7 +85,9 @@ extension PersonSelectViewController: UITableViewDataSource {
 		
 		if let person = presenter.onCellForIndexPath(indexPath) {
 			cell.textLabel?.text = person.name
-			cell.imageView?.image = UIImage(named: person.imageName ?? "")
+			if let sureImageName = person.imageName {
+				cell.imageView?.image = UIImage(named: sureImageName)
+			}
 			cell.detailTextLabel?.text = person.moodStatus.rawValue
 		}
 		
