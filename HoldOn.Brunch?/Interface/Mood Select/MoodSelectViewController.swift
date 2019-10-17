@@ -42,6 +42,8 @@ extension MoodSelectViewController {
 	}
 	
 	private func setUpTitleLabel() {
+		titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+		
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(titleLabel)
 	}

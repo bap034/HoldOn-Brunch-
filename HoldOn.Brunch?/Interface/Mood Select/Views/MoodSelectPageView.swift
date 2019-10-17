@@ -39,6 +39,7 @@ extension MoodSelectPageView {
 //	}
 	
 	private func setUpMoodLabel() {
+		moodLabel.font = UIFont.preferredFont(forTextStyle: .title1)
 		moodLabel.textAlignment = .center
 		moodLabel.numberOfLines = 3
 		moodLabel.adjustsFontSizeToFitWidth = true
