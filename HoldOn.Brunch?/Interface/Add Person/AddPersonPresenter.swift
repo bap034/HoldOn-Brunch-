@@ -10,8 +10,8 @@ import Foundation
 
 protocol AddPersonViewProtocol: ViewProtocol {
 	func setTitle(_ title: String)
-	func setUpLeftNavigationItem(title: String, action: ()->Void)
-	func setUpRightNavigationItem(title: String, action: ()->Void)
+	func setUpLeftNavigationItem()
+	func setUpRightNavigationItem()
 	func enableRightNavigationItem(_ enable: Bool)
 	func dismiss()
 }
@@ -30,8 +30,8 @@ class AddPersonPresenter {
 	
 	private func didSetViewProtocol() {
 		viewProtocol?.setTitle("Add New Person")
-		viewProtocol?.setUpLeftNavigationItem(title: "Cancel", action: onLeftNavigationItemTapped)
-		viewProtocol?.setUpRightNavigationItem(title: "Save", action: onRightNavigationItemTapped)
+		viewProtocol?.setUpLeftNavigationItem()
+		viewProtocol?.setUpRightNavigationItem()
 	}
 }
 
@@ -77,10 +77,13 @@ extension AddPersonPresenter {
 
 // MARK: - View Exposed Methods
 extension AddPersonPresenter {
-	@objc func onLeftNavigationItemTapped() {
+	func onCancelTapped() {
 		viewProtocol?.dismiss()
 	}
-	@objc func onRightNavigationItemTapped() {
+	func onSaveTapped(name: String?) {
+		let trimmedName = name?.trimmingCharacters(in: .whitespacesAndNewlines)
+		self.name = trimmedName
+		
 		validateAndSave()
 	}
 }

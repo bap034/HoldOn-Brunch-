@@ -61,6 +61,8 @@ extension AddPersonViewController {
 	}
 	private func setUpNameTextField() {
 		nameTextField.borderStyle = .roundedRect
+		nameTextField.delegate = self
+		
 		nameTextField.translatesAutoresizingMaskIntoConstraints = false
 		containerView.addSubview(nameTextField)
 	}
@@ -68,7 +70,7 @@ extension AddPersonViewController {
 	// MARK: Constraints
 	private func activateConstraintsForContainerView() {
 		containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+		containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
 		containerView.widthAnchor.constraint(equalToConstant: 200).isActive = true
 		containerView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor).isActive = true
 	}
@@ -86,17 +88,35 @@ extension AddPersonViewController {
 	}
 }
 
+// MARK: - Events
+extension AddPersonViewController {
+	@objc func onLeftNavigationItemTapped() {
+		presenter.onCancelTapped()
+	}
+	@objc func onRightNavigationItemTapped() {
+		presenter.onSaveTapped(name: nameTextField.text)
+	}
+}
+
+// MARK: - UITextFieldDelegate
+extension AddPersonViewController: UITextFieldDelegate {
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+	}
+}
+
+// MARK: - AddPersonViewProtocol
 extension AddPersonViewController: AddPersonViewProtocol {
 	func setTitle(_ title: String) {
 		self.title = title
 	}
 	
-	func setUpLeftNavigationItem(title: String, action: () -> Void) {
-		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: presenter, action: #selector(presenter.onLeftNavigationItemTapped))
+	func setUpLeftNavigationItem() {
+		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(onLeftNavigationItemTapped))
 	}
 	
-	func setUpRightNavigationItem(title: String, action: () -> Void) {
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: presenter, action: #selector(presenter.onRightNavigationItemTapped))
+	func setUpRightNavigationItem() {
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onRightNavigationItemTapped))
 	}
 	
 	func enableRightNavigationItem(_ enable: Bool) {
