@@ -9,6 +9,7 @@
 import Foundation
 
 protocol PersonSelectViewProtocol: ViewProtocol {
+	func presentAddPersonVC(dataBase: HOBModelDatabaseProtocol)
 	func pushMoodSelectVC(person: Person, dataBase: HOBModelDatabaseProtocol)
 	func reloadTableView()
 }
@@ -65,5 +66,9 @@ extension PersonSelectPresenter {
 		}) { (error) in
 			self.viewProtocol?.showNetworkActivityIndicator(false)
 		}
+	}
+	
+	@objc func onRightNavigationItemTapped() {
+		viewProtocol?.presentAddPersonVC(dataBase: dataBase)
 	}
 }
