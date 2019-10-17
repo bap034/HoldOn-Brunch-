@@ -47,6 +47,7 @@ extension PersonSelectViewController {
 	private func setUpSelf() {
 		view.backgroundColor = .white
 		title = "Hold on. Brunch?"
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: presenter, action: #selector(presenter.onRightNavigationItemTapped))
 	}
 	private func setUpTableView() {
 		tableView.delegate = self
@@ -94,6 +95,13 @@ extension PersonSelectViewController: UITableViewDataSource {
 
 // MARK: - PersonSelectViewProtocol
 extension PersonSelectViewController: PersonSelectViewProtocol {
+	func presentAddPersonVC(dataBase: HOBModelDatabaseProtocol) {
+		let presenter = AddPersonPresenter(dataBase: dataBase)
+		let vc = AddPersonViewController(presenter: presenter)
+		let nc = UINavigationController(rootViewController: vc)
+		navigationController?.present(nc, animated: true, completion: nil)
+	}
+	
 	func pushMoodSelectVC(person: Person, dataBase: HOBModelDatabaseProtocol) {
 		let presenter = MoodSelectPresenter(person: person, dataBase: dataBase)
 		let vc = MoodSelectViewController(presenter: presenter)
