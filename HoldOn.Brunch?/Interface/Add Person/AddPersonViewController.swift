@@ -14,6 +14,7 @@ class AddPersonViewController: UIViewController {
 	private let presenter: AddPersonPresenter
 	
 	private let containerView = UIView()
+	private let selectImageView = SelectImageView()
 	private let nameLabel = UILabel()
 	private let nameTextField = UITextField()
 	
@@ -34,10 +35,12 @@ extension AddPersonViewController {
 		
 		setUpSelf()
 		setUpContainerView()
+		setUpSelectImageView()
 		setUpNameLabel()
 		setUpNameTextField()
 		
 		activateConstraintsForContainerView()
+		activateConstraintsForSelectImageView()
 		activateConstraintsForNameLabel()
 		activateConstraintsForNameTextField()
 	}
@@ -51,6 +54,14 @@ extension AddPersonViewController {
 	private func setUpContainerView() {
 		containerView.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(containerView)
+	}
+	private func setUpSelectImageView() {
+		selectImageView.onTapped = {
+			self.presenter.onSelectImageTapped()
+		}
+		
+		selectImageView.translatesAutoresizingMaskIntoConstraints = false
+		containerView.addSubview(selectImageView)
 	}
 	private func setUpNameLabel() {
 		nameLabel.font = UIFont.preferredFont(forTextStyle: .title1)
@@ -74,8 +85,14 @@ extension AddPersonViewController {
 		containerView.widthAnchor.constraint(equalToConstant: 200).isActive = true
 		containerView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor).isActive = true
 	}
+	private func activateConstraintsForSelectImageView() {
+		selectImageView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+		selectImageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+		selectImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+		selectImageView.heightAnchor.constraint(equalTo: selectImageView.widthAnchor).isActive = true
+	}
 	private func activateConstraintsForNameLabel() {
-		nameLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+		nameLabel.topAnchor.constraint(equalTo: selectImageView.bottomAnchor, constant: 30).isActive = true
 		nameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
 		nameLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
 	}
