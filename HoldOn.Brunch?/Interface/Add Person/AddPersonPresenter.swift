@@ -86,4 +86,7 @@ extension AddPersonPresenter {
 		
 		validateAndSave()
 	}
+	func onSelectImageTapped() {
+		print("SelectImageView tapped!")
+	}
 }
