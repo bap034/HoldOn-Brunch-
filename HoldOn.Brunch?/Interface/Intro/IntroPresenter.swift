@@ -27,12 +27,6 @@ class IntroPresenter {
 // MARK: - View Exposed Methods
 extension IntroPresenter {
 	func onButtonTapped() {
-		viewProtocol?.showNetworkActivityIndicator(true)
-		PersonManager.getAllPersons(success: { (persons) in
-			self.viewProtocol?.showNetworkActivityIndicator(false)
-			self.viewProtocol?.pushPersonSelectVC(persons: persons)
-		}) { (error) in
-			self.viewProtocol?.showNetworkActivityIndicator(false)
-		}	
+		self.viewProtocol?.pushPersonSelectVC(persons: [])
 	}
 }
