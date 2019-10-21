@@ -15,17 +15,29 @@ extension ViewProtocol {
 		UIApplication.shared.isNetworkActivityIndicatorVisible = show
 	}
 	
-	func showTwoButtonAlertModal(title: String?,
+	func showOneButtonAlertModal(title: String?,
 								 message: String?,
-								 leftButtonTitle: String = "Ok",
-								 rightButtonTitle: String = "Cancel",
-								 onLeftButtonTapped: (()->Void)?) {
+								 buttonTitle: String = "Ok",
+								 onButtonTapped: (()->Void)? = nil) {
 		let alertModal = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		
-		let goToSettingsAction = UIAlertAction(title: leftButtonTitle, style: .default) { (action) in
-			onLeftButtonTapped?()
+		let action = UIAlertAction(title: buttonTitle, style: .default) { (action) in
+			onButtonTapped?()
 		}
-		let cancelAction = UIAlertAction(title: rightButtonTitle, style: .cancel, handler: nil)
+		alertModal.addAction(action)
+		self.present(alertModal, animated: true, completion: nil)
+	}
+	func showTwoButtonAlertModal(title: String?,
+								 message: String?,
+								 okButtonTitle: String = "Ok",
+								 cancelButtonTitle: String = "Cancel",
+								 onOkButtonTapped: (()->Void)?) {
+		let alertModal = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		
+		let goToSettingsAction = UIAlertAction(title: okButtonTitle, style: .default) { (action) in
+			onOkButtonTapped?()
+		}
+		let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel, handler: nil)
 		alertModal.addAction(goToSettingsAction)
 		alertModal.addAction(cancelAction)
 		self.present(alertModal, animated: true, completion: nil)

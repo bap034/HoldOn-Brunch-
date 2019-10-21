@@ -123,7 +123,7 @@ extension AddPersonViewController {
 			picker.delegate = self
 			self.present(picker, animated: true, completion: nil)
 		}) {
-			self.showTwoButtonAlertModal(title: "Oops!", message: "We need access to your camera if you want to take a photo.", leftButtonTitle: "Go to Settings") {
+			self.showTwoButtonAlertModal(title: "Oops!", message: "We need access to your camera if you want to take a photo.", okButtonTitle: "Go to Settings") {
 				guard let safeURL = URL(string: UIApplication.openSettingsURLString) else { return }
 				
 				UIApplication.shared.open(safeURL, options: [:], completionHandler: nil)
@@ -138,7 +138,7 @@ extension AddPersonViewController {
 			picker.delegate = self
 			self.present(picker, animated: true, completion: nil)
 		}) {
-			self.showTwoButtonAlertModal(title: "Oops!", message: "We need access to your photo library if you want to upload a photo.", leftButtonTitle: "Go to Settings") {
+			self.showTwoButtonAlertModal(title: "Oops!", message: "We need access to your photo library if you want to upload a photo.", okButtonTitle: "Go to Settings") {
 				guard let safeURL = URL(string: UIApplication.openSettingsURLString) else { return }
 				
 				UIApplication.shared.open(safeURL, options: [:], completionHandler: nil)

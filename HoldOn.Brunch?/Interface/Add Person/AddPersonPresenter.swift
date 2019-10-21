@@ -40,7 +40,7 @@ class AddPersonPresenter {
 extension AddPersonPresenter {
 	private func isDataValid() -> Bool {
 		guard let sureName = name, !sureName.isEmpty else {
-			// TODO: inform user name is not valid
+			viewProtocol?.showOneButtonAlertModal(title: nil, message: "Please enter a name.")
 			return false
 		}
 		
