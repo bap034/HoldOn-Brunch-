@@ -13,6 +13,7 @@ protocol AddPersonViewProtocol: ViewProtocol {
 	func setUpLeftNavigationItem()
 	func setUpRightNavigationItem()
 	func enableRightNavigationItem(_ enable: Bool)
+	func showImageSelectAlertController()
 	func dismiss()
 }
 
@@ -39,7 +40,7 @@ class AddPersonPresenter {
 extension AddPersonPresenter {
 	private func isDataValid() -> Bool {
 		guard let sureName = name, !sureName.isEmpty else {
-			// TODO: inform user name is not valid
+			viewProtocol?.showOneButtonAlertModal(title: nil, message: "Please enter a name.")
 			return false
 		}
 		
@@ -87,6 +88,9 @@ extension AddPersonPresenter {
 		validateAndSave()
 	}
 	func onSelectImageTapped() {
-		print("SelectImageView tapped!")
+		viewProtocol?.showImageSelectAlertController()
+	}
+	func onNewImageSelected(_ imageData: Data?) {
+		// TODO: store data?
 	}
 }
