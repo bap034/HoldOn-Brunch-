@@ -10,7 +10,7 @@ import Foundation
 import Photos
 
 class PhotosManager {
-	static func getPhotoLibraryAuthorization(onAuthorized:(()->Void)?, onDenied:(()->Void)?) {
+	static func requestPhotoLibraryAuthorization(onAuthorized:(()->Void)?, onDenied:(()->Void)?) {
 		let authStatus = PHPhotoLibrary.authorizationStatus()
 		if authStatus == .authorized {
 			onAuthorized?()

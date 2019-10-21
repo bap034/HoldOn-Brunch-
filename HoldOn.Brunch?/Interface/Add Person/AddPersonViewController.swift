@@ -116,11 +116,11 @@ extension AddPersonViewController {
 	}
 	
 	private func onCameraTapped() {
-		PhotosManager.getPhotoLibraryAuthorization(onAuthorized: {
+		PhotosManager.requestPhotoLibraryAuthorization(onAuthorized: {
 			let picker = UIImagePickerController()
 			picker.allowsEditing = true
 			picker.sourceType = .camera
-//			picker.delegate = self
+			picker.delegate = self
 			self.present(picker, animated: true, completion: nil)
 		}) {
 			self.showTwoButtonAlertModal(title: "Oops!", message: "We need access to your camera if you want to take a photo.", leftButtonTitle: "Go to Settings") {
@@ -131,11 +131,11 @@ extension AddPersonViewController {
 		}
 	}
 	private func onPhotoLibraryTapped() {
-		PhotosManager.getPhotoLibraryAuthorization(onAuthorized: {
+		PhotosManager.requestPhotoLibraryAuthorization(onAuthorized: {
 			let picker = UIImagePickerController()
 			picker.allowsEditing = true
 			picker.sourceType = .photoLibrary
-//			picker.delegate = self
+			picker.delegate = self
 			self.present(picker, animated: true, completion: nil)
 		}) {
 			self.showTwoButtonAlertModal(title: "Oops!", message: "We need access to your photo library if you want to upload a photo.", leftButtonTitle: "Go to Settings") {
@@ -153,6 +153,33 @@ extension AddPersonViewController: UITextFieldDelegate {
 		textField.resignFirstResponder()
 	}
 }
+
+// MARK: - UIImagePickerControllerDelegate
+extension AddPersonViewController: UIImagePickerControllerDelegate {
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		if picker.sourceType == .camera {
+			PHPhotoLibrary.shared().performChanges({
+				guard let sureImage = info[.originalImage] as? UIImage else { return }
+				guard let sureData = sureImage.pngData() else { return }
+				
+				// Add the captured photo's file data as the main resource for the Photos asset.
+				let creationRequest = PHAssetCreationRequest.forAsset()
+				creationRequest.addResource(with: .photo, data: sureData, options: nil)
+			}, completionHandler: nil)
+		}
+		
+		if let image = info[.editedImage] as? UIImage {
+			selectImageView.imageView.image = image
+			
+			let imageData = image.pngData()
+			presenter.onNewImageSelected(imageData)
+		}
+		self.presentedViewController?.dismiss(animated: true, completion: nil)
+	}
+}
+
+// MARK: - UINavigationControllerDelegate
+extension AddPersonViewController: UINavigationControllerDelegate {}
 
 // MARK: - AddPersonViewProtocol
 extension AddPersonViewController: AddPersonViewProtocol {

@@ -33,7 +33,7 @@ extension SelectImageView {
 	private func setUpSelf() {
 		backgroundColor = .white
 		layer.borderWidth = 3
-		layer.borderColor = UIColor.systemBlue.cgColor
+		layer.borderColor = UIColor.systemTeal.cgColor
 		layer.cornerRadius = 6
 		layer.masksToBounds = true
 		isUserInteractionEnabled = true
@@ -50,7 +50,7 @@ extension SelectImageView {
 	}
 	private func setUpPlusLabel() {
 		plusLabel.text = "+"
-		plusLabel.textColor = .systemBlue
+		plusLabel.textColor = .systemTeal
 		plusLabel.textAlignment = .center
 		plusLabel.font = UIFont.systemFont(ofSize: 50)
 		plusLabel.adjustsFontSizeToFitWidth = true
