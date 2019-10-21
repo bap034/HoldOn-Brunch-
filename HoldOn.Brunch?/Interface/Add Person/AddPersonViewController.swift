@@ -6,6 +6,7 @@
 //  Copyright © 2019 Brett Petersen. All rights reserved.
 //
 
+import Photos
 import UIKit
 
 // MARK: - AddPersonViewController
@@ -113,6 +114,37 @@ extension AddPersonViewController {
 	@objc func onRightNavigationItemTapped() {
 		presenter.onSaveTapped(name: nameTextField.text)
 	}
+	
+	private func onCameraTapped() {
+		PhotosManager.getPhotoLibraryAuthorization(onAuthorized: {
+			let picker = UIImagePickerController()
+			picker.allowsEditing = true
+			picker.sourceType = .camera
+//			picker.delegate = self
+			self.present(picker, animated: true, completion: nil)
+		}) {
+			self.showTwoButtonAlertModal(title: "Oops!", message: "We need access to your camera if you want to take a photo.", leftButtonTitle: "Go to Settings") {
+				guard let safeURL = URL(string: UIApplication.openSettingsURLString) else { return }
+				
+				UIApplication.shared.open(safeURL, options: [:], completionHandler: nil)
+			}
+		}
+	}
+	private func onPhotoLibraryTapped() {
+		PhotosManager.getPhotoLibraryAuthorization(onAuthorized: {
+			let picker = UIImagePickerController()
+			picker.allowsEditing = true
+			picker.sourceType = .photoLibrary
+//			picker.delegate = self
+			self.present(picker, animated: true, completion: nil)
+		}) {
+			self.showTwoButtonAlertModal(title: "Oops!", message: "We need access to your photo library if you want to upload a photo.", leftButtonTitle: "Go to Settings") {
+				guard let safeURL = URL(string: UIApplication.openSettingsURLString) else { return }
+				
+				UIApplication.shared.open(safeURL, options: [:], completionHandler: nil)
+			}
+		}
+	}
 }
 
 // MARK: - UITextFieldDelegate
@@ -138,6 +170,21 @@ extension AddPersonViewController: AddPersonViewProtocol {
 	
 	func enableRightNavigationItem(_ enable: Bool) {
 		navigationItem.rightBarButtonItem?.isEnabled = enable
+	}
+	
+	func showImageSelectAlertController() {
+		let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+		let takePhotoAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+			self.onCameraTapped()
+		}
+		let imageSelectAction = UIAlertAction(title: "Select Image", style: .default) { (action) in
+			self.onPhotoLibraryTapped()
+		}
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		alertController.addAction(takePhotoAction)
+		alertController.addAction(imageSelectAction)
+		alertController.addAction(cancelAction)
+		self.present(alertController, animated: true, completion: nil)
 	}
 	
 	func dismiss() {

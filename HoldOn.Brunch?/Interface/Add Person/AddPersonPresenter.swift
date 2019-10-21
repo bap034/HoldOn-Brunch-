@@ -13,6 +13,7 @@ protocol AddPersonViewProtocol: ViewProtocol {
 	func setUpLeftNavigationItem()
 	func setUpRightNavigationItem()
 	func enableRightNavigationItem(_ enable: Bool)
+	func showImageSelectAlertController()
 	func dismiss()
 }
 
@@ -87,6 +88,6 @@ extension AddPersonPresenter {
 		validateAndSave()
 	}
 	func onSelectImageTapped() {
-		print("SelectImageView tapped!")
+		viewProtocol?.showImageSelectAlertController()
 	}
 }
