@@ -8,7 +8,6 @@ target 'HoldOn.Brunch?' do
   # Pods for HoldOn.Brunch?
 
   pod 'Firebase/Analytics'  # https://firebase.google.com/docs/ios/setup#available-pods
-  pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
 
