@@ -90,4 +90,7 @@ extension AddPersonPresenter {
 	func onSelectImageTapped() {
 		viewProtocol?.showImageSelectAlertController()
 	}
+	func onNewImageSelected(_ imageData: Data?) {
+		// TODO: store data?
+	}
 }
