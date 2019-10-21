@@ -10,6 +10,7 @@ target 'HoldOn.Brunch?' do
   pod 'Firebase/Analytics'  # https://firebase.google.com/docs/ios/setup#available-pods
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
 
   target 'HoldOn.Brunch?Tests' do
     inherit! :search_paths
