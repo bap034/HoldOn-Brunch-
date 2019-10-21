@@ -6,6 +6,7 @@
 //  Copyright © 2019 Brett Petersen. All rights reserved.
 //
 
+import Photos
 import UIKit
 
 // MARK: - AddPersonViewController
@@ -113,6 +114,37 @@ extension AddPersonViewController {
 	@objc func onRightNavigationItemTapped() {
 		presenter.onSaveTapped(name: nameTextField.text)
 	}
+	
+	private func onCameraTapped() {
+		PhotosManager.requestPhotoLibraryAuthorization(onAuthorized: {
+			let picker = UIImagePickerController()
+			picker.allowsEditing = true
+			picker.sourceType = .camera
+			picker.delegate = self
+			self.present(picker, animated: true, completion: nil)
+		}) {
+			self.showTwoButtonAlertModal(title: "Oops!", message: "We need access to your camera if you want to take a photo.", okButtonTitle: "Go to Settings") {
+				guard let safeURL = URL(string: UIApplication.openSettingsURLString) else { return }
+				
+				UIApplication.shared.open(safeURL, options: [:], completionHandler: nil)
+			}
+		}
+	}
+	private func onPhotoLibraryTapped() {
+		PhotosManager.requestPhotoLibraryAuthorization(onAuthorized: {
+			let picker = UIImagePickerController()
+			picker.allowsEditing = true
+			picker.sourceType = .photoLibrary
+			picker.delegate = self
+			self.present(picker, animated: true, completion: nil)
+		}) {
+			self.showTwoButtonAlertModal(title: "Oops!", message: "We need access to your photo library if you want to upload a photo.", okButtonTitle: "Go to Settings") {
+				guard let safeURL = URL(string: UIApplication.openSettingsURLString) else { return }
+				
+				UIApplication.shared.open(safeURL, options: [:], completionHandler: nil)
+			}
+		}
+	}
 }
 
 // MARK: - UITextFieldDelegate
@@ -121,6 +153,33 @@ extension AddPersonViewController: UITextFieldDelegate {
 		textField.resignFirstResponder()
 	}
 }
+
+// MARK: - UIImagePickerControllerDelegate
+extension AddPersonViewController: UIImagePickerControllerDelegate {
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		if picker.sourceType == .camera {
+			PHPhotoLibrary.shared().performChanges({
+				guard let sureImage = info[.originalImage] as? UIImage else { return }
+				guard let sureData = sureImage.pngData() else { return }
+				
+				// Add the captured photo's file data as the main resource for the Photos asset.
+				let creationRequest = PHAssetCreationRequest.forAsset()
+				creationRequest.addResource(with: .photo, data: sureData, options: nil)
+			}, completionHandler: nil)
+		}
+		
+		if let image = info[.editedImage] as? UIImage {
+			selectImageView.imageView.image = image
+			
+			let imageData = image.pngData()
+			presenter.onNewImageSelected(imageData)
+		}
+		self.presentedViewController?.dismiss(animated: true, completion: nil)
+	}
+}
+
+// MARK: - UINavigationControllerDelegate
+extension AddPersonViewController: UINavigationControllerDelegate {}
 
 // MARK: - AddPersonViewProtocol
 extension AddPersonViewController: AddPersonViewProtocol {
@@ -138,6 +197,21 @@ extension AddPersonViewController: AddPersonViewProtocol {
 	
 	func enableRightNavigationItem(_ enable: Bool) {
 		navigationItem.rightBarButtonItem?.isEnabled = enable
+	}
+	
+	func showImageSelectAlertController() {
+		let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+		let takePhotoAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+			self.onCameraTapped()
+		}
+		let imageSelectAction = UIAlertAction(title: "Select Image", style: .default) { (action) in
+			self.onPhotoLibraryTapped()
+		}
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		alertController.addAction(takePhotoAction)
+		alertController.addAction(imageSelectAction)
+		alertController.addAction(cancelAction)
+		self.present(alertController, animated: true, completion: nil)
 	}
 	
 	func dismiss() {
