@@ -36,6 +36,8 @@
 		8BB1D55D2349D3C300626A90 /* UIButton+MH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D55C2349D3C300626A90 /* UIButton+MH.swift */; };
 		8BB1D55F23504D1C00626A90 /* Encodable+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D55E23504D1C00626A90 /* Encodable+HOB.swift */; };
 		8BB1D56123504E7B00626A90 /* String+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D56023504E7B00626A90 /* String+HOB.swift */; };
+		8BC24681235D8FFE00715245 /* HOBFirebaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC24680235D8FFE00715245 /* HOBFirebaseStorage.swift */; };
+		8BC24683235D96BF00715245 /* UIImage+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC24682235D96BF00715245 /* UIImage+HOB.swift */; };
 		8BDC25DD23514A05004C75E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC25DC23514A05004C75E0 /* GoogleService-Info.plist */; };
 		8BDC25E023514D46004C75E0 /* HOBFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25DF23514D46004C75E0 /* HOBFirestore.swift */; };
 		8BDC25E6235237F4004C75E0 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25E5235237F4004C75E0 /* ViewProtocol.swift */; };
@@ -100,6 +102,8 @@
 		8BB1D55C2349D3C300626A90 /* UIButton+MH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+MH.swift"; sourceTree = "<group>"; };
 		8BB1D55E23504D1C00626A90 /* Encodable+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+HOB.swift"; sourceTree = "<group>"; };
 		8BB1D56023504E7B00626A90 /* String+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HOB.swift"; sourceTree = "<group>"; };
+		8BC24680235D8FFE00715245 /* HOBFirebaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOBFirebaseStorage.swift; sourceTree = "<group>"; };
+		8BC24682235D96BF00715245 /* UIImage+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+HOB.swift"; sourceTree = "<group>"; };
 		8BDC25DC23514A05004C75E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8BDC25DF23514D46004C75E0 /* HOBFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOBFirestore.swift; sourceTree = "<group>"; };
 		8BDC25E5235237F4004C75E0 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 				8BB1D56023504E7B00626A90 /* String+HOB.swift */,
 				8BB1D52F2348EFED00626A90 /* UserDefaults+HOB.swift */,
 				8BB1D55C2349D3C300626A90 /* UIButton+MH.swift */,
+				8BC24682235D96BF00715245 /* UIImage+HOB.swift */,
 				8BB1D53C2348FEB100626A90 /* UIView+HOB.swift */,
 			);
 			path = Categories;
@@ -342,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				8BDC25DF23514D46004C75E0 /* HOBFirestore.swift */,
+				8BC24680235D8FFE00715245 /* HOBFirebaseStorage.swift */,
 			);
 			path = Wrappers;
 			sourceTree = "<group>";
@@ -603,6 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BB1D53D2348FEB100626A90 /* UIView+HOB.swift in Sources */,
+				8BC24683235D96BF00715245 /* UIImage+HOB.swift in Sources */,
 				8BB1D55B2349D0E800626A90 /* IntroPresenter.swift in Sources */,
 				8BB1D5572349D08900626A90 /* IntroViewController.swift in Sources */,
 				8BB1D5492349B12400626A90 /* PersonSelectPresenter.swift in Sources */,
@@ -619,6 +626,7 @@
 				8BDC25E6235237F4004C75E0 /* ViewProtocol.swift in Sources */,
 				8B0DEE342359305200A50B5F /* SelectImageView.swift in Sources */,
 				8B0DEE37235D23C900A50B5F /* PhotosManager.swift in Sources */,
+				8BC24681235D8FFE00715245 /* HOBFirebaseStorage.swift in Sources */,
 				8BB1D5302348EFED00626A90 /* UserDefaults+HOB.swift in Sources */,
 				8BB1D55D2349D3C300626A90 /* UIButton+MH.swift in Sources */,
 				8BB1D5322348F2CA00626A90 /* MoodSelectViewController.swift in Sources */,
