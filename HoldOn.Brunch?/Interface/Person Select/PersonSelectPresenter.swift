@@ -9,8 +9,8 @@
 import Foundation
 
 protocol PersonSelectViewProtocol: ViewProtocol {
-	func presentAddPersonVC(dataBase: HOBModelDatabaseProtocol)
-	func pushMoodSelectVC(person: Person, dataBase: HOBModelDatabaseProtocol)
+	func presentAddPersonVC(database: HOBModelDatabaseProtocol)
+	func pushMoodSelectVC(person: Person, database: HOBModelDatabaseProtocol, storage: HOBStorageProtocol)
 	func reloadTableView()
 }
 
@@ -18,10 +18,13 @@ class PersonSelectPresenter {
 	
 	var viewProtocol: PersonSelectViewProtocol? { didSet { didSetViewProtocol() } }
 	private var persons = [Person]()
-	private let dataBase: HOBModelDatabaseProtocol
+	private let database: HOBModelDatabaseProtocol
+	private let storage: HOBStorageProtocol
 	
-	init(dataBase: HOBModelDatabaseProtocol = HOBModelDatabase.shared) {
-		self.dataBase = dataBase
+	init(database: HOBModelDatabaseProtocol = HOBModelDatabase.shared,
+		 storage: HOBStorageProtocol = HOBStorage.shared) {
+		self.database = database
+		self.storage = storage
 	}
 	
 	private func didSetViewProtocol() {
@@ -42,6 +45,20 @@ class PersonSelectPresenter {
 
 // MARK: - View Exposed Methods
 extension PersonSelectPresenter {
+	@objc func onRightNavigationItemTapped() {
+		viewProtocol?.presentAddPersonVC(database: database)
+	}
+	
+	func getImageDataForPerson(_ person: Person) -> Data? {
+		let data = PersonManager.getImageDataForPerson(person, storage: storage) { (cachedData) in
+			if cachedData != nil {
+				self.viewProtocol?.reloadTableView() // TODO: reload only that cell
+			}
+		}
+		return data
+	}
+	
+	// MARK: TableViewDataSource
 	func onNumberOfCells() -> Int {
 		return persons.count
 	}
@@ -51,12 +68,14 @@ extension PersonSelectPresenter {
 		return person
 	}
 	
+	// MARK: TableViewDelegate
 	func onDidSelectCellAtIndexPath(_ indexPath: IndexPath) {
 		guard let person = getPersonForIndexPath(indexPath) else { return }
 		
-		viewProtocol?.pushMoodSelectVC(person: person, dataBase: dataBase)
+		viewProtocol?.pushMoodSelectVC(person: person, database: database, storage: storage)
 	}
 	
+	// MARK: ViewController
 	func onViewWillAppear() {
 		viewProtocol?.showNetworkActivityIndicator(true)
 		PersonManager.getAllPersons(success: { (persons) in
@@ -66,9 +85,5 @@ extension PersonSelectPresenter {
 		}) { (error) in
 			self.viewProtocol?.showNetworkActivityIndicator(false)
 		}
-	}
-	
-	@objc func onRightNavigationItemTapped() {
-		viewProtocol?.presentAddPersonVC(dataBase: dataBase)
 	}
 }

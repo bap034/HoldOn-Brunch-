@@ -10,7 +10,7 @@ import Foundation
 
 protocol MoodSelectViewProtocol: ViewProtocol {
 	func setTitleText(_ text: String?)
-	func setImageName(_ imageName: String)
+	func setImageData(_ imageData: Data)
 	func selectPageNumber(_ pageNumber: Int, animated: Bool)
 }
 
@@ -18,18 +18,29 @@ class MoodSelectPresenter {
 	
 	var viewProtocol: MoodSelectViewProtocol? { didSet { didSetViewProtocol() } }
 	private var person: Person
-	private let dataBase: HOBModelDatabaseProtocol
+	private let database: HOBModelDatabaseProtocol
+	private let storage: HOBStorageProtocol
 	
-	init(person: Person, dataBase: HOBModelDatabaseProtocol) {
+	init(person: Person, database: HOBModelDatabaseProtocol, storage: HOBStorageProtocol) {
 		self.person = person
-		self.dataBase = dataBase
+		self.database = database
+		self.storage = storage
 	}
 	
 	private func didSetViewProtocol() {
 		viewProtocol?.setTitleText("\(person.name) is...")
-		if let imageName = person.imageName {
-			viewProtocol?.setImageName(imageName)
+		
+		if person.imageURL != nil {
+			let imageData = PersonManager.getImageDataForPerson(person, storage: storage) { (cachedData) in
+				if let sureCachedData = cachedData {
+					self.viewProtocol?.setImageData(sureCachedData)
+				}
+			}
+			if let sureImageData = imageData {
+				self.viewProtocol?.setImageData(sureImageData)
+			}
 		}
+		
 		if person.moodStatus == .confused {
 			viewProtocol?.selectPageNumber(0, animated: true)
 		} else {
@@ -42,7 +53,7 @@ class MoodSelectPresenter {
 extension MoodSelectPresenter {
 	private func savePerson(_ person: Person) {
 		viewProtocol?.showNetworkActivityIndicator(true)
-		dataBase.storePerson(person, success: {
+		database.storePerson(person, success: {
 			print("successfully stored: \(person)")
 			self.viewProtocol?.showNetworkActivityIndicator(false)
 		}) { (error) in

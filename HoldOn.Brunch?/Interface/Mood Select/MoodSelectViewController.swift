@@ -175,8 +175,9 @@ extension MoodSelectViewController: MoodSelectViewProtocol {
 		titleLabel.text = text
 	}
 	
-	func setImageName(_ imageName: String) {
-		imageView.image = UIImage(named: imageName)
+	func setImageData(_ imageData: Data) {
+		let image = UIImage(data: imageData)
+		imageView.image = image
 	}
 	
 	func selectPageNumber(_ pageNumber: Int, animated: Bool) {

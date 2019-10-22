@@ -19,6 +19,15 @@ struct Person: ModelProtocol {
 	var id: String { return name.lowercased() }
 	
 	var name: String
-	var imageName: String?
+	var imageURLString: String?
 	var moodStatus: MoodStatus
+}
+
+extension Person {
+	var imageURL: URL? {
+		guard let sureImageURLString = imageURLString else { return nil }
+		
+		let url = URL(string: sureImageURLString)
+		return url
+	}
 }
