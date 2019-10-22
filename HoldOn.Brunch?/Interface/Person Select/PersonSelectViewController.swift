@@ -85,8 +85,12 @@ extension PersonSelectViewController: UITableViewDataSource {
 		
 		if let person = presenter.onCellForIndexPath(indexPath) {
 			cell.textLabel?.text = person.name
-			if let sureImageName = person.imageName {
-				cell.imageView?.image = UIImage(named: sureImageName)
+			
+			if person.imageURL != nil {
+				if let sureImageData = presenter.getImageDataForPerson(person) {
+					let image = UIImage(data: sureImageData)
+					cell.imageView?.image = image
+				}
 			}
 			cell.detailTextLabel?.text = person.moodStatus.rawValue
 		}
@@ -97,15 +101,15 @@ extension PersonSelectViewController: UITableViewDataSource {
 
 // MARK: - PersonSelectViewProtocol
 extension PersonSelectViewController: PersonSelectViewProtocol {
-	func presentAddPersonVC(dataBase: HOBModelDatabaseProtocol) {
-		let presenter = AddPersonPresenter(dataBase: dataBase)
+	func presentAddPersonVC(database: HOBModelDatabaseProtocol) {
+		let presenter = AddPersonPresenter(database: database)
 		let vc = AddPersonViewController(presenter: presenter)
 		let nc = UINavigationController(rootViewController: vc)
 		navigationController?.present(nc, animated: true, completion: nil)
 	}
 	
-	func pushMoodSelectVC(person: Person, dataBase: HOBModelDatabaseProtocol) {
-		let presenter = MoodSelectPresenter(person: person, dataBase: dataBase)
+	func pushMoodSelectVC(person: Person, database: HOBModelDatabaseProtocol, storage: HOBStorageProtocol) {
+		let presenter = MoodSelectPresenter(person: person, database: database, storage: storage)
 		let vc = MoodSelectViewController(presenter: presenter)
 		navigationController?.pushViewController(vc, animated: true)
 	}
