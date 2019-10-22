@@ -12,12 +12,14 @@ import Foundation
 protocol HOBStorageProtocol {
 	func storeImageData(_ data: Data, filename: String, success: @escaping (URL)->Void, failure: ((Error?)->Void)?)
 	func downloadImageDataToCache(filename: String, success: @escaping ()->Void, failure: ((Error?)->Void)?)
+	func storeImageDataToCache(_ data: Data, filename: String)
 	func retrieveImageDataFromCache(filename: String) -> Data?
 }
 
 class HOBStorage: HOBStorageProtocol {
 	static let shared = HOBStorage()
 	
+	private let fileManager = FileManager.default
 	private let imageReference =  Storage.storage().reference().child("images")
 	
 	func storeImageData(_ data: Data, filename: String, success: @escaping (URL)->Void, failure: ((Error?)->Void)?) {
@@ -64,6 +66,12 @@ class HOBStorage: HOBStorageProtocol {
 		}
 	}
 	
+	func storeImageDataToCache(_ data: Data, filename: String) {
+		guard let localURL = getLocalImageURL(filename: filename) else { return }
+		
+		try? data.write(to: localURL)
+	}
+	
 	func retrieveImageDataFromCache(filename: String) -> Data? {
 		guard let localURL = getLocalImageURL(filename: filename) else { return nil }
 
@@ -75,7 +83,6 @@ class HOBStorage: HOBStorageProtocol {
 // MARK: - Helper Methods
 extension HOBStorage {
 	private func getLocalImageURL(filename: String) -> URL? {
-		let fileManager = FileManager.default
 		guard let documentsURL = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else { return nil }
 		
 		let imagesDirectory = documentsURL.appendingPathComponent("images", isDirectory: true)
