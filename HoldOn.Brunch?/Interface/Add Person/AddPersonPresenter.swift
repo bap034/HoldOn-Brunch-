@@ -52,7 +52,7 @@ extension AddPersonPresenter {
 	private func createNewPerson(imageURL: String?) -> Person? {
 		guard let sureName = name else { return nil }
 		
-		let newPerson = Person(name: sureName, imageURLString: imageURL, moodStatus: moodStatus)
+		let newPerson = PersonManager.createNewPerson(name: sureName, imageURL: imageURL, moodStatus: moodStatus)
 		return newPerson
 	}
 	private func storeNewPerson(_ person: Person) {
@@ -86,6 +86,8 @@ extension AddPersonPresenter {
 		// Upload Image
 		if let sureImageData = imageData {
 			storage.storeImageData(sureImageData, filename: sureNewPerson.id, success: { (url) in
+				self.storage.storeImageDataToCache(sureImageData, filename: sureNewPerson.id)
+				
 				var newPersonWithImageURL = sureNewPerson
 				newPersonWithImageURL.imageURLString = url.absoluteString
 				self.storeNewPerson(newPersonWithImageURL)
