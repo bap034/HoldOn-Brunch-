@@ -57,23 +57,28 @@ extension AddPersonPresenter {
 	}
 	private func storeNewPerson(_ person: Person) {
 		database.storePerson(person, success: {
+			self.viewProtocol?.showNetworkActivityIndicator(false)
 			self.viewProtocol?.dismiss()
 		}) { (error) in
+			self.viewProtocol?.showNetworkActivityIndicator(false)
 			self.viewProtocol?.enableRightNavigationItem(true)
 			self.viewProtocol?.showOneButtonAlertModal(title: nil, message: "Failed to save!")
 		}
 	}
 	
 	private func validateAndSave() {
+		viewProtocol?.showNetworkActivityIndicator(true)
 		viewProtocol?.enableRightNavigationItem(false)
 		
 		// Validate
 		guard isDataValid() else {
+			viewProtocol?.showNetworkActivityIndicator(false)
 			viewProtocol?.enableRightNavigationItem(true)
 			return
 		}
 		
 		guard let sureNewPerson = createNewPerson(imageURL: nil) else {
+			viewProtocol?.showNetworkActivityIndicator(false)
 			viewProtocol?.enableRightNavigationItem(true)
 			return
 		}
@@ -86,6 +91,7 @@ extension AddPersonPresenter {
 				self.storeNewPerson(newPersonWithImageURL)
 			}) { (error) in
 				self.viewProtocol?.showOneButtonAlertModal(title: nil, message: "Failed to save!")
+				self.viewProtocol?.showNetworkActivityIndicator(false)
 				self.viewProtocol?.enableRightNavigationItem(true)
 			}
 		} else {
