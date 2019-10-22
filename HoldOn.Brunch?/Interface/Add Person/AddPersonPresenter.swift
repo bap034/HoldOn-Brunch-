@@ -19,14 +19,17 @@ protocol AddPersonViewProtocol: ViewProtocol {
 
 class AddPersonPresenter {
 	var viewProtocol: AddPersonViewProtocol? { didSet { didSetViewProtocol() } }
-	private let dataBase: HOBModelDatabaseProtocol
+	private let database: HOBModelDatabaseProtocol
+	private let storage: HOBStorageProtocol
 	
 	private var name: String? // Expects no outside whitespace
-	private var imageName: String?
+	private var imageData: Data?
 	private let moodStatus = MoodStatus.new
 	
-	init(dataBase: HOBModelDatabaseProtocol = HOBModelDatabase.shared) {
-		self.dataBase = dataBase
+	init(database: HOBModelDatabaseProtocol = HOBModelDatabase.shared,
+		 storage: HOBStorageProtocol = HOBStorage.shared) {
+		self.database = database
+		self.storage = storage
 	}
 	
 	private func didSetViewProtocol() {
@@ -46,31 +49,47 @@ extension AddPersonPresenter {
 		
 		return true
 	}
-	private func createNewPerson() -> Person? {
+	private func createNewPerson(imageURL: String?) -> Person? {
 		guard let sureName = name else { return nil }
 		
-		let newPerson = Person(name: sureName, imageName: imageName, moodStatus: moodStatus)
+		let newPerson = Person(name: sureName, imageURLString: imageURL, moodStatus: moodStatus)
 		return newPerson
+	}
+	private func storeNewPerson(_ person: Person) {
+		database.storePerson(person, success: {
+			self.viewProtocol?.dismiss()
+		}) { (error) in
+			self.viewProtocol?.enableRightNavigationItem(true)
+			self.viewProtocol?.showOneButtonAlertModal(title: nil, message: "Failed to save!")
+		}
 	}
 	
 	private func validateAndSave() {
 		viewProtocol?.enableRightNavigationItem(false)
 		
+		// Validate
 		guard isDataValid() else {
 			viewProtocol?.enableRightNavigationItem(true)
 			return
 		}
 		
-		guard let sureNewPerson = createNewPerson() else {
+		guard let sureNewPerson = createNewPerson(imageURL: nil) else {
 			viewProtocol?.enableRightNavigationItem(true)
 			return
 		}
 		
-		dataBase.storePerson(sureNewPerson, success: {
-			self.viewProtocol?.dismiss()
-		}) { (error) in
-			self.viewProtocol?.enableRightNavigationItem(true)
-			// TODO: inform user, "could not save Person"
+		// Upload Image
+		if let sureImageData = imageData {
+			storage.storeImageData(sureImageData, filename: sureNewPerson.id, success: { (url) in
+				var newPersonWithImageURL = sureNewPerson
+				newPersonWithImageURL.imageURLString = url.absoluteString
+				self.storeNewPerson(newPersonWithImageURL)
+			}) { (error) in
+				self.viewProtocol?.showOneButtonAlertModal(title: nil, message: "Failed to save!")
+				self.viewProtocol?.enableRightNavigationItem(true)
+			}
+		} else {
+			storeNewPerson(sureNewPerson)
 		}
 	}
 }
@@ -91,6 +110,6 @@ extension AddPersonPresenter {
 		viewProtocol?.showImageSelectAlertController()
 	}
 	func onNewImageSelected(_ imageData: Data?) {
-		// TODO: store data?
+		self.imageData = imageData
 	}
 }

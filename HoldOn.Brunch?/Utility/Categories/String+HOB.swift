@@ -14,4 +14,9 @@ extension String {
 		let decodable = try? JSONDecoder().decode(T.self, from: jsonData)
 		return decodable
 	}
+	
+	func appendPNGExtension() -> String {
+		let stringWithPNGExtension = self + ".png"
+		return stringWithPNGExtension
+	}
 }
