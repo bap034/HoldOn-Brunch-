@@ -30,4 +30,9 @@ extension Person {
 		let url = URL(string: sureImageURLString)
 		return url
 	}
+	
+	var observableDetails: PersonDetails {
+		let details = PersonDetails(person: self)
+		return details
+	}
 }
