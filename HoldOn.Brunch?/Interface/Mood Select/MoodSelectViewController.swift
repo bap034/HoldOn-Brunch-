@@ -157,7 +157,7 @@ extension MoodSelectViewController {
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		presenter.onViewWillDisappear()
+//		presenter.onViewWillDisappear()
 	}
 }
 
@@ -190,4 +190,7 @@ extension MoodSelectViewController: MoodSelectViewProtocol {
 		let offset = CGPoint(x: xOffset, y: 0)
 		scrollView.setContentOffset(offset, animated: animated)
 	}
+	
+	func setPerson(_ person: Person) {} // For SwiftUI
+	func updatePersonImageData(_ data: Data) {}
 }
