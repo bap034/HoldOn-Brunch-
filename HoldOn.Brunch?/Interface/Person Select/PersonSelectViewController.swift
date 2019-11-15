@@ -109,8 +109,8 @@ extension PersonSelectViewController: PersonSelectViewProtocol {
 	}
 	
 	func pushMoodSelectVC(person: Person, database: HOBModelDatabaseProtocol, storage: HOBStorageProtocol) {
-		let presenter = MoodSelectPresenter(person: person, database: database, storage: storage)
-		let vc = MoodSelectViewController(presenter: presenter)
+		let presenter = PersonDetailsPresenter(person: person, database: database, storage: storage)
+		let vc = PersonDetailsViewController(presenter: presenter)
 		navigationController?.pushViewController(vc, animated: true)
 	}
 	
