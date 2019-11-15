@@ -1,5 +1,5 @@
 //
-//  MoodSelectPresenter.swift
+//  PersonDetailsPresenter.swift
 //  HoldOn.Brunch?
 //
 //  Created by Brett Petersen on 10/5/19.
@@ -13,7 +13,7 @@ protocol MoodSelectViewProtocol: ViewProtocol {
 	func updatePersonImageData(_ data: Data)
 }
 
-class MoodSelectPresenter {
+class PersonDetailsPresenter {
 	
 	var viewProtocol: MoodSelectViewProtocol? { didSet { didSetViewProtocol() } }
 	private var person: Person
@@ -32,7 +32,7 @@ class MoodSelectPresenter {
 }
 
 // MARK: - Person Actions
-extension MoodSelectPresenter {
+extension PersonDetailsPresenter {
 	private func savePerson(_ person: Person) {
 		viewProtocol?.showNetworkActivityIndicator(true)
 		database.storePerson(person, success: {
@@ -46,7 +46,7 @@ extension MoodSelectPresenter {
 }
 
 // MARK: - Exposed View Methods
-extension MoodSelectPresenter {
+extension PersonDetailsPresenter {
 	func onScrollViewDidEndDecelerating(page: Int) {
 		let newMoodStatus = page == 0 ? MoodStatus.confused:MoodStatus.confusing
 		person.moodStatus = newMoodStatus
@@ -60,7 +60,7 @@ extension MoodSelectPresenter {
 }
 
 // MARK: - PersonImageRetrievablePresenterProtocol
-extension MoodSelectPresenter: PersonImageRetrievablePresenterProtocol {
+extension PersonDetailsPresenter: PersonImageRetrievablePresenterProtocol {
 	func onImageDataComplete(cachedData: Data?) {
 		if let sureCachedData = cachedData {
 			self.viewProtocol?.updatePersonImageData(sureCachedData)

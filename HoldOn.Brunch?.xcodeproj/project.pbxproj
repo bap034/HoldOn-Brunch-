@@ -14,7 +14,7 @@
 		8B48EDAC235ECB4F007ACF54 /* PersonDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B48EDAB235ECB4F007ACF54 /* PersonDetailsHeaderView.swift */; };
 		8B9AA9D7237E5D5F00577844 /* View+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9D6237E5D5F00577844 /* View+HOB.swift */; };
 		8B9AA9D9237E72D400577844 /* PersonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9D8237E72D400577844 /* PersonDetailsView.swift */; };
-		8B9AA9DB237E756300577844 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DA237E756300577844 /* PersonDetailViewController.swift */; };
+		8B9AA9DB237E756300577844 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */; };
 		8B9AA9DD237E834A00577844 /* PersonPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */; };
 		8B9AA9E0237E875100577844 /* PersonDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DF237E875100577844 /* PersonDetails.swift */; };
 		8BB1D4FC2348EE4E00626A90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D4FB2348EE4E00626A90 /* AppDelegate.swift */; };
@@ -24,9 +24,7 @@
 		8BB1D51C2348EE5100626A90 /* HoldOn_Brunch_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D51B2348EE5100626A90 /* HoldOn_Brunch_UITests.swift */; };
 		8BB1D52D2348EF0800626A90 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D52C2348EF0800626A90 /* Person.swift */; };
 		8BB1D5302348EFED00626A90 /* UserDefaults+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D52F2348EFED00626A90 /* UserDefaults+HOB.swift */; };
-		8BB1D5322348F2CA00626A90 /* MoodSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D5312348F2CA00626A90 /* MoodSelectViewController.swift */; };
-		8BB1D5342348F2F200626A90 /* MoodSelectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D5332348F2F200626A90 /* MoodSelectPresenter.swift */; };
-		8BB1D5392348F7D000626A90 /* MoodSelectPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D5382348F7D000626A90 /* MoodSelectPageView.swift */; };
+		8BB1D5342348F2F200626A90 /* PersonDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D5332348F2F200626A90 /* PersonDetailsPresenter.swift */; };
 		8BB1D53D2348FEB100626A90 /* UIView+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D53C2348FEB100626A90 /* UIView+HOB.swift */; };
 		8BB1D5452349A73600626A90 /* cat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5432349A73600626A90 /* cat@2x.png */; };
 		8BB1D5462349A73600626A90 /* cat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5442349A73600626A90 /* cat@3x.png */; };
@@ -80,7 +78,7 @@
 		8B890C486EE2828A2759FEC2 /* Pods-HoldOn.Brunch?.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoldOn.Brunch?.debug.xcconfig"; path = "Target Support Files/Pods-HoldOn.Brunch?/Pods-HoldOn.Brunch?.debug.xcconfig"; sourceTree = "<group>"; };
 		8B9AA9D6237E5D5F00577844 /* View+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HOB.swift"; sourceTree = "<group>"; };
 		8B9AA9D8237E72D400577844 /* PersonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsView.swift; sourceTree = "<group>"; };
-		8B9AA9DA237E756300577844 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
+		8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
 		8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPresenterProtocols.swift; sourceTree = "<group>"; };
 		8B9AA9DF237E875100577844 /* PersonDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetails.swift; sourceTree = "<group>"; };
 		8BB1D4F82348EE4E00626A90 /* HoldOn.Brunch?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HoldOn.Brunch?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,9 +94,7 @@
 		8BB1D51D2348EE5100626A90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB1D52C2348EF0800626A90 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		8BB1D52F2348EFED00626A90 /* UserDefaults+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+HOB.swift"; sourceTree = "<group>"; };
-		8BB1D5312348F2CA00626A90 /* MoodSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectViewController.swift; sourceTree = "<group>"; };
-		8BB1D5332348F2F200626A90 /* MoodSelectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectPresenter.swift; sourceTree = "<group>"; };
-		8BB1D5382348F7D000626A90 /* MoodSelectPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectPageView.swift; sourceTree = "<group>"; };
+		8BB1D5332348F2F200626A90 /* PersonDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsPresenter.swift; sourceTree = "<group>"; };
 		8BB1D53C2348FEB100626A90 /* UIView+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+HOB.swift"; sourceTree = "<group>"; };
 		8BB1D5432349A73600626A90 /* cat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cat@2x.png"; path = "HoldOn.Brunch?/Resources/Images/cat@2x.png"; sourceTree = SOURCE_ROOT; };
 		8BB1D5442349A73600626A90 /* cat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cat@3x.png"; path = "HoldOn.Brunch?/Resources/Images/cat@3x.png"; sourceTree = SOURCE_ROOT; };
@@ -296,20 +292,10 @@
 			isa = PBXGroup;
 			children = (
 				8B48EDAA235ECB2A007ACF54 /* SwiftUIViews */,
-				8BB1D5372348F7BC00626A90 /* Views */,
-				8BB1D5312348F2CA00626A90 /* MoodSelectViewController.swift */,
-				8BB1D5332348F2F200626A90 /* MoodSelectPresenter.swift */,
-				8B9AA9DA237E756300577844 /* PersonDetailViewController.swift */,
+				8BB1D5332348F2F200626A90 /* PersonDetailsPresenter.swift */,
+				8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */,
 			);
 			path = "Mood Select";
-			sourceTree = "<group>";
-		};
-		8BB1D5372348F7BC00626A90 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				8BB1D5382348F7D000626A90 /* MoodSelectPageView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		8BB1D53E2348FEB800626A90 /* Categories */ = {
@@ -649,14 +635,13 @@
 				8BB1D5492349B12400626A90 /* PersonSelectPresenter.swift in Sources */,
 				8BB1D54E2349C89200626A90 /* AddPersonViewController.swift in Sources */,
 				8B9AA9D7237E5D5F00577844 /* View+HOB.swift in Sources */,
-				8BB1D5392348F7D000626A90 /* MoodSelectPageView.swift in Sources */,
 				8BDC25E023514D46004C75E0 /* HOBFirestore.swift in Sources */,
 				8B9AA9E0237E875100577844 /* PersonDetails.swift in Sources */,
 				8BDC25E923523936004C75E0 /* PersonManager.swift in Sources */,
 				8BB1D54B2349B13300626A90 /* PersonSelectViewController.swift in Sources */,
 				8BB1D56123504E7B00626A90 /* String+HOB.swift in Sources */,
-				8B9AA9DB237E756300577844 /* PersonDetailViewController.swift in Sources */,
-				8BB1D5342348F2F200626A90 /* MoodSelectPresenter.swift in Sources */,
+				8B9AA9DB237E756300577844 /* PersonDetailsViewController.swift in Sources */,
+				8BB1D5342348F2F200626A90 /* PersonDetailsPresenter.swift in Sources */,
 				8BB1D52D2348EF0800626A90 /* Person.swift in Sources */,
 				8BB1D55F23504D1C00626A90 /* Encodable+HOB.swift in Sources */,
 				8B48EDAC235ECB4F007ACF54 /* PersonDetailsHeaderView.swift in Sources */,
@@ -669,7 +654,6 @@
 				8BB1D5302348EFED00626A90 /* UserDefaults+HOB.swift in Sources */,
 				8BB1D55D2349D3C300626A90 /* UIButton+MH.swift in Sources */,
 				8B9AA9D9237E72D400577844 /* PersonDetailsView.swift in Sources */,
-				8BB1D5322348F2CA00626A90 /* MoodSelectViewController.swift in Sources */,
 				8BDC25EB23523DE9004C75E0 /* ModelProtocol.swift in Sources */,
 				8BB1D5502349C89F00626A90 /* AddPersonPresenter.swift in Sources */,
 			);
