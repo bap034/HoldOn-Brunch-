@@ -1,5 +1,5 @@
 //
-//  PersonDetailViewController.swift
+//  PersonDetailsViewController.swift
 //  HoldOn.Brunch?
 //
 //  Created by Brett Petersen on 11/14/19.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class PersonDetailViewController: UIViewController {
-	private let presenter: MoodSelectPresenter
+class PersonDetailsViewController: UIViewController {
+	private let presenter: PersonDetailsPresenter
 	
 	private var personDetails = PersonDetails(name: "", image: nil, moodStatus: .new)
 	
-	init(presenter: MoodSelectPresenter) {
+	init(presenter: PersonDetailsPresenter) {
 		self.presenter = presenter
 		
 		super.init(nibName: nil, bundle: nil)
@@ -24,7 +24,7 @@ class PersonDetailViewController: UIViewController {
 }
 
 // MARK: - View Setup
-extension PersonDetailViewController {
+extension PersonDetailsViewController {
 	private func setUpSelf() {
 		view.backgroundColor = .white
 		
@@ -34,7 +34,7 @@ extension PersonDetailViewController {
 }
 
 // MARK: - UIViewController
-extension PersonDetailViewController {
+extension PersonDetailsViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -48,7 +48,7 @@ extension PersonDetailViewController {
 }
 
 // MARK: - MoodSelectViewProtocol
-extension PersonDetailViewController: MoodSelectViewProtocol {
+extension PersonDetailsViewController: MoodSelectViewProtocol {
 	private func getImageForData(_ data: Data?) -> UIImage {
 		let image: UIImage
 		if let sureImageData = data, let sureImage = UIImage(data: sureImageData) {
