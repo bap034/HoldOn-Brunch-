@@ -19,7 +19,7 @@ class PersonSelectPresenter {
 	var viewProtocol: PersonSelectViewProtocol? { didSet { didSetViewProtocol() } }
 	private var persons = [Person]()
 	private let database: HOBModelDatabaseProtocol
-	private let storage: HOBStorageProtocol
+	internal let storage: HOBStorageProtocol
 	
 	init(database: HOBModelDatabaseProtocol = HOBModelDatabase.shared,
 		 storage: HOBStorageProtocol = HOBStorage.shared) {
@@ -49,15 +49,6 @@ extension PersonSelectPresenter {
 		viewProtocol?.presentAddPersonVC(database: database)
 	}
 	
-	func getImageDataForPerson(_ person: Person) -> Data? {
-		let data = PersonManager.getImageDataForPerson(person, storage: storage) { (cachedData) in
-			if cachedData != nil {
-				self.viewProtocol?.reloadTableView() // TODO: reload only that cell
-			}
-		}
-		return data
-	}
-	
 	// MARK: TableViewDataSource
 	func onNumberOfCells() -> Int {
 		return persons.count
@@ -84,6 +75,15 @@ extension PersonSelectPresenter {
 			self.viewProtocol?.showNetworkActivityIndicator(false)
 		}) { (error) in
 			self.viewProtocol?.showNetworkActivityIndicator(false)
+		}
+	}
+}
+
+// MARK: - PersonImageRetrievablePresenterProtocol
+extension PersonSelectPresenter: PersonImageRetrievablePresenterProtocol {
+	func onImageDataComplete(cachedData: Data?) {
+		if cachedData != nil {
+			self.viewProtocol?.reloadTableView() // TODO: reload only that cell
 		}
 	}
 }
