@@ -16,11 +16,17 @@ class PersonManager {
 	}
 	
 	// MARK: - HOBModelDatabaseProtocol
+	// MARK: Persons
 	static func getAllPersons(database: HOBModelDatabaseProtocol = HOBModelDatabase.shared, success: @escaping RetrieveSuccessBlock<Person>, failure: FailureBlock?) {
 		database.getAllPersons(success: success, failure: failure)
 	}
 	static func storePerson(_ person: Person, database: HOBModelDatabaseProtocol = HOBModelDatabase.shared, success: StoreSuccessBlock?, failure: FailureBlock?) {
 		database.storePerson(person, success: success, failure: failure)
+	}
+	
+	// MARK: Messages
+	static func getAllMessagesForPerson(_ person: Person, database: HOBModelDatabaseProtocol = HOBModelDatabase.shared, success: @escaping RetrieveSuccessBlock<Message>, failure: FailureBlock?) {
+		database.getAllMessagesForPerson(person, success: success, failure: failure)
 	}
 	
 	// MARK: - HOBStorageProtocol

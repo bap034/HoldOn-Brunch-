@@ -17,6 +17,9 @@ typealias FailureBlock = (Error?)->Void
 protocol HOBModelDatabaseProtocol {
 	func storePerson(_ person: Person, success: StoreSuccessBlock?, failure: FailureBlock?)
 	func getAllPersons(success: @escaping RetrieveSuccessBlock<Person>, failure: FailureBlock?)
+	
+	func storeMessage(_ message: Message, success: StoreSuccessBlock?, failure: FailureBlock?)
+	func getAllMessagesForPerson(_ person: Person, success: @escaping RetrieveSuccessBlock<Message>, failure: FailureBlock?)
 }
 class HOBModelDatabase: HOBModelDatabaseProtocol {
 	
@@ -37,6 +40,20 @@ class HOBModelDatabase: HOBModelDatabaseProtocol {
 			success(persons)
 		}, failure: failure)
 	}
+	
+	// MARK: Messages
+	private let messagesCollectionPath = "messages"
+	func storeMessage(_ message: Message, success: StoreSuccessBlock?, failure: FailureBlock?) {
+		let destinationPath = "\(personsCollectionPath)/" + "\(message.personId)/" + "\(messagesCollectionPath)/"
+		database.storeEncodable(message, destinationPath: destinationPath, success: success, failure: failure)
+	}
+	func getAllMessagesForPerson(_ person: Person, success: @escaping RetrieveSuccessBlock<Message>, failure: FailureBlock?) {
+		let destinationPath = "\(personsCollectionPath)/" + "\(person.id)/" + "\(messagesCollectionPath)/"
+		database.retrieveAllDecodable(destinationPath: destinationPath, success: { (messages) in
+			success(messages)
+		}, failure: failure)
+	}
+	
 }
 
 

@@ -11,6 +11,7 @@ import Foundation
 protocol MoodSelectViewProtocol: ViewProtocol {
 	func setPerson(_ person: Person)
 	func updatePersonImageData(_ data: Data)
+	func setPostButtonEnabled(_ enabled: Bool)
 }
 
 class PersonDetailsPresenter {
@@ -53,8 +54,16 @@ extension PersonDetailsPresenter {
 		savePerson(person)
 	}
 	
-	func onPostMessageButtonTapped(message: String) {
-		print("send message: \(message)")
+	func onPostMessageButtonTapped(messageText: String) {
+		viewProtocol?.setPostButtonEnabled(false)
+		let message = MessageManager.createNewMessage(personId: person.id, text: messageText)
+		database.storeMessage(message, success: {
+			self.viewProtocol?.setPostButtonEnabled(true)
+//			viewProtocol?.reloadMessageTable()
+		}) { (error) in
+			self.viewProtocol?.setPostButtonEnabled(true)
+			self.viewProtocol?.showOneButtonAlertModal(title: "Oops", message: error?.localizedDescription)
+		}
 	}
 }
 
