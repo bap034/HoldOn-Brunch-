@@ -68,11 +68,10 @@ extension Firestore: HOBDatabaseProtocol {
 				failure?(nil)
 				return
 			}
-			// TODO: why does this incorrectly return false when `error` is `nil`???????????
-			//			guard error != nil else {
-			//				failure?(error)
-			//				return
-			//			}
+			guard error == nil else {
+				failure?(error)
+				return
+			}
 			
 			let documents = sureQuerySnapshot.documents
 			var codables = [T?]()
