@@ -29,7 +29,7 @@ extension PersonDetailsViewController {
 		view.backgroundColor = .white
 		
 		let detailsView = PersonDetailsView(onPostMessage: { message in
-			self.presenter.onPostMessageButtonTapped(message: message)
+			self.presenter.onPostMessageButtonTapped(messageText: message)
 		}).environmentObject(personDetails)
 		view = detailsView.toUIView()
 	}
@@ -73,5 +73,9 @@ extension PersonDetailsViewController: MoodSelectViewProtocol {
 	func updatePersonImageData(_ data: Data) {
 		let image = getImageForData(data)
 		personDetails.image = image
+	}
+	
+	func setPostButtonEnabled(_ enabled: Bool) {
+		view.isUserInteractionEnabled = enabled
 	}
 }
