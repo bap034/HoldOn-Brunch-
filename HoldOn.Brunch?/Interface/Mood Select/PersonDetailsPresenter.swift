@@ -47,15 +47,14 @@ extension PersonDetailsPresenter {
 
 // MARK: - Exposed View Methods
 extension PersonDetailsPresenter {
-	func onScrollViewDidEndDecelerating(page: Int) {
-		let newMoodStatus = page == 0 ? MoodStatus.confused:MoodStatus.confusing
-		person.moodStatus = newMoodStatus
-	}
-	
 	func onViewWillDisappear(newDetails: PersonDetails) {
 		person.name = newDetails.name
 		person.moodStatus = newDetails.moodStatus
 		savePerson(person)
+	}
+	
+	func onPostMessageButtonTapped(message: String) {
+		print("send message: \(message)")
 	}
 }
 

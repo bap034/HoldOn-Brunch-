@@ -47,6 +47,7 @@
 		8BDC25E6235237F4004C75E0 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25E5235237F4004C75E0 /* ViewProtocol.swift */; };
 		8BDC25E923523936004C75E0 /* PersonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25E823523936004C75E0 /* PersonManager.swift */; };
 		8BDC25EB23523DE9004C75E0 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25EA23523DE9004C75E0 /* ModelProtocol.swift */; };
+		8BDCFFE6238E2C1200B3FDF0 /* EnterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCFFE5238E2C1200B3FDF0 /* EnterTextView.swift */; };
 		D15E257F5E29C5DBC5CB7C7C /* Pods_HoldOn_Brunch_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE9CB8CD0EABCD8B88BB4CB /* Pods_HoldOn_Brunch_UITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		8BDC25E5235237F4004C75E0 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		8BDC25E823523936004C75E0 /* PersonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonManager.swift; sourceTree = "<group>"; };
 		8BDC25EA23523DE9004C75E0 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
+		8BDCFFE5238E2C1200B3FDF0 /* EnterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTextView.swift; sourceTree = "<group>"; };
 		9BA21431CD60EFB3438710EF /* Pods_HoldOn_Brunch_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldOn_Brunch_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE9CB8CD0EABCD8B88BB4CB /* Pods_HoldOn_Brunch_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldOn_Brunch_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A529329A77B748052351065A /* Pods-HoldOn.Brunch?UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoldOn.Brunch?UITests.release.xcconfig"; path = "Target Support Files/Pods-HoldOn.Brunch?UITests/Pods-HoldOn.Brunch?UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		8BB1D52A2348EE9100626A90 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				8BDCFFE7238E484800B3FDF0 /* Shared */,
 				8BB1D5552349D07C00626A90 /* Intro */,
 				8BB1D54C2349C87400626A90 /* Add Person */,
 				8BB1D5472349B10700626A90 /* Person Select */,
@@ -387,6 +390,14 @@
 				8BB1D52C2348EF0800626A90 /* Person.swift */,
 			);
 			path = Person;
+			sourceTree = "<group>";
+		};
+		8BDCFFE7238E484800B3FDF0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8BDCFFE5238E2C1200B3FDF0 /* EnterTextView.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		8DD0AA299D55EE83855F9901 /* Pods */ = {
@@ -631,6 +642,7 @@
 				8BB1D53D2348FEB100626A90 /* UIView+HOB.swift in Sources */,
 				8BC24683235D96BF00715245 /* UIImage+HOB.swift in Sources */,
 				8BB1D55B2349D0E800626A90 /* IntroPresenter.swift in Sources */,
+				8BDCFFE6238E2C1200B3FDF0 /* EnterTextView.swift in Sources */,
 				8BB1D5572349D08900626A90 /* IntroViewController.swift in Sources */,
 				8BB1D5492349B12400626A90 /* PersonSelectPresenter.swift in Sources */,
 				8BB1D54E2349C89200626A90 /* AddPersonViewController.swift in Sources */,
