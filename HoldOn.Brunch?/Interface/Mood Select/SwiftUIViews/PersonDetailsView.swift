@@ -10,11 +10,20 @@ import SwiftUI
 
 struct PersonDetailsView: View {
 	@EnvironmentObject var personDetails: PersonDetails
+	@State private var enteredText = ""
+	var onPostMessage: ((String)->Void)?
 	
     var body: some View {
-		VStack {
+		let placeholderText: String = "\(self.personDetails.name) said..."
+		
+		return VStack {
 			PersonDetailsHeaderView(personDetails: _personDetails)
 				.padding(20)
+			
+			EnterTextView(placeholderText: placeholderText, enteredText: $enteredText, onButtonTap: {
+				self.onPostMessage?(self.enteredText)
+			})
+				.padding([.leading, .trailing], 10)
 			
 			Spacer()
 		}

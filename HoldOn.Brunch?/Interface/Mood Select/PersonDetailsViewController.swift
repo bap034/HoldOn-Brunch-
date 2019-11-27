@@ -28,7 +28,9 @@ extension PersonDetailsViewController {
 	private func setUpSelf() {
 		view.backgroundColor = .white
 		
-		let detailsView = PersonDetailsView().environmentObject(personDetails)
+		let detailsView = PersonDetailsView(onPostMessage: { message in
+			self.presenter.onPostMessageButtonTapped(message: message)
+		}).environmentObject(personDetails)
 		view = detailsView.toUIView()
 	}
 }
