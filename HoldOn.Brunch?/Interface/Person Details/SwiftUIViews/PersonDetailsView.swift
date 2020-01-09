@@ -23,7 +23,7 @@ struct PersonDetailsView: View {
 			EnterTextView(placeholderText: placeholderText, enteredText: $enteredText, onButtonTap: {
 				self.onPostMessage?(self.enteredText)
 			})
-				.padding([.leading, .trailing], 10)
+				.padding([.leading, .trailing], 20)
 			
 			Spacer()
 		}

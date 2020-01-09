@@ -9,7 +9,11 @@
 import Foundation
 
 struct Message: ModelProtocol {
-	var id: String { return ISO8601DateFormatter().string(from: created) }
+	var id: String {
+		let dateFormatter = ISO8601DateFormatter()
+		dateFormatter.formatOptions = .withInternetDateTime
+		return dateFormatter.string(from: created)
+	}
 	
 	let personId: String
 	let created: Date

@@ -12,6 +12,7 @@ class PersonDetails: ObservableObject {
 	@Published var name: String	// TODO: how to remove duplicating properties. can Person hold observable details?
 	@Published var image: UIImage?
 	@Published var moodStatus: MoodStatus
+	@Published var messages = [Message]()
 	
 	init(name: String, image: UIImage?, moodStatus: MoodStatus) {
 		self.name = name
