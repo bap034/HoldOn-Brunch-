@@ -279,7 +279,7 @@
 				8BB1D5552349D07C00626A90 /* Intro */,
 				8BB1D54C2349C87400626A90 /* Add Person */,
 				8BB1D5472349B10700626A90 /* Person Select */,
-				8BB1D5362348F5E400626A90 /* Mood Select */,
+				8BB1D5362348F5E400626A90 /* Person Details */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -305,14 +305,14 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		8BB1D5362348F5E400626A90 /* Mood Select */ = {
+		8BB1D5362348F5E400626A90 /* Person Details */ = {
 			isa = PBXGroup;
 			children = (
 				8B48EDAA235ECB2A007ACF54 /* SwiftUIViews */,
 				8BB1D5332348F2F200626A90 /* PersonDetailsPresenter.swift */,
 				8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */,
 			);
-			path = "Mood Select";
+			path = "Person Details";
 			sourceTree = "<group>";
 		};
 		8BB1D53E2348FEB800626A90 /* Categories */ = {

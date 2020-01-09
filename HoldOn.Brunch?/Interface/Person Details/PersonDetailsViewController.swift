@@ -49,8 +49,8 @@ extension PersonDetailsViewController {
 	}
 }
 
-// MARK: - MoodSelectViewProtocol
-extension PersonDetailsViewController: MoodSelectViewProtocol {
+// MARK: - PersonDetailsViewProtocol
+extension PersonDetailsViewController: PersonDetailsViewProtocol {
 	private func getImageForData(_ data: Data?) -> UIImage {
 		let image: UIImage
 		if let sureImageData = data, let sureImage = UIImage(data: sureImageData) {
@@ -68,6 +68,7 @@ extension PersonDetailsViewController: MoodSelectViewProtocol {
 		personDetails.name = person.name
 		personDetails.image = image
 		personDetails.moodStatus = person.moodStatus
+		personDetails.messages = presenter.onGetMessages()
 	}
 	
 	func updatePersonImageData(_ data: Data) {
@@ -77,5 +78,9 @@ extension PersonDetailsViewController: MoodSelectViewProtocol {
 	
 	func setPostButtonEnabled(_ enabled: Bool) {
 		view.isUserInteractionEnabled = enabled
+	}
+	
+	func reloadMessagesTable() {
+		personDetails.messages = presenter.onGetMessages()
 	}
 }
