@@ -21,7 +21,7 @@ struct PersonDetailsHeaderView: View {
 				.clipShape(RoundedRectangle(cornerRadius: 4))
 				.shadow(radius: 10)
 				.overlay(
-					RoundedRectangle(cornerRadius: 4).stroke(Color(.black), lineWidth: 2))
+					RoundedRectangle(cornerRadius: 4).stroke(Color(.black), lineWidth: 1))
 				.frame(width: 100, height: 100)
 			
 			VStack(spacing: 20) {
@@ -73,7 +73,7 @@ struct TwoTextButtonSelectView: View {
 			// Divider
 			Rectangle()
 				.background(Color(.black))
-				.frame(width: 2)
+				.frame(width: 1)
 			
 			Button(action: {
 				print("Button 2 pressed")
@@ -86,7 +86,7 @@ struct TwoTextButtonSelectView: View {
 			.background(Color(personDetails.moodStatus == option2 ? .cyan:.white))
 		}
 		.overlay(
-			RoundedRectangle(cornerRadius: 4).stroke(Color(.black), lineWidth: 2)
+			RoundedRectangle(cornerRadius: 4).stroke(Color(.black), lineWidth: 1)
 		)
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 40, alignment: .leading)
 	}

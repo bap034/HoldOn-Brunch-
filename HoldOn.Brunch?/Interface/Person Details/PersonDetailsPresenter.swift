@@ -8,15 +8,18 @@
 
 import Foundation
 
-protocol MoodSelectViewProtocol: ViewProtocol {
+protocol PersonDetailsViewProtocol: ViewProtocol {
 	func setPerson(_ person: Person)
 	func updatePersonImageData(_ data: Data)
+	func setPostButtonEnabled(_ enabled: Bool)
+	func updateMessagesTable()
 }
 
 class PersonDetailsPresenter {
 	
-	var viewProtocol: MoodSelectViewProtocol? { didSet { didSetViewProtocol() } }
+	var viewProtocol: PersonDetailsViewProtocol? { didSet { didSetViewProtocol() } }
 	private var person: Person
+	private var messages = [Message]()
 	private let database: HOBModelDatabaseProtocol
 	internal let storage: HOBStorageProtocol
 	
@@ -27,7 +30,13 @@ class PersonDetailsPresenter {
 	}
 	
 	private func didSetViewProtocol() {
-		viewProtocol?.setPerson(person)
+		PersonManager.getAllMessagesForPerson(person, database: database, success: { (messages) in
+			self.messages = messages
+			self.viewProtocol?.setPerson(self.person)
+		}) { (error) in
+			let errorDescription = error?.localizedDescription ?? "nil error"
+			print("failed to get messages for \(self.person.name): \(errorDescription)")
+		}
 	}
 }
 
@@ -35,7 +44,7 @@ class PersonDetailsPresenter {
 extension PersonDetailsPresenter {
 	private func savePerson(_ person: Person) {
 		viewProtocol?.showNetworkActivityIndicator(true)
-		database.storePerson(person, success: {
+		PersonManager.storePerson(person, database: database, success: {
 			print("successfully stored: \(person)")
 			self.viewProtocol?.showNetworkActivityIndicator(false)
 		}) { (error) in
@@ -47,15 +56,31 @@ extension PersonDetailsPresenter {
 
 // MARK: - Exposed View Methods
 extension PersonDetailsPresenter {
-	func onScrollViewDidEndDecelerating(page: Int) {
-		let newMoodStatus = page == 0 ? MoodStatus.confused:MoodStatus.confusing
-		person.moodStatus = newMoodStatus
-	}
-	
 	func onViewWillDisappear(newDetails: PersonDetails) {
 		person.name = newDetails.name
 		person.moodStatus = newDetails.moodStatus
 		savePerson(person)
+	}
+	
+	func onPostMessageButtonTapped(messageText: String) {
+		viewProtocol?.setPostButtonEnabled(false)
+		
+		let message = MessageManager.createNewMessage(personId: person.id, text: messageText)
+		MessageManager.storeMessage(message, database: database, success: {
+			self.viewProtocol?.setPostButtonEnabled(true)
+			self.viewProtocol?.clearTextField()
+			PersonManager.getAllMessagesForPerson(self.person, database: self.database, success: { (messages) in
+				self.messages = messages
+				self.viewProtocol?.updateMessagesTable()
+			}, failure: nil)
+		}) { (error) in
+			self.viewProtocol?.setPostButtonEnabled(true)
+			self.viewProtocol?.showOneButtonAlertModal(title: "Oops", message: error?.localizedDescription)
+		}
+	}
+	
+	func onGetMessages() -> [Message] {
+		return messages
 	}
 }
 
