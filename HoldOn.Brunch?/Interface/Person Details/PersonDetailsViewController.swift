@@ -12,6 +12,7 @@ class PersonDetailsViewController: UIViewController {
 	private let presenter: PersonDetailsPresenter
 	
 	private var personDetails = PersonDetails(name: "", image: nil, moodStatus: .new)
+	private var detailsView: PersonDetailsView?
 	
 	init(presenter: PersonDetailsPresenter) {
 		self.presenter = presenter
@@ -28,8 +29,10 @@ extension PersonDetailsViewController {
 	private func setUpSelf() {
 		view.backgroundColor = .white
 		
-		let detailsView = PersonDetailsView().environmentObject(personDetails)
-		view = detailsView.toUIView()
+		self.detailsView = PersonDetailsView(onPostMessage: { message in
+			self.presenter.onPostMessageButtonTapped(messageText: message)
+		})
+		view = detailsView.environmentObject(personDetails).toUIView()
 	}
 }
 
@@ -47,8 +50,8 @@ extension PersonDetailsViewController {
 	}
 }
 
-// MARK: - MoodSelectViewProtocol
-extension PersonDetailsViewController: MoodSelectViewProtocol {
+// MARK: - PersonDetailsViewProtocol
+extension PersonDetailsViewController: PersonDetailsViewProtocol {
 	private func getImageForData(_ data: Data?) -> UIImage {
 		let image: UIImage
 		if let sureImageData = data, let sureImage = UIImage(data: sureImageData) {
@@ -66,10 +69,19 @@ extension PersonDetailsViewController: MoodSelectViewProtocol {
 		personDetails.name = person.name
 		personDetails.image = image
 		personDetails.moodStatus = person.moodStatus
+		personDetails.messages = presenter.onGetMessages()
 	}
 	
 	func updatePersonImageData(_ data: Data) {
 		let image = getImageForData(data)
 		personDetails.image = image
+	}
+	
+	func setPostButtonEnabled(_ enabled: Bool) {
+		view.isUserInteractionEnabled = enabled
+	}
+	
+	func updateMessagesTable() {
+		personDetails.messages = presenter.onGetMessages()
 	}
 }

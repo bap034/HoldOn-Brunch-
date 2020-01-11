@@ -12,6 +12,10 @@
 		8B0DEE342359305200A50B5F /* SelectImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DEE332359305200A50B5F /* SelectImageView.swift */; };
 		8B0DEE37235D23C900A50B5F /* PhotosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DEE36235D23C900A50B5F /* PhotosManager.swift */; };
 		8B48EDAC235ECB4F007ACF54 /* PersonDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B48EDAB235ECB4F007ACF54 /* PersonDetailsHeaderView.swift */; };
+		8B4C50AF238E4A5A00D76506 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C50AE238E4A5A00D76506 /* Message.swift */; };
+		8B4C50B1238E4F8700D76506 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C50B0238E4F8700D76506 /* MessageManager.swift */; };
+		8B7351F223C701FF0047CFA2 /* MessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7351F123C701FF0047CFA2 /* MessageCellView.swift */; };
+		8B97427423C7131C00B74B27 /* UIApplication+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97427323C7131C00B74B27 /* UIApplication+HOB.swift */; };
 		8B9AA9D7237E5D5F00577844 /* View+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9D6237E5D5F00577844 /* View+HOB.swift */; };
 		8B9AA9D9237E72D400577844 /* PersonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9D8237E72D400577844 /* PersonDetailsView.swift */; };
 		8B9AA9DB237E756300577844 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */; };
@@ -47,6 +51,7 @@
 		8BDC25E6235237F4004C75E0 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25E5235237F4004C75E0 /* ViewProtocol.swift */; };
 		8BDC25E923523936004C75E0 /* PersonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25E823523936004C75E0 /* PersonManager.swift */; };
 		8BDC25EB23523DE9004C75E0 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25EA23523DE9004C75E0 /* ModelProtocol.swift */; };
+		8BDCFFE6238E2C1200B3FDF0 /* EnterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCFFE5238E2C1200B3FDF0 /* EnterTextView.swift */; };
 		D15E257F5E29C5DBC5CB7C7C /* Pods_HoldOn_Brunch_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE9CB8CD0EABCD8B88BB4CB /* Pods_HoldOn_Brunch_UITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +80,11 @@
 		8B0DEE332359305200A50B5F /* SelectImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageView.swift; sourceTree = "<group>"; };
 		8B0DEE36235D23C900A50B5F /* PhotosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosManager.swift; sourceTree = "<group>"; };
 		8B48EDAB235ECB4F007ACF54 /* PersonDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsHeaderView.swift; sourceTree = "<group>"; };
+		8B4C50AE238E4A5A00D76506 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		8B4C50B0238E4F8700D76506 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		8B7351F123C701FF0047CFA2 /* MessageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellView.swift; sourceTree = "<group>"; };
 		8B890C486EE2828A2759FEC2 /* Pods-HoldOn.Brunch?.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoldOn.Brunch?.debug.xcconfig"; path = "Target Support Files/Pods-HoldOn.Brunch?/Pods-HoldOn.Brunch?.debug.xcconfig"; sourceTree = "<group>"; };
+		8B97427323C7131C00B74B27 /* UIApplication+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+HOB.swift"; sourceTree = "<group>"; };
 		8B9AA9D6237E5D5F00577844 /* View+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HOB.swift"; sourceTree = "<group>"; };
 		8B9AA9D8237E72D400577844 /* PersonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsView.swift; sourceTree = "<group>"; };
 		8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +126,7 @@
 		8BDC25E5235237F4004C75E0 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		8BDC25E823523936004C75E0 /* PersonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonManager.swift; sourceTree = "<group>"; };
 		8BDC25EA23523DE9004C75E0 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
+		8BDCFFE5238E2C1200B3FDF0 /* EnterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTextView.swift; sourceTree = "<group>"; };
 		9BA21431CD60EFB3438710EF /* Pods_HoldOn_Brunch_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldOn_Brunch_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE9CB8CD0EABCD8B88BB4CB /* Pods_HoldOn_Brunch_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldOn_Brunch_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A529329A77B748052351065A /* Pods-HoldOn.Brunch?UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoldOn.Brunch?UITests.release.xcconfig"; path = "Target Support Files/Pods-HoldOn.Brunch?UITests/Pods-HoldOn.Brunch?UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +196,15 @@
 			path = SwiftUIViews;
 			sourceTree = "<group>";
 		};
+		8B4C50AD238E4A3000D76506 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				8B4C50B0238E4F8700D76506 /* MessageManager.swift */,
+				8B4C50AE238E4A5A00D76506 /* Message.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 		8B9AA9DE237E873300577844 /* SwiftUIObservable */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +269,7 @@
 		8BB1D5292348EE8A00626A90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8B4C50AD238E4A3000D76506 /* Message */,
 				8BDC25E72352390E004C75E0 /* Person */,
 				8BDC25EA23523DE9004C75E0 /* ModelProtocol.swift */,
 			);
@@ -259,10 +279,11 @@
 		8BB1D52A2348EE9100626A90 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				8BDCFFE7238E484800B3FDF0 /* Shared */,
 				8BB1D5552349D07C00626A90 /* Intro */,
 				8BB1D54C2349C87400626A90 /* Add Person */,
 				8BB1D5472349B10700626A90 /* Person Select */,
-				8BB1D5362348F5E400626A90 /* Mood Select */,
+				8BB1D5362348F5E400626A90 /* Person Details */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -288,14 +309,14 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		8BB1D5362348F5E400626A90 /* Mood Select */ = {
+		8BB1D5362348F5E400626A90 /* Person Details */ = {
 			isa = PBXGroup;
 			children = (
 				8B48EDAA235ECB2A007ACF54 /* SwiftUIViews */,
 				8BB1D5332348F2F200626A90 /* PersonDetailsPresenter.swift */,
 				8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */,
 			);
-			path = "Mood Select";
+			path = "Person Details";
 			sourceTree = "<group>";
 		};
 		8BB1D53E2348FEB800626A90 /* Categories */ = {
@@ -304,6 +325,7 @@
 				8BB1D55E23504D1C00626A90 /* Encodable+HOB.swift */,
 				8BB1D56023504E7B00626A90 /* String+HOB.swift */,
 				8BB1D52F2348EFED00626A90 /* UserDefaults+HOB.swift */,
+				8B97427323C7131C00B74B27 /* UIApplication+HOB.swift */,
 				8BB1D55C2349D3C300626A90 /* UIButton+MH.swift */,
 				8BC24682235D96BF00715245 /* UIImage+HOB.swift */,
 				8BB1D53C2348FEB100626A90 /* UIView+HOB.swift */,
@@ -381,12 +403,21 @@
 		8BDC25E72352390E004C75E0 /* Person */ = {
 			isa = PBXGroup;
 			children = (
+				8B9AA9DE237E873300577844 /* SwiftUIObservable */,
 				8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */,
 				8BDC25E823523936004C75E0 /* PersonManager.swift */,
-				8B9AA9DE237E873300577844 /* SwiftUIObservable */,
 				8BB1D52C2348EF0800626A90 /* Person.swift */,
 			);
 			path = Person;
+			sourceTree = "<group>";
+		};
+		8BDCFFE7238E484800B3FDF0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8BDCFFE5238E2C1200B3FDF0 /* EnterTextView.swift */,
+				8B7351F123C701FF0047CFA2 /* MessageCellView.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		8DD0AA299D55EE83855F9901 /* Pods */ = {
@@ -631,8 +662,10 @@
 				8BB1D53D2348FEB100626A90 /* UIView+HOB.swift in Sources */,
 				8BC24683235D96BF00715245 /* UIImage+HOB.swift in Sources */,
 				8BB1D55B2349D0E800626A90 /* IntroPresenter.swift in Sources */,
+				8BDCFFE6238E2C1200B3FDF0 /* EnterTextView.swift in Sources */,
 				8BB1D5572349D08900626A90 /* IntroViewController.swift in Sources */,
 				8BB1D5492349B12400626A90 /* PersonSelectPresenter.swift in Sources */,
+				8B4C50B1238E4F8700D76506 /* MessageManager.swift in Sources */,
 				8BB1D54E2349C89200626A90 /* AddPersonViewController.swift in Sources */,
 				8B9AA9D7237E5D5F00577844 /* View+HOB.swift in Sources */,
 				8BDC25E023514D46004C75E0 /* HOBFirestore.swift in Sources */,
@@ -642,6 +675,8 @@
 				8BB1D56123504E7B00626A90 /* String+HOB.swift in Sources */,
 				8B9AA9DB237E756300577844 /* PersonDetailsViewController.swift in Sources */,
 				8BB1D5342348F2F200626A90 /* PersonDetailsPresenter.swift in Sources */,
+				8B97427423C7131C00B74B27 /* UIApplication+HOB.swift in Sources */,
+				8B7351F223C701FF0047CFA2 /* MessageCellView.swift in Sources */,
 				8BB1D52D2348EF0800626A90 /* Person.swift in Sources */,
 				8BB1D55F23504D1C00626A90 /* Encodable+HOB.swift in Sources */,
 				8B48EDAC235ECB4F007ACF54 /* PersonDetailsHeaderView.swift in Sources */,
@@ -654,6 +689,7 @@
 				8BB1D5302348EFED00626A90 /* UserDefaults+HOB.swift in Sources */,
 				8BB1D55D2349D3C300626A90 /* UIButton+MH.swift in Sources */,
 				8B9AA9D9237E72D400577844 /* PersonDetailsView.swift in Sources */,
+				8B4C50AF238E4A5A00D76506 /* Message.swift in Sources */,
 				8BDC25EB23523DE9004C75E0 /* ModelProtocol.swift in Sources */,
 				8BB1D5502349C89F00626A90 /* AddPersonPresenter.swift in Sources */,
 			);
