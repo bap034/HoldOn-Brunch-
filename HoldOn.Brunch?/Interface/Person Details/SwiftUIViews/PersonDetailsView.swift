@@ -25,6 +25,10 @@ struct PersonDetailsView: View {
 			})
 				.padding([.leading, .trailing], 20)
 			
+			List(personDetails.messages.reversed()) { message in
+				MessageCellView(message: message)
+			}
+			
 			Spacer()
 		}
     }
@@ -32,6 +36,11 @@ struct PersonDetailsView: View {
 
 struct PersonDetailsViewController_Previews: PreviewProvider {
     static var previews: some View {
-		PersonDetailsView().environmentObject(PersonDetails(person: Person(name: "Baller", imageURLString: "cat", moodStatus: .confused)))
+		let person = Person(name: "Baller", imageURLString: "cat", moodStatus: .confused)
+		let personDetails = PersonDetails(person: person)
+		let message1 = Message(personId: person.id, created: Date(), text: "Message 1 text")
+		let message2 = Message(personId: person.id, created: Date().addingTimeInterval(123), text: "Message 2 text")
+		personDetails.messages = [message1, message2]
+		return PersonDetailsView().environmentObject(personDetails)
     }
 }

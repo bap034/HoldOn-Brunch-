@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Message: ModelProtocol {
+struct Message: ModelProtocol, Identifiable {
 	var id: String {
 		let dateFormatter = ISO8601DateFormatter()
 		dateFormatter.formatOptions = .withInternetDateTime
@@ -18,4 +18,11 @@ struct Message: ModelProtocol {
 	let personId: String
 	let created: Date
 	let text: String
+	
+	var displayDate: String {
+		let dateFormatter = ISO8601DateFormatter()
+		dateFormatter.formatOptions = [.withFullDate, .withFullTime, .withSpaceBetweenDateAndTime]
+		let displayDate = dateFormatter.string(from: created)
+		return displayDate
+	}
 }
