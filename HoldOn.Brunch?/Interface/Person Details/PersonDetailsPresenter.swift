@@ -68,7 +68,6 @@ extension PersonDetailsPresenter {
 		let message = MessageManager.createNewMessage(personId: person.id, text: messageText)
 		MessageManager.storeMessage(message, database: database, success: {
 			self.viewProtocol?.setPostButtonEnabled(true)
-			self.viewProtocol?.clearTextField()
 			PersonManager.getAllMessagesForPerson(self.person, database: self.database, success: { (messages) in
 				self.messages = messages
 				self.viewProtocol?.updateMessagesTable()
