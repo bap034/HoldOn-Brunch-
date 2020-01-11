@@ -18,7 +18,8 @@ struct PersonDetailsView: View {
 		
 		return VStack {
 			PersonDetailsHeaderView(personDetails: _personDetails)
-				.padding(20)
+				.padding([.leading, .trailing], 20)
+				.padding([.top, .bottom], 10)
 			
 			EnterTextView(placeholderText: placeholderText, enteredText: $enteredText, onButtonTap: {
 				self.onPostMessage?(self.enteredText)

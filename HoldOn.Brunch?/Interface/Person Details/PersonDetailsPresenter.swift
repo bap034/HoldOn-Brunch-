@@ -63,9 +63,12 @@ extension PersonDetailsPresenter {
 	}
 	
 	func onPostMessageButtonTapped(messageText: String) {
+		let trimmedMessageText = messageText.trimmingCharacters(in: .whitespacesAndNewlines)
+		guard !trimmedMessageText.isEmpty else { return }
+		
 		viewProtocol?.setPostButtonEnabled(false)
 		
-		let message = MessageManager.createNewMessage(personId: person.id, text: messageText)
+		let message = MessageManager.createNewMessage(personId: person.id, text: trimmedMessageText)
 		MessageManager.storeMessage(message, database: database, success: {
 			self.viewProtocol?.setPostButtonEnabled(true)
 			PersonManager.getAllMessagesForPerson(self.person, database: self.database, success: { (messages) in

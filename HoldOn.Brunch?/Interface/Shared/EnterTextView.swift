@@ -26,7 +26,7 @@ struct EnterTextView: View {
 			}) {
 				Text("Post")
 			}
-			.padding()
+			.padding([.leading], 10)
 		}
     }
 }
