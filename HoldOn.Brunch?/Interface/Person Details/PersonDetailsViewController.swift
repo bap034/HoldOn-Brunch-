@@ -32,7 +32,15 @@ extension PersonDetailsViewController {
 		self.detailsView = PersonDetailsView(onPostMessage: { message in
 			self.presenter.onPostMessageButtonTapped(messageText: message)
 		})
-		view = detailsView.environmentObject(personDetails).toUIView()
+		
+		let newView = detailsView.environmentObject(personDetails).toUIView()
+		view.addSubview(newView)
+		
+		newView.translatesAutoresizingMaskIntoConstraints = false
+		newView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+		newView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+		newView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+		newView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 	}
 }
 
