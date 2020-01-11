@@ -12,6 +12,7 @@ class PersonDetailsViewController: UIViewController {
 	private let presenter: PersonDetailsPresenter
 	
 	private var personDetails = PersonDetails(name: "", image: nil, moodStatus: .new)
+	private var detailsView: PersonDetailsView?
 	
 	init(presenter: PersonDetailsPresenter) {
 		self.presenter = presenter
@@ -28,10 +29,10 @@ extension PersonDetailsViewController {
 	private func setUpSelf() {
 		view.backgroundColor = .white
 		
-		let detailsView = PersonDetailsView(onPostMessage: { message in
+		self.detailsView = PersonDetailsView(onPostMessage: { message in
 			self.presenter.onPostMessageButtonTapped(messageText: message)
-		}).environmentObject(personDetails)
-		view = detailsView.toUIView()
+		})
+		view = detailsView.environmentObject(personDetails).toUIView()
 	}
 }
 
@@ -80,7 +81,7 @@ extension PersonDetailsViewController: PersonDetailsViewProtocol {
 		view.isUserInteractionEnabled = enabled
 	}
 	
-	func reloadMessagesTable() {
+	func updateMessagesTable() {
 		personDetails.messages = presenter.onGetMessages()
 	}
 }

@@ -20,7 +20,9 @@ struct EnterTextView: View {
 				.textFieldStyle(RoundedBorderTextFieldStyle())
 			
 			Button(action: {
+				UIApplication.shared.endEditing()
 				self.onButtonTap?()
+				self.enteredText = ""
 			}) {
 				Text("Post")
 			}

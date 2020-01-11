@@ -12,7 +12,7 @@ protocol PersonDetailsViewProtocol: ViewProtocol {
 	func setPerson(_ person: Person)
 	func updatePersonImageData(_ data: Data)
 	func setPostButtonEnabled(_ enabled: Bool)
-	func reloadMessagesTable()
+	func updateMessagesTable()
 }
 
 class PersonDetailsPresenter {
@@ -31,6 +31,7 @@ class PersonDetailsPresenter {
 	
 	private func didSetViewProtocol() {
 		PersonManager.getAllMessagesForPerson(person, database: database, success: { (messages) in
+			self.messages = messages
 			self.viewProtocol?.setPerson(self.person)
 		}) { (error) in
 			let errorDescription = error?.localizedDescription ?? "nil error"
@@ -63,10 +64,15 @@ extension PersonDetailsPresenter {
 	
 	func onPostMessageButtonTapped(messageText: String) {
 		viewProtocol?.setPostButtonEnabled(false)
+		
 		let message = MessageManager.createNewMessage(personId: person.id, text: messageText)
 		MessageManager.storeMessage(message, database: database, success: {
 			self.viewProtocol?.setPostButtonEnabled(true)
-			self.viewProtocol?.reloadMessagesTable()
+			self.viewProtocol?.clearTextField()
+			PersonManager.getAllMessagesForPerson(self.person, database: self.database, success: { (messages) in
+				self.messages = messages
+				self.viewProtocol?.updateMessagesTable()
+			}, failure: nil)
 		}) { (error) in
 			self.viewProtocol?.setPostButtonEnabled(true)
 			self.viewProtocol?.showOneButtonAlertModal(title: "Oops", message: error?.localizedDescription)
