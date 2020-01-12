@@ -1,5 +1,5 @@
 //
-//  PersonDetails.swift
+//  PersonDetailsViewModel.swift
 //  HoldOn.Brunch?
 //
 //  Created by Brett Petersen on 11/14/19.
@@ -8,11 +8,15 @@
 
 import UIKit
 
-class PersonDetails: ObservableObject {
+class PersonDetailsViewModel: ObservableObject {
 	@Published var name: String	// TODO: how to remove duplicating properties. can Person hold observable details?
 	@Published var image: UIImage?
 	@Published var moodStatus: MoodStatus
 	@Published var messages = [Message]()
+	@Published var enteredMessageText = ""
+	@Published var isPostButtonDisabled = false
+	
+	var onPostMessage: (()->Void)?
 	
 	init(name: String, image: UIImage?, moodStatus: MoodStatus) {
 		self.name = name

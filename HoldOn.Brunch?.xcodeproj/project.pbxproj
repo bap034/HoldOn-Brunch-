@@ -20,7 +20,7 @@
 		8B9AA9D9237E72D400577844 /* PersonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9D8237E72D400577844 /* PersonDetailsView.swift */; };
 		8B9AA9DB237E756300577844 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */; };
 		8B9AA9DD237E834A00577844 /* PersonPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */; };
-		8B9AA9E0237E875100577844 /* PersonDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DF237E875100577844 /* PersonDetails.swift */; };
+		8B9AA9E0237E875100577844 /* PersonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DF237E875100577844 /* PersonDetailsViewModel.swift */; };
 		8BB1D4FC2348EE4E00626A90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D4FB2348EE4E00626A90 /* AppDelegate.swift */; };
 		8BB1D5032348EE5100626A90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5022348EE5100626A90 /* Assets.xcassets */; };
 		8BB1D5062348EE5100626A90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5042348EE5100626A90 /* LaunchScreen.storyboard */; };
@@ -89,7 +89,7 @@
 		8B9AA9D8237E72D400577844 /* PersonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsView.swift; sourceTree = "<group>"; };
 		8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
 		8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPresenterProtocols.swift; sourceTree = "<group>"; };
-		8B9AA9DF237E875100577844 /* PersonDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetails.swift; sourceTree = "<group>"; };
+		8B9AA9DF237E875100577844 /* PersonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewModel.swift; sourceTree = "<group>"; };
 		8BB1D4F82348EE4E00626A90 /* HoldOn.Brunch?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HoldOn.Brunch?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB1D4FB2348EE4E00626A90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BB1D5022348EE5100626A90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 		8B9AA9DE237E873300577844 /* SwiftUIObservable */ = {
 			isa = PBXGroup;
 			children = (
-				8B9AA9DF237E875100577844 /* PersonDetails.swift */,
+				8B9AA9DF237E875100577844 /* PersonDetailsViewModel.swift */,
 			);
 			path = SwiftUIObservable;
 			sourceTree = "<group>";
@@ -313,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				8B48EDAA235ECB2A007ACF54 /* SwiftUIViews */,
+				8B9AA9DE237E873300577844 /* SwiftUIObservable */,
 				8BB1D5332348F2F200626A90 /* PersonDetailsPresenter.swift */,
 				8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */,
 			);
@@ -403,7 +404,6 @@
 		8BDC25E72352390E004C75E0 /* Person */ = {
 			isa = PBXGroup;
 			children = (
-				8B9AA9DE237E873300577844 /* SwiftUIObservable */,
 				8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */,
 				8BDC25E823523936004C75E0 /* PersonManager.swift */,
 				8BB1D52C2348EF0800626A90 /* Person.swift */,
@@ -669,7 +669,7 @@
 				8BB1D54E2349C89200626A90 /* AddPersonViewController.swift in Sources */,
 				8B9AA9D7237E5D5F00577844 /* View+HOB.swift in Sources */,
 				8BDC25E023514D46004C75E0 /* HOBFirestore.swift in Sources */,
-				8B9AA9E0237E875100577844 /* PersonDetails.swift in Sources */,
+				8B9AA9E0237E875100577844 /* PersonDetailsViewModel.swift in Sources */,
 				8BDC25E923523936004C75E0 /* PersonManager.swift in Sources */,
 				8BB1D54B2349B13300626A90 /* PersonSelectViewController.swift in Sources */,
 				8BB1D56123504E7B00626A90 /* String+HOB.swift in Sources */,

@@ -31,8 +31,8 @@ extension Person {
 		return url
 	}
 	
-	var observableDetails: PersonDetails {
-		let details = PersonDetails(person: self)
+	var observableDetails: PersonDetailsViewModel {
+		let details = PersonDetailsViewModel(person: self)
 		return details
 	}
 }
