@@ -12,6 +12,7 @@ struct EnterTextView: View {
 	
 	let placeholderText: String
 	@Binding var enteredText: String
+	@Binding var isEnabled: Bool
 	var onButtonTap: (()->Void)?
 	
     var body: some View {
@@ -27,15 +28,17 @@ struct EnterTextView: View {
 				Text("Post")
 			}
 			.padding([.leading], 10)
+			.disabled(!isEnabled)
 		}
     }
 }
 
 struct EnterTextView_Previews: PreviewProvider {
 	@State static var textExample = ""
+	@State static var isButtonEnabled = true
 	
 	static var previews: some View {
-		var view = EnterTextView(placeholderText: "Baller said...", enteredText: $textExample)
+		var view = EnterTextView(placeholderText: "Baller said...", enteredText: $textExample, isEnabled: $isButtonEnabled)
 		view.onButtonTap = {
 			print("send message: \(textExample)")
 		}

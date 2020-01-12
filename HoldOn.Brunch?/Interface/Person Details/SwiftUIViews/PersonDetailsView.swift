@@ -9,20 +9,18 @@
 import SwiftUI
 
 struct PersonDetailsView: View {
-	@EnvironmentObject var personDetails: PersonDetails
-	@State private var enteredText = ""
-	var onPostMessage: ((String)->Void)?
+	@ObservedObject var personDetails: PersonDetailsViewModel
 	
     var body: some View {
 		let placeholderText: String = "\(self.personDetails.name) said..."
 		
 		return VStack {
-			PersonDetailsHeaderView(personDetails: _personDetails)
+			PersonDetailsHeaderView(personDetails: personDetails)
 				.padding([.leading, .trailing], 20)
 				.padding([.top, .bottom], 10)
 			
-			EnterTextView(placeholderText: placeholderText, enteredText: $enteredText, onButtonTap: {
-				self.onPostMessage?(self.enteredText)
+			EnterTextView(placeholderText: placeholderText, enteredText: $personDetails.enteredMessageText, isEnabled: $personDetails.isPostButtonEnabled, onButtonTap: {
+				self.personDetails.onPostMessage?()
 			})
 				.padding([.leading, .trailing], 20)
 			
@@ -38,10 +36,10 @@ struct PersonDetailsView: View {
 struct PersonDetailsViewController_Previews: PreviewProvider {
     static var previews: some View {
 		let person = Person(name: "Baller", imageURLString: "cat", moodStatus: .confused)
-		let personDetails = PersonDetails(person: person)
+		let personDetails = PersonDetailsViewModel(person: person)
 		let message1 = Message(personId: person.id, created: Date(), text: "Message 1 text")
 		let message2 = Message(personId: person.id, created: Date().addingTimeInterval(123), text: "Message 2 text")
 		personDetails.messages = [message1, message2]
-		return PersonDetailsView().environmentObject(personDetails)
+		return PersonDetailsView(personDetails: personDetails)
     }
 }
