@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct PersonDetailsHeaderView: View {
-	@EnvironmentObject var personDetails: PersonDetails
+	@ObservedObject var personDetails: PersonDetailsViewModel
 	
     var body: some View {
 		// Container
@@ -34,7 +34,7 @@ struct PersonDetailsHeaderView: View {
 						.allowsTightening(true)
 					
 					// Buttons Container
-					TwoTextButtonSelectView(personDetails: _personDetails)
+					TwoTextButtonSelectView(personDetails: personDetails)
 						.frame(height: 40)
 				}
 				
@@ -50,7 +50,7 @@ struct PersonDetailsHeaderView: View {
 struct TwoTextButtonSelectView: View {
 	var option1 = MoodStatus.confused
 	var option2 = MoodStatus.confusing
-	@EnvironmentObject var personDetails: PersonDetails
+	@ObservedObject var personDetails: PersonDetailsViewModel
 	
 	var body: some View {
 	
@@ -94,6 +94,6 @@ struct TwoTextButtonSelectView: View {
 
 struct PersonDetailsHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-		PersonDetailsHeaderView().environmentObject(PersonDetails(person: Person(name: "Baller", imageURLString: "cat", moodStatus: .confused)))
+		PersonDetailsHeaderView(personDetails: PersonDetailsViewModel(person: Person(name: "Baller", imageURLString: "cat", moodStatus: .confused)))
     }
 }
