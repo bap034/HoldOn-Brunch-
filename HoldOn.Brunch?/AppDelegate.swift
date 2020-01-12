@@ -14,10 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		FirebaseConfiguration.shared.setLoggerLevel(.min)
 		FirebaseApp.configure()
+				
+		UNUserNotificationCenter.current().delegate = self // For iOS 10 display notification (sent via APNS)
+		Messaging.messaging().delegate = self // FirebaseMessaging
+		
+		let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+		UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_, _ in })
+		
+		application.registerForRemoteNotifications()
 		
 		let presenter = IntroPresenter()
 		let vc = IntroViewController(presenter: presenter)
@@ -54,3 +61,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+		print("********* notification received: \(notification.request.content.body)")
+	}
+	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+		print("********* registered notifications device token: \(deviceToken.description)")
+	}
+}
+
+extension AppDelegate: MessagingDelegate {
+	func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+		print("~~~~~~~~ Firebase registration token: \(fcmToken)")
+		
+		let dataDict:[String: String] = ["token": fcmToken]
+		NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+		// TODO: If necessary send token to application server.
+		// Note: This callback is fired at each app startup and whenever a new token is generated.
+	}
+	func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+		print("~~~~~~~~ Firebase notification received: \(remoteMessage.appData)")
+	}
+}
