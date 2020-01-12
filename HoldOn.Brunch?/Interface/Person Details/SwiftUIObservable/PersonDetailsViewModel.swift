@@ -6,6 +6,7 @@
 //  Copyright © 2019 Brett Petersen. All rights reserved.
 //
 
+import Combine
 import UIKit
 
 class PersonDetailsViewModel: ObservableObject {
@@ -14,7 +15,7 @@ class PersonDetailsViewModel: ObservableObject {
 	@Published var moodStatus: MoodStatus
 	@Published var messages = [Message]()
 	@Published var enteredMessageText = ""
-	@Published var isPostButtonDisabled = false
+	@Published var isPostButtonEnabled = true
 	
 	var onPostMessage: (()->Void)?
 	

@@ -19,7 +19,7 @@ struct PersonDetailsView: View {
 				.padding([.leading, .trailing], 20)
 				.padding([.top, .bottom], 10)
 			
-			EnterTextView(placeholderText: placeholderText, enteredText: $personDetails.enteredMessageText, onButtonTap: {
+			EnterTextView(placeholderText: placeholderText, enteredText: $personDetails.enteredMessageText, isEnabled: $personDetails.isPostButtonEnabled, onButtonTap: {
 				self.personDetails.onPostMessage?()
 			})
 				.padding([.leading, .trailing], 20)
