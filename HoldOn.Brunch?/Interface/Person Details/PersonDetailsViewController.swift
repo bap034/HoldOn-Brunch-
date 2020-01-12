@@ -11,7 +11,7 @@ import UIKit
 class PersonDetailsViewController: UIViewController {
 	private let presenter: PersonDetailsPresenter
 	
-	private var personDetails = PersonDetails(name: "", image: nil, moodStatus: .new)
+	private var personDetails = PersonDetailsViewModel(name: "", image: nil, moodStatus: .new)
 	private var detailsView: PersonDetailsView?
 	
 	init(presenter: PersonDetailsPresenter) {
@@ -29,11 +29,9 @@ extension PersonDetailsViewController {
 	private func setUpSelf() {
 		view.backgroundColor = .white
 		
-		self.detailsView = PersonDetailsView(onPostMessage: { message in
-			self.presenter.onPostMessageButtonTapped(messageText: message)
-		})
+		self.detailsView = PersonDetailsView(personDetails: personDetails)
 		
-		let newView = detailsView.environmentObject(personDetails).toUIView()
+		let newView = detailsView.toUIView()
 		view.addSubview(newView)
 		
 		newView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,6 +76,9 @@ extension PersonDetailsViewController: PersonDetailsViewProtocol {
 		personDetails.image = image
 		personDetails.moodStatus = person.moodStatus
 		personDetails.messages = presenter.onGetMessages()
+		personDetails.onPostMessage = {
+			self.presenter.onPostMessageButtonTapped(messageText: self.personDetails.enteredMessageText)
+		}
 	}
 	
 	func updatePersonImageData(_ data: Data) {
@@ -86,7 +87,7 @@ extension PersonDetailsViewController: PersonDetailsViewProtocol {
 	}
 	
 	func setPostButtonEnabled(_ enabled: Bool) {
-		view.isUserInteractionEnabled = enabled
+		personDetails.isPostButtonEnabled = enabled
 	}
 	
 	func updateMessagesTable() {
