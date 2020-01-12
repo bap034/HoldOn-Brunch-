@@ -87,7 +87,7 @@ extension PersonDetailsViewController: PersonDetailsViewProtocol {
 	}
 	
 	func setPostButtonEnabled(_ enabled: Bool) {
-		view.isUserInteractionEnabled = enabled
+		personDetails.isPostButtonEnabled = enabled
 	}
 	
 	func updateMessagesTable() {
