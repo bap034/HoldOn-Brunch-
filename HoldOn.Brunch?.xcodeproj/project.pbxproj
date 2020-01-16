@@ -20,6 +20,7 @@
 		8B9AA9DB237E756300577844 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */; };
 		8B9AA9DD237E834A00577844 /* PersonPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */; };
 		8B9AA9E0237E875100577844 /* PersonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DF237E875100577844 /* PersonDetailsViewModel.swift */; };
+		8BAAB63923D0FCFA008B5C14 /* Array+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAB63823D0FCFA008B5C14 /* Array+HOB.swift */; };
 		8BB1D4FC2348EE4E00626A90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D4FB2348EE4E00626A90 /* AppDelegate.swift */; };
 		8BB1D5032348EE5100626A90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5022348EE5100626A90 /* Assets.xcassets */; };
 		8BB1D5062348EE5100626A90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5042348EE5100626A90 /* LaunchScreen.storyboard */; };
@@ -87,6 +88,7 @@
 		8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
 		8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPresenterProtocols.swift; sourceTree = "<group>"; };
 		8B9AA9DF237E875100577844 /* PersonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewModel.swift; sourceTree = "<group>"; };
+		8BAAB63823D0FCFA008B5C14 /* Array+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+HOB.swift"; sourceTree = "<group>"; };
 		8BB1D4F82348EE4E00626A90 /* HoldOn.Brunch?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HoldOn.Brunch?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB1D4FB2348EE4E00626A90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BB1D5022348EE5100626A90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 		8BB1D53E2348FEB800626A90 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				8BAAB63823D0FCFA008B5C14 /* Array+HOB.swift */,
 				8BB1D55E23504D1C00626A90 /* Encodable+HOB.swift */,
 				8BB1D56023504E7B00626A90 /* String+HOB.swift */,
 				8BB1D52F2348EFED00626A90 /* UserDefaults+HOB.swift */,
@@ -630,6 +633,7 @@
 				8BB1D55D2349D3C300626A90 /* UIButton+MH.swift in Sources */,
 				8B9AA9D9237E72D400577844 /* PersonDetailsView.swift in Sources */,
 				8B4C50AF238E4A5A00D76506 /* Message.swift in Sources */,
+				8BAAB63923D0FCFA008B5C14 /* Array+HOB.swift in Sources */,
 				8BDC25EB23523DE9004C75E0 /* ModelProtocol.swift in Sources */,
 				8BB1D5502349C89F00626A90 /* AddPersonPresenter.swift in Sources */,
 			);
