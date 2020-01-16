@@ -12,6 +12,7 @@ protocol PersonSelectViewProtocol: ViewProtocol {
 	func presentAddPersonVC(database: HOBModelDatabaseProtocol)
 	func pushMoodSelectVC(person: Person, database: HOBModelDatabaseProtocol, storage: HOBStorageProtocol)
 	func reloadTableView()
+	func requestAppToShowNotifications()
 }
 
 class PersonSelectPresenter {
@@ -76,6 +77,8 @@ extension PersonSelectPresenter {
 		}) { (error) in
 			self.viewProtocol?.showNetworkActivityIndicator(false)
 		}
+		
+		viewProtocol?.requestAppToShowNotifications()
 	}
 }
 

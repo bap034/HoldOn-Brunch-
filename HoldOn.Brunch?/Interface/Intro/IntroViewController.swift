@@ -92,6 +92,8 @@ extension IntroViewController {
 		setUpTitleLabel()
 		setUpImageView()
 		setUpButton()
+		
+//		UIApplication.shared.registerForRemoteNotifications()
 	}
 	
 	override func viewDidLayoutSubviews() {
