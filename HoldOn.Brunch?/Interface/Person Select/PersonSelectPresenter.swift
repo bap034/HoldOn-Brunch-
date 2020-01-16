@@ -94,20 +94,21 @@ extension PersonSelectPresenter {
 	
 	// MARK: ViewController
 	func onViewWillAppear() {
-		viewProtocol?.showNetworkActivityIndicator(true)
+		viewProtocol?.showActivityIndicator(true)
 		PersonManager.getAllPersons(success: { (persons) in
 			if !self.persons.containsSameElements(as: persons) {
 				let isFirstLoad = self.persons.isEmpty
+				let needsToChangeRowCount = self.persons.count != persons.count // Prevents a crash for adding or removing rows for new/deleted persons
 				self.persons = persons
 				self.retrieveAsyncPersonsImageData(persons: persons)
 				
-				if isFirstLoad {
+				if isFirstLoad || needsToChangeRowCount {
 					self.viewProtocol?.reloadTableView()
 				}
 			}
-			self.viewProtocol?.showNetworkActivityIndicator(false)
+			self.viewProtocol?.showActivityIndicator(false)
 		}) { (error) in
-			self.viewProtocol?.showNetworkActivityIndicator(false)
+			self.viewProtocol?.showActivityIndicator(false)
 		}
 		
 		viewProtocol?.requestAppToShowNotifications()

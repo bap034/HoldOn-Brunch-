@@ -103,6 +103,7 @@ extension PersonSelectViewController: PersonSelectViewProtocol {
 		let presenter = AddPersonPresenter(database: database)
 		let vc = AddPersonViewController(presenter: presenter)
 		let nc = UINavigationController(rootViewController: vc)
+		nc.modalPresentationStyle = .fullScreen
 		navigationController?.present(nc, animated: true, completion: nil)
 	}
 	
@@ -116,7 +117,7 @@ extension PersonSelectViewController: PersonSelectViewProtocol {
 		tableView.reloadSections([0], with: .automatic) // TODO: animate reload without hardcoded section
 	}
 	func reloadCell(indexPath: IndexPath) {
-		tableView.reloadRows(at: [indexPath], with: .automatic)
+		tableView.reloadRows(at: [indexPath], with: .none)
 	}
 	
 	func requestAppToShowNotifications() {
