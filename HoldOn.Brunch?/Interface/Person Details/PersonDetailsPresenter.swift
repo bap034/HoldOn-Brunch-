@@ -43,13 +43,13 @@ class PersonDetailsPresenter {
 // MARK: - Person Actions
 extension PersonDetailsPresenter {
 	private func savePerson(_ person: Person) {
-		viewProtocol?.showNetworkActivityIndicator(true)
+		viewProtocol?.showActivityIndicator(true)
 		PersonManager.storePerson(person, database: database, success: {
 			print("successfully stored: \(person)")
-			self.viewProtocol?.showNetworkActivityIndicator(false)
+			self.viewProtocol?.showActivityIndicator(false)
 		}) { (error) in
 			print("error: \(String(describing: error)) storing: \(person)")
-			self.viewProtocol?.showNetworkActivityIndicator(false)
+			self.viewProtocol?.showActivityIndicator(false)
 		}
 	}
 }
