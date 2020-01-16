@@ -117,4 +117,9 @@ extension PersonSelectViewController: PersonSelectViewProtocol {
 	func reloadTableView() {
 		tableView.reloadSections([0], with: .automatic) // TODO: animate reload without hardcoded section
 	}
+	
+	func requestAppToShowNotifications() {
+		let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+		UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_, _ in })
+	}
 }

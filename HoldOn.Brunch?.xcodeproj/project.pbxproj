@@ -227,7 +227,6 @@
 		8BB1D4FA2348EE4E00626A90 /* HoldOn.Brunch? */ = {
 			isa = PBXGroup;
 			children = (
-				8B4CBA9F23CAE26700964AB5 /* HoldOn.Brunch?.entitlements */,
 				8BB1D52E2348EFCD00626A90 /* Utility */,
 				8BB1D5292348EE8A00626A90 /* Model */,
 				8BB1D52A2348EE9100626A90 /* Interface */,
@@ -329,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				8BDC25DC23514A05004C75E0 /* GoogleService-Info.plist */,
+				8B4CBA9F23CAE26700964AB5 /* HoldOn.Brunch?.entitlements */,
 				8BB1D5072348EE5100626A90 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -799,7 +799,7 @@
 			baseConfigurationReference = 8B890C486EE2828A2759FEC2 /* Pods-HoldOn.Brunch?.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "HoldOn.Brunch?/HoldOn.Brunch?.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "HoldOn.Brunch?/Supporting Files/HoldOn.Brunch?.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86WXZVZ79J;
@@ -822,7 +822,7 @@
 			baseConfigurationReference = 547C9FFE35E5E2D5EFD79A42 /* Pods-HoldOn.Brunch?.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "HoldOn.Brunch?/HoldOn.Brunch?.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "HoldOn.Brunch?/Supporting Files/HoldOn.Brunch?.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86WXZVZ79J;
