@@ -14,10 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		FirebaseConfiguration.shared.setLoggerLevel(.min)
 		FirebaseApp.configure()
+		FirebaseConfiguration.shared.setLoggerLevel(.min)
+
+		UNUserNotificationCenter.current().delegate = self // For iOS 10 display notification (sent via APNS)
+		Messaging.messaging().delegate = self // FirebaseMessaging
+
+		application.registerForRemoteNotifications()
 		
 		let presenter = IntroPresenter()
 		let vc = IntroViewController(presenter: presenter)
@@ -50,7 +54,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillTerminate(_ application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
-
-
 }
 
+// MARK: - UNUserNotificationCenterDelegate
+extension AppDelegate: UNUserNotificationCenterDelegate {
+	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+		print("********* notification received: \(notification.request.content.body)")
+	}
+	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+		print("********* registered notifications device token: \(deviceToken.description)")
+	}
+	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+	  // If you are receiving a notification message while your app is in the background,
+	  // this callback will not be fired till the user taps on the notification launching the application.
+	  // TODO: Handle data of notification
+
+	  // Print full message.
+	  print("********* \(userInfo)")
+	}
+	
+}
+
+// MARK: - MessagingDelegate
+extension AppDelegate: MessagingDelegate {
+	func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+		print("~~~~~~~~ Firebase registration token: \(fcmToken)")
+		
+		let dataDict:[String: String] = ["token": fcmToken]
+		NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+		// Note: This callback is fired at each app startup and whenever a new token is generated.
+		
+		Messaging.messaging().subscribe(toTopic: "allUsers") { error in
+			print("Subscribed to allUsers topic")
+		}
+	}
+	func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+		print("~~~~~~~~ Firebase notification received: \(remoteMessage.appData)")
+	}
+}
