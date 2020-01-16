@@ -86,11 +86,9 @@ extension PersonSelectViewController: UITableViewDataSource {
 		if let person = presenter.onCellForIndexPath(indexPath) {
 			cell.textLabel?.text = person.name
 			
-			if person.imageURL != nil {
-				if let sureImageData = presenter.getImageDataForPerson(person) {
-					let image = UIImage(data: sureImageData)
-					cell.imageView?.image = image
-				}
+			if let sureImageData = presenter.getImageDataForPerson(person) {
+				let image = UIImage(data: sureImageData)
+				cell.imageView?.image = image
 			}
 			cell.detailTextLabel?.text = person.moodStatus.rawValue
 		}
@@ -116,6 +114,9 @@ extension PersonSelectViewController: PersonSelectViewProtocol {
 	
 	func reloadTableView() {
 		tableView.reloadSections([0], with: .automatic) // TODO: animate reload without hardcoded section
+	}
+	func reloadCell(indexPath: IndexPath) {
+		tableView.reloadRows(at: [indexPath], with: .automatic)
 	}
 	
 	func requestAppToShowNotifications() {

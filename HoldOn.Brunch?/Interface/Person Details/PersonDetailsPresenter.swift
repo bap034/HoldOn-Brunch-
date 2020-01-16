@@ -88,7 +88,7 @@ extension PersonDetailsPresenter {
 
 // MARK: - PersonImageRetrievablePresenterProtocol
 extension PersonDetailsPresenter: PersonImageRetrievablePresenterProtocol {
-	func onImageDataComplete(cachedData: Data?) {
+	func onImageDataComplete(person:Person, cachedData: Data?) {
 		if let sureCachedData = cachedData {
 			self.viewProtocol?.updatePersonImageData(sureCachedData)
 		}
