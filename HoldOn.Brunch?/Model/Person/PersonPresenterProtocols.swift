@@ -11,15 +11,14 @@ import Foundation
 protocol PersonImageRetrievablePresenterProtocol {
 	var storage: HOBStorageProtocol { get }
 	
-	func getImageDataForPerson(_ person: Person) -> Data?
-	func onImageDataComplete(cachedData: Data?)
+	func retrieveImageDataForPerson(_ person: Person)
+	func onImageDataComplete(person: Person, cachedData: Data?)
 }
 
 extension PersonImageRetrievablePresenterProtocol {
-	func getImageDataForPerson(_ person: Person) -> Data? {
-		let data = PersonManager.getImageDataForPerson(person, storage: storage) { (cachedData) in
-			self.onImageDataComplete(cachedData: cachedData)
+	func retrieveImageDataForPerson(_ person: Person) {
+		PersonManager.getImageDataForPerson(person, storage: storage) { (cachedData) in
+			self.onImageDataComplete(person: person, cachedData: cachedData)
 		}
-		return data
 	}
 }

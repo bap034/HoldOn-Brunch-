@@ -69,11 +69,9 @@ extension PersonDetailsViewController: PersonDetailsViewProtocol {
 	}
 	
 	func setPerson(_ person: Person) {
-		let imageData = presenter.getImageDataForPerson(person)
-		let image = getImageForData(imageData)
+		presenter.retrieveImageDataForPerson(person)
 		
 		personDetails.name = person.name
-		personDetails.image = image
 		personDetails.moodStatus = person.moodStatus
 		personDetails.messages = presenter.onGetMessages()
 		personDetails.onPostMessage = {

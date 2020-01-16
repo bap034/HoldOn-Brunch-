@@ -12,6 +12,7 @@ protocol PersonSelectViewProtocol: ViewProtocol {
 	func presentAddPersonVC(database: HOBModelDatabaseProtocol)
 	func pushMoodSelectVC(person: Person, database: HOBModelDatabaseProtocol, storage: HOBStorageProtocol)
 	func reloadTableView()
+	func reloadCell(indexPath: IndexPath)
 	func requestAppToShowNotifications()
 }
 
@@ -19,6 +20,9 @@ class PersonSelectPresenter {
 	
 	var viewProtocol: PersonSelectViewProtocol? { didSet { didSetViewProtocol() } }
 	private var persons = [Person]()
+	
+	/// Key is the `IndexPath.row`
+	private var personsImageData = [String: Data]()
 	private let database: HOBModelDatabaseProtocol
 	internal let storage: HOBStorageProtocol
 	
@@ -28,8 +32,16 @@ class PersonSelectPresenter {
 		self.storage = storage
 	}
 	
-	private func didSetViewProtocol() {
-		
+	private func didSetViewProtocol() {}
+	
+	private func retrieveAsyncPersonsImageData(persons: [Person]) {
+		DispatchQueue.global(qos: .userInteractive).async {
+			for person in persons {
+				guard person.imageURL != nil else { continue }
+				
+				self.retrieveImageDataForPerson(person)
+			}
+		}
 	}
 	
 	private func isValidIndexPath(_ indexPath: IndexPath) -> Bool {
@@ -42,12 +54,25 @@ class PersonSelectPresenter {
 		let person = persons[indexPath.row]
 		return person
 	}
+	private func getIndexPathForPerson(_ person: Person) -> IndexPath? {
+		guard let sureIndexPathRow = persons.firstIndex(where: { $0.id == person.id }) else { return nil }
+		
+		let indexPath = IndexPath(row: sureIndexPathRow, section: 0)
+		return indexPath
+	}
 }
 
 // MARK: - View Exposed Methods
 extension PersonSelectPresenter {
 	@objc func onRightNavigationItemTapped() {
 		viewProtocol?.presentAddPersonVC(database: database)
+	}
+	
+	func getImageDataForPerson(_ person: Person) -> Data? {
+		guard person.imageURL != nil else { return nil }
+		
+		let imageData = personsImageData[person.id]
+		return imageData
 	}
 	
 	// MARK: TableViewDataSource
@@ -71,8 +96,15 @@ extension PersonSelectPresenter {
 	func onViewWillAppear() {
 		viewProtocol?.showNetworkActivityIndicator(true)
 		PersonManager.getAllPersons(success: { (persons) in
-			self.persons = persons
-			self.viewProtocol?.reloadTableView()
+			if !self.persons.containsSameElements(as: persons) {
+				let isFirstLoad = self.persons.isEmpty
+				self.persons = persons
+				self.retrieveAsyncPersonsImageData(persons: persons)
+				
+				if isFirstLoad {
+					self.viewProtocol?.reloadTableView()
+				}
+			}
 			self.viewProtocol?.showNetworkActivityIndicator(false)
 		}) { (error) in
 			self.viewProtocol?.showNetworkActivityIndicator(false)
@@ -84,9 +116,17 @@ extension PersonSelectPresenter {
 
 // MARK: - PersonImageRetrievablePresenterProtocol
 extension PersonSelectPresenter: PersonImageRetrievablePresenterProtocol {
-	func onImageDataComplete(cachedData: Data?) {
-		if cachedData != nil {
-			self.viewProtocol?.reloadTableView() // TODO: reload only that cell
+	func onImageDataComplete(person: Person, cachedData: Data?) {
+		guard let sureCachedData = cachedData else { return }
+		
+		personsImageData[person.id] = sureCachedData
+		
+		DispatchQueue.main.async {
+			if let sureIndexPath = self.getIndexPathForPerson(person) {
+				self.viewProtocol?.reloadCell(indexPath: sureIndexPath)
+			} else {
+				self.viewProtocol?.reloadTableView()
+			}
 		}
 	}
 }

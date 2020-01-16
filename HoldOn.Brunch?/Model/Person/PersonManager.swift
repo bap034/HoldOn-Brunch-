@@ -30,10 +30,10 @@ class PersonManager {
 	}
 	
 	// MARK: - HOBStorageProtocol
-	static func getImageDataForPerson(_ person: Person, storage: HOBStorageProtocol = HOBStorage.shared, completion: @escaping (Data?)->Void) -> Data? {
+	static func getImageDataForPerson(_ person: Person, storage: HOBStorageProtocol = HOBStorage.shared, completion: @escaping (Data?)->Void) {
 		let filename = person.id
 		if let existingData = storage.retrieveImageDataFromCache(filename: filename) {
-			return existingData
+			completion(existingData)
 		} else {
 			storage.downloadImageDataToCache(filename: filename, success: {
 				let data = storage.retrieveImageDataFromCache(filename: filename)
@@ -42,7 +42,5 @@ class PersonManager {
 				completion(nil)
 			}
 		}
-		
-		return nil
 	}
 }
