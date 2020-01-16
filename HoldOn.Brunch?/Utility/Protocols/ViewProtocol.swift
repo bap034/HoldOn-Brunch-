@@ -11,19 +11,31 @@ import UIKit
 
 protocol ViewProtocol: UIViewController {}
 extension ViewProtocol {
-	func showNetworkActivityIndicator(_ show: Bool) {
-//		if show {
-//			let activityIndicator = UIActivityIndicatorView(style: .medium)
-//			activityIndicator.startAnimating()
-//			activityIndicator.accessibilityLabel = "networkActivityIndicator"
-//			self.view.insertSubview(activityIndicator, at: 0)
-//		} else {
-//			let activityIndicator = self.view.subviews.first(where: { $0.accessibilityLabel == "networkActivityIndicator" })
-//			guard let sureActivityIndicator = activityIndicator as? UIActivityIndicatorView else { return }
-//
-//			sureActivityIndicator.stopAnimating()
-//			sureActivityIndicator.removeFromSuperview()
-//		}
+	func showActivityIndicator(_ show: Bool) {
+		if show {
+			let existingActivityIndicator = self.view.subviews.first(where: { $0.accessibilityLabel == "networkActivityIndicator" }) as? UIActivityIndicatorView
+			guard existingActivityIndicator == nil else {
+				existingActivityIndicator?.isHidden = false
+				existingActivityIndicator?.startAnimating()
+				return
+			}
+			
+			let activityIndicator = UIActivityIndicatorView(style: .medium)
+			activityIndicator.startAnimating()
+			activityIndicator.accessibilityLabel = "networkActivityIndicator"
+			
+			self.view.addSubview(activityIndicator)
+			
+			activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+			activityIndicator.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+			activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		} else {
+			let activityIndicator = self.view.subviews.first(where: { $0.accessibilityLabel == "networkActivityIndicator" })
+			guard let sureActivityIndicator = activityIndicator as? UIActivityIndicatorView else { return }
+
+			sureActivityIndicator.stopAnimating()
+			sureActivityIndicator.removeFromSuperview()
+		}
 	}
 	
 	func showOneButtonAlertModal(title: String?,
