@@ -85,7 +85,11 @@ extension AppDelegate: MessagingDelegate {
 		// Note: This callback is fired at each app startup and whenever a new token is generated.
 		
 		Messaging.messaging().subscribe(toTopic: "allUsers") { error in
-			print("Subscribed to allUsers topic")
+			if let sureError = error {
+				print("Subscribe error: \(sureError.localizedDescription)")
+			} else {
+				print("Subscribed to allUsers topic")
+			}
 		}
 	}
 	func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
