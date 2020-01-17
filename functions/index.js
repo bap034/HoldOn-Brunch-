@@ -13,11 +13,15 @@ function sendMessageToAllUsers(titleText, messageText) {
 	// The topic name can be optionally prefixed with "/topics/".
 var topic = 'allUsers';
 
-	var message = {
-		notification: {
-			title: titleText,
+	var notification = {
 			body: messageText
-		},
+		};
+	if (titleText) {
+		notification["title"] = titleText;
+	}
+
+	var message = {
+		notification: notification,
 		topic: topic
 	};
 
@@ -70,37 +74,24 @@ exports.sendNotificationOnMessageCreate = functions.firestore
 	});
 });
 
-	// Listen for changes in all documents in the 'users/messages' collection and sends a push notification 
-exports.sendNotificationOnMessageCreate = functions.firestore
-	.document('persons/{personId}/messages/{messageId}')
-	.onCreate((snap, context) => {
+	// Listen for changes in all documents in the 'users' collection and sends a push notification if the moodStatus changes
+exports.sendNotificationOnMoodStatusUpdate = functions.firestore
+	.document('persons/{personId}')
+	.onUpdate((changes, context) => {
 	// Get an object representing the document
 	// e.g. {'name': 'Marie', 'age': 66}
-	// const newValue = snap.data();
+	const newValue = changes.after.data();
+	const newMoodStatus = newValue.moodStatus;
 
-	// access a particular field as you would any JS property
-	const personId = snap.get('personId');
+	// ...or the previous value before this update
+	const previousValue = changes.before.data();
+	const previousMoodStatus = previousValue.moodStatus;
 
-	
-	let personRef = db.collection('persons').doc(personId);
-	personRef.get()
-	.then(doc => {
-		if (!doc.exists) {
-			console.log('No such document!');  
-			return nil;
-		} else {
-			console.log('Document data:', doc.data());
-			const name = doc.data().name;
-			const titleText = `${name} said...`;
-			const messageText = snap.get('text');
+	if (newMoodStatus !== previousMoodStatus) {
+		const name = newValue.name;
+		const titleText = null;
+		const messageText = `${name} is ${newMoodStatus}!`;
 
-			sendMessageToAllUsers(titleText, messageText);
-
-			return doc;
-		}
-	})
-	.catch(err => {
-		console.log('Error getting document', err);
-		return err;
-	});
+		sendMessageToAllUsers(titleText, messageText);
+	}
 });

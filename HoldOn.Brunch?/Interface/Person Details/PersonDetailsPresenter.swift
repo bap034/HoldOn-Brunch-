@@ -57,6 +57,8 @@ extension PersonDetailsPresenter {
 // MARK: - Exposed View Methods
 extension PersonDetailsPresenter {
 	func onViewWillDisappear(newDetails: PersonDetailsViewModel) {
+		guard (person.name != newDetails.name || person.moodStatus != newDetails.moodStatus) else { return }
+		
 		person.name = newDetails.name
 		person.moodStatus = newDetails.moodStatus
 		savePerson(person)
