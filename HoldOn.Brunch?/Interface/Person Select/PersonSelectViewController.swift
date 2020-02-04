@@ -104,6 +104,7 @@ extension PersonSelectViewController: PersonSelectViewProtocol {
 		let vc = AddPersonViewController(presenter: presenter)
 		let nc = UINavigationController(rootViewController: vc)
 		nc.modalPresentationStyle = .fullScreen
+		nc.navigationBar.tintColor = Themes.Default.color
 		navigationController?.present(nc, animated: true, completion: nil)
 	}
 	

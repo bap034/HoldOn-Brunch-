@@ -54,6 +54,22 @@ extension PersonDetailsPresenter {
 	}
 }
 
+// MARK: - Message Actions
+extension PersonDetailsPresenter {
+	private func saveMessage(_ message: Message) {
+		MessageManager.storeMessage(message, database: database, success: {
+			self.viewProtocol?.setPostButtonEnabled(true)
+			PersonManager.getAllMessagesForPerson(self.person, database: self.database, success: { (messages) in
+				self.messages = messages
+				self.viewProtocol?.updateMessagesTable()
+			}, failure: nil)
+		}) { (error) in
+			self.viewProtocol?.setPostButtonEnabled(true)
+			self.viewProtocol?.showOneButtonAlertModal(title: "Oops", message: error?.localizedDescription)
+		}
+	}
+}
+
 // MARK: - Exposed View Methods
 extension PersonDetailsPresenter {
 	func onViewWillDisappear(newDetails: PersonDetailsViewModel) {
@@ -71,20 +87,30 @@ extension PersonDetailsPresenter {
 		viewProtocol?.setPostButtonEnabled(false)
 		
 		let message = MessageManager.createNewMessage(personId: person.id, text: trimmedMessageText)
-		MessageManager.storeMessage(message, database: database, success: {
-			self.viewProtocol?.setPostButtonEnabled(true)
+		saveMessage(message)
+	}
+	
+	func onGetMessageCellVMs() -> [MessageCellViewModel] {
+		var messageCellVMs = [MessageCellViewModel]()
+		messages.forEach { (message) in
+			let messageCellVM = MessageCellViewModel(message: message)
+			messageCellVM.onReactionTap = { message in
+				self.onMessageReactionTap(newMessage: message)
+			}
+			messageCellVMs.append(messageCellVM)
+		}
+		return messageCellVMs
+	}
+	
+	func onMessageReactionTap(newMessage: Message) {
+		MessageManager.storeMessage(newMessage, database: database, success: {
 			PersonManager.getAllMessagesForPerson(self.person, database: self.database, success: { (messages) in
 				self.messages = messages
 				self.viewProtocol?.updateMessagesTable()
 			}, failure: nil)
 		}) { (error) in
-			self.viewProtocol?.setPostButtonEnabled(true)
 			self.viewProtocol?.showOneButtonAlertModal(title: "Oops", message: error?.localizedDescription)
 		}
-	}
-	
-	func onGetMessages() -> [Message] {
-		return messages
 	}
 }
 

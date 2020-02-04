@@ -24,8 +24,8 @@ struct PersonDetailsView: View {
 			})
 				.padding([.leading, .trailing], 20)
 			
-			List(personDetails.messages.reversed()) { message in
-				MessageCellView(message: message)
+			List(personDetails.messageCellVMs.reversed()) { messageCellVM in
+				MessageCellView(messageCellVM: messageCellVM)
 			}
 			
 			Spacer()
@@ -38,8 +38,12 @@ struct PersonDetailsViewController_Previews: PreviewProvider {
 		let person = Person(name: "Baller", imageURLString: "cat", moodStatus: .confused)
 		let personDetails = PersonDetailsViewModel(person: person)
 		let message1 = Message(personId: person.id, created: Date(), text: "Message 1 text")
+		let messageCellVM1 = MessageCellViewModel(message: message1)
+		
 		let message2 = Message(personId: person.id, created: Date().addingTimeInterval(123), text: "Message 2 text")
-		personDetails.messages = [message1, message2]
+		let messageCellVM2 = MessageCellViewModel(message: message2)
+		
+		personDetails.messageCellVMs = [messageCellVM1, messageCellVM2]
 		return PersonDetailsView(personDetails: personDetails)
     }
 }
