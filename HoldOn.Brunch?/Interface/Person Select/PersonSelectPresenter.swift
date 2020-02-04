@@ -103,7 +103,9 @@ extension PersonSelectPresenter {
 				self.retrieveAsyncPersonsImageData(persons: persons)
 				
 				if isFirstLoad || needsToChangeRowCount {
-					self.viewProtocol?.reloadTableView()
+					DispatchQueue.main.async {
+						self.viewProtocol?.reloadTableView()
+					}
 				}
 			}
 			self.viewProtocol?.showActivityIndicator(false)

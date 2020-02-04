@@ -16,20 +16,25 @@ struct MessageReactionView: View {
 		HStack(spacing: 0) {
 			if reactionCount > 0 {
 				Text("\(reactionCount)")
+					.foregroundColor(Color.black)
+					.padding(.leading, 3)
 			}
 			
 			Image(uiImage: UIImage(named: reactionType.getImageString())!) // TODO: remove forced unwrap
 				.resizable()
 				.scaledToFit()
+			.padding(3)
 		}
-		.padding(5)
-		.background(Color(.cyan))
-		.cornerRadius(10)
+		.overlay(
+			RoundedRectangle(cornerRadius: 4)
+				.stroke(Color.purple, lineWidth: 2)
+		)
     }
 }
 
 struct MessageReactionView_Previews: PreviewProvider {
     static var previews: some View {
-		MessageReactionView(reactionType: .pizza, reactionCount: 103223)
+		MessageReactionView(reactionType: .soda, reactionCount: 10)
+			.frame(maxWidth: 50, maxHeight: 30)
     }
 }

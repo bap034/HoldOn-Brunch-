@@ -14,7 +14,7 @@ struct MessageCellView: View {
 	
 	private var reactionTypes: [MessageReactionType] {
 		guard let sureReactionTypes = messageCellVM.message.reactionTypes else { return [] }
-		return Array(sureReactionTypes.keys)
+		return Array(sureReactionTypes.keys.sorted())
 	}
 	
     var body: some View {
@@ -32,25 +32,25 @@ struct MessageCellView: View {
 				
 				Spacer()
 				
-					
-				Image(uiImage: UIImage(named: "icons8-kawaii-pizza-outline")!) // TODO: remove forced unwrap
-					.resizable()
-					.scaledToFit()
-					.frame(maxWidth: 30, maxHeight: 30)
-					.colorMultiply(.black)
-					.contextMenu {
-						MessageReactionContextMenuView(messageCellVM: messageCellVM)
+				if messageCellVM.message.reactionTypes == nil {
+					Image(uiImage: UIImage(named: "icons8-kawaii-pizza-outline")!) // TODO: remove forced unwrap
+						.resizable()
+						.scaledToFit()
+						.frame(maxWidth: 30, maxHeight: 30)
+						.contextMenu {
+							MessageReactionContextMenuView(messageCellVM: messageCellVM)
+					}
 				}
 			}
 			
 			if !reactionTypes.isEmpty {
-				HStack(spacing: 0) {
-					Spacer()
-					
-					ForEach(reactionTypes) { reactionType in
-						MessageReactionView(reactionType: reactionType, reactionCount: self.messageCellVM.getCountForReactionType(reactionType))
-							.frame(maxHeight: 30)
-							.padding([.leading], 5)
+				ScrollView(.horizontal, showsIndicators: false) {
+					HStack(spacing: 5) {
+						ForEach(reactionTypes) { reactionType in
+							MessageReactionView(reactionType: reactionType, reactionCount: self.messageCellVM.getCountForReactionType(reactionType))
+								.frame(maxHeight: 30)
+								.padding(2)
+						}
 					}
 				}
 			}
@@ -61,7 +61,8 @@ struct MessageCellView: View {
 struct MessageCellView_Previews: PreviewProvider {
     static var previews: some View {
 		var message = Message(personId: "Baller", created: Date(), text: "Message text")
-		message.reactionTypes = [.pizza : 2, .iceCream : 5]
+		message.reactionTypes = [.pizza : 20, .iceCream : 5, .bread:1, .coffee:1, .cupcake:1, .egg:1, .frenchFries:1, .pumpkin:1, .soda:1, .steak:1, .sushi:1, .taco:1]
+//		message.reactionTypes = [.pizza : 20]
 		let messageCellVM = MessageCellViewModel(message: message)
 		messageCellVM.onReactionTap = { reactionType in
 			print("button pressed")

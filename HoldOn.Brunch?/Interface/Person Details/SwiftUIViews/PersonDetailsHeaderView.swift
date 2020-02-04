@@ -64,8 +64,8 @@ struct TwoTextButtonSelectView: View {
 				Text(option1.rawValue.capitalized)
 			}
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-				.foregroundColor(.black)
-			.background(Color(personDetails.moodStatus == option1 ? .cyan:.white))
+			.foregroundColor(personDetails.moodStatus == option1 ? Color.white:Color.black)
+			.background(personDetails.moodStatus == option1 ? Color.purple:Color.white)
 				.onTapGesture {
 					print("Tapped!")
 			}
@@ -82,8 +82,8 @@ struct TwoTextButtonSelectView: View {
 				Text(option2.rawValue.capitalized)
 			}
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-			.foregroundColor(.black)
-			.background(Color(personDetails.moodStatus == option2 ? .cyan:.white))
+			.foregroundColor(personDetails.moodStatus == option2 ? Color.white:Color.black)
+			.background(personDetails.moodStatus == option2 ? Color.purple:Color.white)
 		}
 		.overlay(
 			RoundedRectangle(cornerRadius: 4).stroke(Color(.black), lineWidth: 1)
