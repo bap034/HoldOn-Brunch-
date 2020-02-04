@@ -50,7 +50,7 @@ extension AddPersonViewController {
 // MARK: - View Setup
 extension AddPersonViewController {
 	private func setUpSelf() {
-		view.backgroundColor = .white
+		view.backgroundColor = .systemBackground
 	}
 	private func setUpContainerView() {
 		containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +75,7 @@ extension AddPersonViewController {
 		nameTextField.borderStyle = .roundedRect
 		nameTextField.delegate = self
 		nameTextField.tintColor = Themes.Default.color
+		nameTextField.placeholder = "ex. Balla"
 		
 		nameTextField.translatesAutoresizingMaskIntoConstraints = false
 		containerView.addSubview(nameTextField)

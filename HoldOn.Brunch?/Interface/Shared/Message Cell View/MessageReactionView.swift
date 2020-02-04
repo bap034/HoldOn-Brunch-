@@ -16,7 +16,6 @@ struct MessageReactionView: View {
 		HStack(spacing: 0) {
 			if reactionCount > 0 {
 				Text("\(reactionCount)")
-					.foregroundColor(Color.black)
 					.padding(.leading, 3)
 			}
 			
