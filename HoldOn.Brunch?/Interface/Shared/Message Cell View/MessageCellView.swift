@@ -40,6 +40,11 @@ struct MessageCellView: View {
 						.contextMenu {
 							MessageReactionContextMenuView(messageCellVM: messageCellVM)
 					}
+				} else {
+					Spacer()
+						.contextMenu {
+							MessageReactionContextMenuView(messageCellVM: messageCellVM)
+					}
 				}
 			}
 			
