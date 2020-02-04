@@ -29,7 +29,7 @@ class IntroViewController: UIViewController {
 // MARK: - View Setup
 extension IntroViewController {
 	private func setUpSelf() {
-		view.backgroundColor = .white
+		view.backgroundColor = .systemBackground
 		navigationController?.navigationBar.isHidden = true
 	}
 	

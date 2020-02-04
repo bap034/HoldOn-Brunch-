@@ -21,7 +21,7 @@ struct PersonDetailsHeaderView: View {
 				.clipShape(RoundedRectangle(cornerRadius: 4))
 				.shadow(radius: 10)
 				.overlay(
-					RoundedRectangle(cornerRadius: 4).stroke(Color(.black), lineWidth: 1))
+					RoundedRectangle(cornerRadius: 4).stroke(Color.primary, lineWidth: 1))
 				.frame(width: 100, height: 100)
 			
 			VStack(spacing: 20) {
@@ -64,15 +64,15 @@ struct TwoTextButtonSelectView: View {
 				Text(option1.rawValue.capitalized)
 			}
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-			.foregroundColor(personDetails.moodStatus == option1 ? Color.white:Color.black)
-			.background(personDetails.moodStatus == option1 ? Color(Themes.Default.color):Color.white)
+			.foregroundColor(personDetails.moodStatus == option1 ? Color.white:Color.primary)
+			.background(personDetails.moodStatus == option1 ? Color(Themes.Default.color):Color(UIColor.systemBackground))
 				.onTapGesture {
 					print("Tapped!")
 			}
 			
 			// Divider
 			Rectangle()
-				.background(Color(.black))
+				.foregroundColor(Color(Themes.Default.color))
 				.frame(width: 1)
 			
 			Button(action: {
@@ -82,11 +82,11 @@ struct TwoTextButtonSelectView: View {
 				Text(option2.rawValue.capitalized)
 			}
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-			.foregroundColor(personDetails.moodStatus == option2 ? Color.white:Color.black)
-			.background(personDetails.moodStatus == option2 ? Color(Themes.Default.color):Color.white)
+			.foregroundColor(personDetails.moodStatus == option2 ? Color.white:Color.primary)
+			.background(personDetails.moodStatus == option2 ? Color(Themes.Default.color):Color(UIColor.systemBackground))
 		}
 		.overlay(
-			RoundedRectangle(cornerRadius: 4).stroke(Color(.black), lineWidth: 1)
+			RoundedRectangle(cornerRadius: 4).stroke(Color(Themes.Default.color), lineWidth: 1)
 		)
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 40, alignment: .leading)
 	}

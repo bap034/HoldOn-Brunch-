@@ -31,7 +31,7 @@ class SelectImageView: UIView {
 // MARK: - View Setup
 extension SelectImageView {
 	private func setUpSelf() {
-		backgroundColor = .white
+		backgroundColor = .clear
 		layer.borderWidth = 3
 		layer.borderColor = Themes.Default.color.cgColor
 		layer.cornerRadius = 6
