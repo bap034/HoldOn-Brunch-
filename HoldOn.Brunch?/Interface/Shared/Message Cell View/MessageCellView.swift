@@ -32,14 +32,14 @@ struct MessageCellView: View {
 				
 				Spacer()
 				
-				Button(action: {
-					self.messageCellVM.onReactionTap?()
-				}) {
-					Image(uiImage: UIImage(named: "icons8-kawaii-pizza-outline")!) // TODO: remove forced unwrap
-						.resizable()
-						.scaledToFit()
-						.frame(maxWidth: 30, maxHeight: 30)
-						.colorMultiply(.black)
+					
+				Image(uiImage: UIImage(named: "icons8-kawaii-pizza-outline")!) // TODO: remove forced unwrap
+					.resizable()
+					.scaledToFit()
+					.frame(maxWidth: 30, maxHeight: 30)
+					.colorMultiply(.black)
+					.contextMenu {
+						MessageReactionContextMenuView(messageCellVM: messageCellVM)
 				}
 			}
 			
@@ -63,7 +63,7 @@ struct MessageCellView_Previews: PreviewProvider {
 		var message = Message(personId: "Baller", created: Date(), text: "Message text")
 		message.reactionTypes = [.pizza : 2, .iceCream : 5]
 		let messageCellVM = MessageCellViewModel(message: message)
-		messageCellVM.onReactionTap = {
+		messageCellVM.onReactionTap = { reactionType in
 			print("button pressed")
 		}
 		return MessageCellView(messageCellVM: messageCellVM)

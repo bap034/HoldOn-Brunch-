@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum MessageReactionType: String, Codable, Identifiable {
+enum MessageReactionType: String, Codable, Identifiable, CaseIterable {
 	case bread
 	case coffee
 	case cupcake
