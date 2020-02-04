@@ -74,6 +74,7 @@ extension AddPersonViewController {
 	private func setUpNameTextField() {
 		nameTextField.borderStyle = .roundedRect
 		nameTextField.delegate = self
+		nameTextField.tintColor = Themes.Default.color
 		
 		nameTextField.translatesAutoresizingMaskIntoConstraints = false
 		containerView.addSubview(nameTextField)

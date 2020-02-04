@@ -27,7 +27,7 @@ struct MessageReactionView: View {
 		}
 		.overlay(
 			RoundedRectangle(cornerRadius: 4)
-				.stroke(Color.purple, lineWidth: 2)
+				.stroke(Color(Themes.Default.color), lineWidth: 2)
 		)
     }
 }
