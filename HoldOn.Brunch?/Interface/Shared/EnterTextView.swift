@@ -26,6 +26,7 @@ struct EnterTextView: View {
 				self.enteredText = ""
 			}) {
 				Text("Post")
+					.foregroundColor(Color.purple)
 			}
 			.padding([.leading], 10)
 			.disabled(!isEnabled)

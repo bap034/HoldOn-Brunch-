@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum MessageReactionType: String, Codable, Identifiable, CaseIterable {
+enum MessageReactionType: String, Codable, Identifiable, CaseIterable, Comparable {
 	case bread
 	case coffee
 	case cupcake
@@ -55,6 +55,14 @@ enum MessageReactionType: String, Codable, Identifiable, CaseIterable {
 		}
 		
 		return imageString
+	}
+	
+	// MARK: Comparable
+	public static func < (lhs: MessageReactionType, rhs: MessageReactionType) -> Bool {
+		let order = MessageReactionType.allCases
+		guard let lhsIndex = order.firstIndex(of: lhs),
+			let rhsIndex = order.firstIndex(of: rhs) else { return false }
+		return lhsIndex < rhsIndex
 	}
 }
 
