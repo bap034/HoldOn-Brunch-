@@ -20,6 +20,7 @@
 		8B9AA9DB237E756300577844 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */; };
 		8B9AA9DD237E834A00577844 /* PersonPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */; };
 		8B9AA9E0237E875100577844 /* PersonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DF237E875100577844 /* PersonDetailsViewModel.swift */; };
+		8BA9D5BF23E92D500061CB35 /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9D5BE23E92D500061CB35 /* MessageCellViewModel.swift */; };
 		8BAAB63923D0FCFA008B5C14 /* Array+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAB63823D0FCFA008B5C14 /* Array+HOB.swift */; };
 		8BB1D4FC2348EE4E00626A90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB1D4FB2348EE4E00626A90 /* AppDelegate.swift */; };
 		8BB1D5032348EE5100626A90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB1D5022348EE5100626A90 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		8BC7FE6D23E7873B0031F6FD /* icons8-kawaii-sushi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC7FE5323E7873A0031F6FD /* icons8-kawaii-sushi@3x.png */; };
 		8BC7FE7023E7D7110031F6FD /* icons8-kawaii-pumpkin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC7FE6E23E7D7110031F6FD /* icons8-kawaii-pumpkin@3x.png */; };
 		8BC7FE7123E7D7110031F6FD /* icons8-kawaii-pumpkin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC7FE6F23E7D7110031F6FD /* icons8-kawaii-pumpkin@2x.png */; };
+		8BC7FE7423E7EE920031F6FD /* MessageReactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC7FE7323E7EE920031F6FD /* MessageReactionView.swift */; };
 		8BDC25DD23514A05004C75E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC25DC23514A05004C75E0 /* GoogleService-Info.plist */; };
 		8BDC25E023514D46004C75E0 /* HOBFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25DF23514D46004C75E0 /* HOBFirestore.swift */; };
 		8BDC25E6235237F4004C75E0 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC25E5235237F4004C75E0 /* ViewProtocol.swift */; };
@@ -114,6 +116,7 @@
 		8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
 		8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPresenterProtocols.swift; sourceTree = "<group>"; };
 		8B9AA9DF237E875100577844 /* PersonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewModel.swift; sourceTree = "<group>"; };
+		8BA9D5BE23E92D500061CB35 /* MessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellViewModel.swift; sourceTree = "<group>"; };
 		8BAAB63823D0FCFA008B5C14 /* Array+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+HOB.swift"; sourceTree = "<group>"; };
 		8BB1D4F82348EE4E00626A90 /* HoldOn.Brunch?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HoldOn.Brunch?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB1D4FB2348EE4E00626A90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +175,7 @@
 		8BC7FE5323E7873A0031F6FD /* icons8-kawaii-sushi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-kawaii-sushi@3x.png"; sourceTree = "<group>"; };
 		8BC7FE6E23E7D7110031F6FD /* icons8-kawaii-pumpkin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-kawaii-pumpkin@3x.png"; sourceTree = "<group>"; };
 		8BC7FE6F23E7D7110031F6FD /* icons8-kawaii-pumpkin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-kawaii-pumpkin@2x.png"; sourceTree = "<group>"; };
+		8BC7FE7323E7EE920031F6FD /* MessageReactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReactionView.swift; sourceTree = "<group>"; };
 		8BDC25DC23514A05004C75E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8BDC25DF23514D46004C75E0 /* HOBFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOBFirestore.swift; sourceTree = "<group>"; };
 		8BDC25E5235237F4004C75E0 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 		8B9AA9DE237E873300577844 /* SwiftUIObservable */ = {
 			isa = PBXGroup;
 			children = (
+				8BA9D5BE23E92D500061CB35 /* MessageCellViewModel.swift */,
 				8B9AA9DF237E875100577844 /* PersonDetailsViewModel.swift */,
 			);
 			path = SwiftUIObservable;
@@ -463,6 +468,15 @@
 			path = "Message Icons";
 			sourceTree = "<group>";
 		};
+		8BC7FE7223E7EE740031F6FD /* Message Cell View */ = {
+			isa = PBXGroup;
+			children = (
+				8BC7FE7323E7EE920031F6FD /* MessageReactionView.swift */,
+				8B7351F123C701FF0047CFA2 /* MessageCellView.swift */,
+			);
+			path = "Message Cell View";
+			sourceTree = "<group>";
+		};
 		8BDC25DE23514D18004C75E0 /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,7 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				8BDCFFE5238E2C1200B3FDF0 /* EnterTextView.swift */,
-				8B7351F123C701FF0047CFA2 /* MessageCellView.swift */,
+				8BC7FE7223E7EE740031F6FD /* Message Cell View */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -716,6 +730,7 @@
 			files = (
 				8BB1D53D2348FEB100626A90 /* UIView+HOB.swift in Sources */,
 				8BC24683235D96BF00715245 /* UIImage+HOB.swift in Sources */,
+				8BC7FE7423E7EE920031F6FD /* MessageReactionView.swift in Sources */,
 				8BB1D55B2349D0E800626A90 /* IntroPresenter.swift in Sources */,
 				8BDCFFE6238E2C1200B3FDF0 /* EnterTextView.swift in Sources */,
 				8BB1D5572349D08900626A90 /* IntroViewController.swift in Sources */,
@@ -739,6 +754,7 @@
 				8BDC25E6235237F4004C75E0 /* ViewProtocol.swift in Sources */,
 				8B0DEE342359305200A50B5F /* SelectImageView.swift in Sources */,
 				8B0DEE37235D23C900A50B5F /* PhotosManager.swift in Sources */,
+				8BA9D5BF23E92D500061CB35 /* MessageCellViewModel.swift in Sources */,
 				8BC24681235D8FFE00715245 /* HOBFirebaseStorage.swift in Sources */,
 				8B9AA9DD237E834A00577844 /* PersonPresenterProtocols.swift in Sources */,
 				8BB1D5302348EFED00626A90 /* UserDefaults+HOB.swift in Sources */,
