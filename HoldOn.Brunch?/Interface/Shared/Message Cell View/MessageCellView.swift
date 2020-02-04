@@ -34,7 +34,9 @@ struct MessageCellView: View {
 				
 				if messageCellVM.message.reactionTypes == nil {
 					Image(uiImage: UIImage(named: "icons8-kawaii-pizza-outline")!) // TODO: remove forced unwrap
+						.renderingMode(.template)
 						.resizable()
+						.foregroundColor(Color(Themes.Default.color))
 						.scaledToFit()
 						.frame(maxWidth: 30, maxHeight: 30)
 						.contextMenu {
@@ -66,7 +68,7 @@ struct MessageCellView: View {
 struct MessageCellView_Previews: PreviewProvider {
     static var previews: some View {
 		var message = Message(personId: "Baller", created: Date(), text: "Message text")
-		message.reactionTypes = [.pizza : 20, .iceCream : 5, .bread:1, .coffee:1, .cupcake:1, .egg:1, .frenchFries:1, .pumpkin:1, .soda:1, .steak:1, .sushi:1, .taco:1]
+//		message.reactionTypes = [.pizza : 20, .iceCream : 5, .bread:1, .coffee:1, .cupcake:1, .egg:1, .frenchFries:1, .pumpkin:1, .soda:1, .steak:1, .sushi:1, .taco:1]
 //		message.reactionTypes = [.pizza : 20]
 		let messageCellVM = MessageCellViewModel(message: message)
 		messageCellVM.onReactionTap = { reactionType in
