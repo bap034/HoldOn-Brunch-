@@ -13,7 +13,7 @@ struct MessageReactionView: View {
 	var reactionCount: Int
 	
     var body: some View {
-		HStack {
+		HStack(spacing: 0) {
 			if reactionCount > 0 {
 				Text("\(reactionCount)")
 			}

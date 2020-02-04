@@ -13,7 +13,7 @@ class MessageCellViewModel: ObservableObject, Identifiable {
 	
 	@Published var message: Message
 	
-	var onReactionTap: (()->Void)?
+	var onReactionTap: ((Message)->Void)?
 	
 	init(message: Message) {
 		self.message = message
@@ -21,10 +21,20 @@ class MessageCellViewModel: ObservableObject, Identifiable {
 }
 
 
-// MARK: - Helper Methods
+// MARK: - Helper Functions
 extension MessageCellViewModel {
 	func getCountForReactionType(_ reactionType: MessageReactionType) -> Int {
 		let count = message.reactionTypes?[reactionType] ?? 0
 		return count
+	}
+	
+	func incrementCountForReactionType(_ reactionType: MessageReactionType) {
+		let newCount = getCountForReactionType(reactionType) + 1
+		
+		if message.reactionTypes != nil {
+			message.reactionTypes?[reactionType] = newCount
+		} else {
+			message.reactionTypes = [reactionType:newCount]
+		}
 	}
 }
