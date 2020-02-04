@@ -19,6 +19,7 @@ struct EnterTextView: View {
 		HStack() {
 			TextField(placeholderText, text: $enteredText)
 				.textFieldStyle(RoundedBorderTextFieldStyle())
+				.accentColor(Color(Themes.Default.color))
 			
 			Button(action: {
 				UIApplication.shared.endEditing()
@@ -26,7 +27,7 @@ struct EnterTextView: View {
 				self.enteredText = ""
 			}) {
 				Text("Post")
-					.foregroundColor(Color.purple)
+					.foregroundColor(Color(Themes.Default.color))
 			}
 			.padding([.leading], 10)
 			.disabled(!isEnabled)

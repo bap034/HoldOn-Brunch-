@@ -50,7 +50,7 @@ extension IntroViewController {
 	private func setUpButton() {
 		button.setTitle("It's Ironic!", for: .normal)
 		button.setTitleColor(.white, for: .normal)
-		button.setBackgroundColor(UIColor(red: 19/255, green: 117/255, blue: 144/255, alpha: 1), forState: .normal)
+		button.setBackgroundColor(Themes.Default.color, forState: .normal)
 		button.add({
 			self.presenter.onButtonTapped()
 		}, for: .touchUpInside)
@@ -118,6 +118,7 @@ extension IntroViewController: IntroViewProtocol {
 	func pushPersonSelectVC(persons: [Person]) {
 		let presenter = PersonSelectPresenter()
 		let vc = PersonSelectViewController(presenter: presenter)
+		navigationController?.navigationBar.tintColor = Themes.Default.color
 		navigationController?.navigationBar.isHidden = false
 		navigationController?.setViewControllers([vc], animated: true)
 	}

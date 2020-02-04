@@ -20,6 +20,7 @@
 		8B9AA9DB237E756300577844 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */; };
 		8B9AA9DD237E834A00577844 /* PersonPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */; };
 		8B9AA9E0237E875100577844 /* PersonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9AA9DF237E875100577844 /* PersonDetailsViewModel.swift */; };
+		8B9F3CB723E96EEC00E8B26A /* ColorThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CB623E96EEC00E8B26A /* ColorThemes.swift */; };
 		8BA9D5BF23E92D500061CB35 /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9D5BE23E92D500061CB35 /* MessageCellViewModel.swift */; };
 		8BA9D5C123E93E9E0061CB35 /* MessageReactionContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9D5C023E93E9E0061CB35 /* MessageReactionContextMenuView.swift */; };
 		8BAAB63923D0FCFA008B5C14 /* Array+HOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAB63823D0FCFA008B5C14 /* Array+HOB.swift */; };
@@ -117,6 +118,7 @@
 		8B9AA9DA237E756300577844 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
 		8B9AA9DC237E834A00577844 /* PersonPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPresenterProtocols.swift; sourceTree = "<group>"; };
 		8B9AA9DF237E875100577844 /* PersonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewModel.swift; sourceTree = "<group>"; };
+		8B9F3CB623E96EEC00E8B26A /* ColorThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemes.swift; sourceTree = "<group>"; };
 		8BA9D5BE23E92D500061CB35 /* MessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellViewModel.swift; sourceTree = "<group>"; };
 		8BA9D5C023E93E9E0061CB35 /* MessageReactionContextMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReactionContextMenuView.swift; sourceTree = "<group>"; };
 		8BAAB63823D0FCFA008B5C14 /* Array+HOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+HOB.swift"; sourceTree = "<group>"; };
@@ -263,6 +265,14 @@
 			path = SwiftUIObservable;
 			sourceTree = "<group>";
 		};
+		8B9F3CB523E96ECA00E8B26A /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				8B9F3CB623E96EEC00E8B26A /* ColorThemes.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		8BB1D4EF2348EE4E00626A90 = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +339,7 @@
 		8BB1D52A2348EE9100626A90 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				8B9F3CB523E96ECA00E8B26A /* Themes */,
 				8BDCFFE7238E484800B3FDF0 /* Shared */,
 				8BB1D5552349D07C00626A90 /* Intro */,
 				8BB1D54C2349C87400626A90 /* Add Person */,
@@ -738,6 +749,7 @@
 				8BDCFFE6238E2C1200B3FDF0 /* EnterTextView.swift in Sources */,
 				8BB1D5572349D08900626A90 /* IntroViewController.swift in Sources */,
 				8BB1D5492349B12400626A90 /* PersonSelectPresenter.swift in Sources */,
+				8B9F3CB723E96EEC00E8B26A /* ColorThemes.swift in Sources */,
 				8B4C50B1238E4F8700D76506 /* MessageManager.swift in Sources */,
 				8BA9D5C123E93E9E0061CB35 /* MessageReactionContextMenuView.swift in Sources */,
 				8BB1D54E2349C89200626A90 /* AddPersonViewController.swift in Sources */,
