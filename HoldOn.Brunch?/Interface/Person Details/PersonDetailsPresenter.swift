@@ -83,8 +83,20 @@ extension PersonDetailsPresenter {
 		}
 	}
 	
-	func onGetMessages() -> [Message] {
-		return messages
+	func onGetMessageCellVMs() -> [MessageCellViewModel] {
+		var messageCellVMs = [MessageCellViewModel]()
+		messages.forEach { (message) in
+			let messageCellVM = MessageCellViewModel(message: message)
+			messageCellVM.onReactionTap = {
+				self.onMessageReactionTap(messageId: message.id)
+			}
+			messageCellVMs.append(messageCellVM)
+		}
+		return messageCellVMs
+	}
+	
+	func onMessageReactionTap(messageId: String) {
+		print("***** messageId: \(messageId) reaction button tapped")
 	}
 }
 

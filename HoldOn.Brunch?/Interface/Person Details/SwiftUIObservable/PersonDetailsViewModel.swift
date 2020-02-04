@@ -13,7 +13,7 @@ class PersonDetailsViewModel: ObservableObject {
 	@Published var name: String	// TODO: how to remove duplicating properties. can Person hold observable details?
 	@Published var image: UIImage?
 	@Published var moodStatus: MoodStatus
-	@Published var messages = [Message]()
+	@Published var messageCellVMs = [MessageCellViewModel]()
 	@Published var enteredMessageText = ""
 	@Published var isPostButtonEnabled = true
 	

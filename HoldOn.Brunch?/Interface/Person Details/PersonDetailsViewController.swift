@@ -73,7 +73,7 @@ extension PersonDetailsViewController: PersonDetailsViewProtocol {
 		
 		personDetails.name = person.name
 		personDetails.moodStatus = person.moodStatus
-		personDetails.messages = presenter.onGetMessages()
+		personDetails.messageCellVMs = presenter.onGetMessageCellVMs()
 		personDetails.onPostMessage = {
 			self.presenter.onPostMessageButtonTapped(messageText: self.personDetails.enteredMessageText)
 		}
@@ -89,6 +89,6 @@ extension PersonDetailsViewController: PersonDetailsViewProtocol {
 	}
 	
 	func updateMessagesTable() {
-		personDetails.messages = presenter.onGetMessages()
+		personDetails.messageCellVMs = presenter.onGetMessageCellVMs()
 	}
 }

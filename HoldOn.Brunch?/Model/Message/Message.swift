@@ -68,7 +68,7 @@ struct Message: ModelProtocol, Identifiable {
 	let personId: String
 	let created: Date
 	let text: String
-	var reactionTypes: [MessageReactionType]? = nil
+	var reactionTypes: [MessageReactionType: Int]?
 	
 	var displayDate: String {
 		let dateFormatter = ISO8601DateFormatter()
