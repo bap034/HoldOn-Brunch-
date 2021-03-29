@@ -1,4 +1,4 @@
-# HoldOn-Brunch-
+# HoldOn. Brunch?
 
 A social messaging app intended to update individuals not present and preserve team highlights. Third party integration with Google Firebase for database storage and push notifications.
 
